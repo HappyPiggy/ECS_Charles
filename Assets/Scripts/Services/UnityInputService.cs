@@ -9,8 +9,7 @@ public class UnityInputService : IInputService {
     {
         get
         {
-            //todo 调用joysstick接口返回方向
-            return Vector2.zero;
+            return ControlPad.Direction;
         }
     }
 

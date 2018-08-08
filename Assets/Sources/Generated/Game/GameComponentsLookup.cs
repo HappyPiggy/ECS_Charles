@@ -8,36 +8,51 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Direction = 0;
-    public const int MoveComplete = 1;
-    public const int Move = 2;
-    public const int Mover = 3;
-    public const int PlayerSpped = 4;
-    public const int Position = 5;
-    public const int Sprite = 6;
-    public const int View = 7;
+    public const int Asset = 0;
+    public const int AssetListener = 1;
+    public const int Direction = 2;
+    public const int GameProgress = 3;
+    public const int GameProgressListener = 4;
+    public const int Move = 5;
+    public const int Mover = 6;
+    public const int PlayerInfo = 7;
+    public const int PlayerSpeed = 8;
+    public const int Position = 9;
+    public const int Sprite = 10;
+    public const int UnitType = 11;
+    public const int View = 12;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
+        "Asset",
+        "AssetListener",
         "Direction",
-        "MoveComplete",
+        "GameProgress",
+        "GameProgressListener",
         "Move",
         "Mover",
-        "PlayerSpped",
+        "PlayerInfo",
+        "PlayerSpeed",
         "Position",
         "Sprite",
+        "UnitType",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AssetComponent),
+        typeof(AssetListenerComponent),
         typeof(DirectionComponent),
-        typeof(MoveCompleteComponent),
+        typeof(GameProgressComponent),
+        typeof(GameProgressListenerComponent),
         typeof(MoveComponent),
         typeof(MoverComponent),
-        typeof(PlayerSppedComponent),
+        typeof(PlayerInfoComponent),
+        typeof(PlayerSpeedComponent),
         typeof(PositionComponent),
         typeof(SpriteComponent),
+        typeof(UnitTypeComponent),
         typeof(ViewComponent)
     };
 }

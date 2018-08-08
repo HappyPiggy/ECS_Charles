@@ -13,14 +13,12 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -253,12 +251,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Entitas\Compile.cs" />
-    <Compile Include="Assets\Scripts\Components\PlayerComponents.cs" />
+    <Compile Include="Assets\Scripts\Components\AssetComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\GameProcessComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\PlayerComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\ServiceComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\UnitComponent.cs" />
+    <Compile Include="Assets\Scripts\Config\GameConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\GameInfo.cs" />
     <Compile Include="Assets\Scripts\Enum\CommonEnum.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\GameSystemsController.cs" />
     <Compile Include="Assets\Scripts\MainEntry.cs" />
+    <Compile Include="Assets\Scripts\Services\ConfigService.cs" />
     <Compile Include="Assets\Scripts\Services\Interface\IInputService.cs" />
+    <Compile Include="Assets\Scripts\Services\Interface\Iview.cs" />
+    <Compile Include="Assets\Scripts\Services\Interface\IViewService.cs" />
+    <Compile Include="Assets\Scripts\Services\Services.cs" />
     <Compile Include="Assets\Scripts\Services\UnityInputService.cs" />
+    <Compile Include="Assets\Scripts\Services\UnityViewService.cs" />
+    <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\MovementSystems.cs" />
     <Compile Include="Assets\Scripts\Systems\MoveSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
@@ -268,15 +279,26 @@
     <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
     <Compile Include="Assets\Sources\Generated\Contexts.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\AssetListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\GameProgressListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\EventSystems.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IAssetListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameProgressListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\AssetEventSystem.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\GameProgressEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Feature.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDirectionComponent.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveCompleteComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoverComponent.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerSppedComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerInfoComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerSpeedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePositionComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpriteComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameUnitTypeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameViewComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\GameAttribute.cs" />
     <Compile Include="Assets\Sources\Generated\Game\GameComponentsLookup.cs" />
@@ -288,6 +310,7 @@
     <Compile Include="Assets\Sources\Generated\Input\InputContext.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputEntity.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputMatcher.cs" />
+    <Compile Include="Assets\Sources\Generated\Meta\Components\MetaInputServiceComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Meta\MetaAttribute.cs" />
     <Compile Include="Assets\Sources\Generated\Meta\MetaComponentsLookup.cs" />
     <Compile Include="Assets\Sources\Generated\Meta\MetaContext.cs" />

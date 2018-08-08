@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 控制主角移动
+/// </summary>
 public class MoveSystem : IExecuteSystem
 {
     readonly IGroup<GameEntity> _moves;
