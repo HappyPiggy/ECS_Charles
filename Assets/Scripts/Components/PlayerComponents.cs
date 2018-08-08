@@ -4,10 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Game]
-public class PositionCompontent : IComponent
+public class PositionComponent : IComponent
 {
     public Vector2 value;
 }
+
+[Game]
+public class PlayerSppedComponent : IComponent
+{
+    public float value;
+}
+
 
 [Game]
 public class DirectionComponent : IComponent

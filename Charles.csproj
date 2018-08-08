@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,12 +12,15 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <CompilerResponseFile></CompilerResponseFile>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -249,28 +252,47 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Sources\Generated\Game\GameComponentsLookup.cs" />
-    <Compile Include="Assets\Sources\Generated\Input\InputComponentsLookup.cs" />
-    <Compile Include="Assets\Sources\Generated\Meta\MetaComponentsLookup.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\GameAttribute.cs" />
-    <Compile Include="Assets\Sources\Generated\Input\InputAttribute.cs" />
-    <Compile Include="Assets\Sources\Generated\Meta\MetaAttribute.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\GameContext.cs" />
-    <Compile Include="Assets\Sources\Generated\Input\InputContext.cs" />
-    <Compile Include="Assets\Sources\Generated\Meta\MetaContext.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\GameMatcher.cs" />
-    <Compile Include="Assets\Sources\Generated\Input\InputMatcher.cs" />
-    <Compile Include="Assets\Sources\Generated\Meta\MetaMatcher.cs" />
-    <Compile Include="Assets\Sources\Generated\Contexts.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\GameEntity.cs" />
-    <Compile Include="Assets\Sources\Generated\Input\InputEntity.cs" />
-    <Compile Include="Assets\Sources\Generated\Meta\MetaEntity.cs" />
-    <Compile Include="Assets\Sources\Generated\Events\EventSystems.cs" />
-    <Compile Include="Assets\Sources\Generated\Feature.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Entitas\Compile.cs" />
     <Compile Include="Assets\Scripts\Components\PlayerComponents.cs" />
+    <Compile Include="Assets\Scripts\Enum\CommonEnum.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\MainEntry.cs" />
+    <Compile Include="Assets\Scripts\Services\Interface\IInputService.cs" />
+    <Compile Include="Assets\Scripts\Services\UnityInputService.cs" />
+    <Compile Include="Assets\Scripts\Systems\MovementSystems.cs" />
+    <Compile Include="Assets\Scripts\Systems\MoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
+    <Compile Include="Assets\Scripts\Systems\UISystem\ModuleManager.cs" />
+    <Compile Include="Assets\Scripts\Systems\UISystem\ModuleType.cs" />
+    <Compile Include="Assets\Scripts\Utils\AssetUtils.cs" />
+    <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
+    <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
+    <Compile Include="Assets\Sources\Generated\Contexts.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\EventSystems.cs" />
+    <Compile Include="Assets\Sources\Generated\Feature.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameDirectionComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveCompleteComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameMoverComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerSppedComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GamePositionComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameSpriteComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameViewComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\GameAttribute.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\GameComponentsLookup.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\GameContext.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\GameEntity.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\GameMatcher.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\InputAttribute.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\InputComponentsLookup.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\InputContext.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\InputEntity.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\InputMatcher.cs" />
+    <Compile Include="Assets\Sources\Generated\Meta\MetaAttribute.cs" />
+    <Compile Include="Assets\Sources\Generated\Meta\MetaComponentsLookup.cs" />
+    <Compile Include="Assets\Sources\Generated\Meta\MetaContext.cs" />
+    <Compile Include="Assets\Sources\Generated\Meta\MetaEntity.cs" />
+    <Compile Include="Assets\Sources\Generated\Meta\MetaMatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Entitas\LICENSE.txt" />
