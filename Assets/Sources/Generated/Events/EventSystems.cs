@@ -10,6 +10,8 @@ public sealed class EventSystems : Feature {
 
     public EventSystems(Contexts contexts) {
         Add(new AssetEventSystem(contexts)); // priority: 0
+        Add(new InputDestroyedEventSystem(contexts)); // priority: 0
+        Add(new GameDestroyedEventSystem(contexts)); // priority: 0
         Add(new GameProgressEventSystem(contexts)); // priority: 0
     }
 }

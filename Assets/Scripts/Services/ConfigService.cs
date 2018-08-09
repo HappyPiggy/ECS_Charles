@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// 游戏中各种配置
+/// </summary>
 public class ConfigService
 {
-    public PlayerConfig playerConfig;
+    public GlobalInfo globalInfo;
 
-    public PlayerConfig GetPlayerConfig()
+    public GlobalInfo GetGlobalInfo()
     {
-        return playerConfig;
+        return globalInfo;
+    }
+
+    public PlayerInfo GetPlayerInfo()
+    {
+        return globalInfo.playerInfo;
     }
 }

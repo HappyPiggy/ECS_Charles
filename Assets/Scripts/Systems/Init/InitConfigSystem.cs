@@ -37,7 +37,9 @@ public class InitConfigSystem : ReactiveSystem<GameEntity>
     /// </summary>
     private void LoadConfig()
     {
-        var playerConfig = Resources.Load("Config/PlayerConfig");
-        configService.playerConfig = playerConfig as PlayerConfig;
+        var globalInfo = Resources.Load("Config/GlobalInfo");
+        configService.globalInfo = globalInfo as GlobalInfo;
+
+        context.ReplaceGameProgress(GameProgressState.StartGame);
     }
 }

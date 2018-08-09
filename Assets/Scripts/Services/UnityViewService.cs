@@ -46,9 +46,14 @@ public class UnityViewService : IAssetListener,IViewService
         GameObject obj = null;
         switch (type)
         {
+            //从配置中读取prefab然后实例化，将view脚本和entity链接
             case UnitType.Player:
                 prefab = entity.playerInfo.value.prefab;
-                obj = GameObject.Instantiate(prefab, viewObjectRoot);
+                obj = GameObject.Instantiate(prefab,entity.position.value,entity.rotation.value, viewObjectRoot);
+                view = obj.AddComponent<PlayerView>();
+
+                view.Link(context, entity);
+                entity.AddView(view);
 
                 break;
             case UnitType.Enemy:

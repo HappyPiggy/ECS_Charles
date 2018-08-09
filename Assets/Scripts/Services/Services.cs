@@ -8,12 +8,14 @@ public class Services
     public readonly IInputService input;
     public readonly ConfigService config;
     public readonly IViewService unityViewService;
+    public readonly IEntityFactoryService entityFactoryService;
 
-    public Services(IInputService input,ConfigService config,IViewService viewService)
+    public Services(IInputService input,ConfigService config,IViewService unityViewService, IEntityFactoryService entityFactoryService)
     {
         this.input = input;
         this.config = config;
-        this.unityViewService = viewService;
+        this.unityViewService = unityViewService;
+        this.entityFactoryService = entityFactoryService;
     }
 }
 

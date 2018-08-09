@@ -9,12 +9,12 @@ public interface IView
 {
     Vector2 position { get; }
     Vector2 scale { get; }
-    Vector2 rotation { get; }
+    Quaternion rotation { get; }
 
-    ulong id { get; }
-    Transform objTransform { get; }
+    ulong uid { get; }
+    Transform objTransform { get; } // 可以由此得到gameobject
 
-    void OnDestroyedView(GameEntity entity);
+    void OnDestroyedView();
     void Link(IContext context, IEntity entity); //链接gameobject和entity
 
 }

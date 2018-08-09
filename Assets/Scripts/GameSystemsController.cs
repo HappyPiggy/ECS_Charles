@@ -14,7 +14,12 @@ public class GameSystemsController : Feature
         InitService(contexts);
 
         Add(new InitConfigSystem(contexts,services.config));
+        Add(new InitGameSceneSystem(contexts,services.entityFactoryService));
         Add(new MovementSystems(contexts));
+
+
+        // eventListener
+        Add(new EventSystems(contexts));
 
         //test
         contexts.game.ReplaceGameProgress(GameProgressState.ParseConfig);
@@ -30,10 +35,13 @@ public class GameSystemsController : Feature
         UnityInputService inputService = new UnityInputService();
         ConfigService configService = new ConfigService();
         UnityViewService unityViewService = new UnityViewService(contexts);
+        EntityFactoryService entityFactoryService = new EntityFactoryService(contexts,configService);
+
 
 
         services = new Services(inputService,
                                 configService,
-                                unityViewService);
+                                unityViewService,
+                                entityFactoryService);
     }
 }

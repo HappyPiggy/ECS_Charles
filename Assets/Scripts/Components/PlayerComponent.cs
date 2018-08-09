@@ -17,15 +17,15 @@ public class PlayerSpeedComponent : IComponent
 
 
 [Game]
-public class DirectionComponent : IComponent
+public class RotationComponent : IComponent
 {
-    public float value;
+    public Quaternion value;
 }
 
 [Game]
 public class ViewComponent : IComponent
 {
-    public GameObject gameObject;
+    public IView instance;
 }
 
 [Game]

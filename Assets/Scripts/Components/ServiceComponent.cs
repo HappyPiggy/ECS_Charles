@@ -9,3 +9,9 @@ public class InputServiceComponent : IComponent
 {
     public IInputService instance;
 }
+
+[Meta, Unique]
+public class EntityFactoryServiceComponent : IComponent
+{
+    public  IEntityFactoryService instance;
+}

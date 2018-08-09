@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2e193793d640f3140b3602fd1e8beae4, type: 3}
   m_Name: PlayerConfig
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
-  id: 0
-  name: 
-  desc: 
-  moveSpeed: 0
-  size: 0
+  m_EditorClassIdentifier: 
+  type: 1
+  name: fly1
+  desc: can fly
+  moveSpeed: 5
+  size: 1

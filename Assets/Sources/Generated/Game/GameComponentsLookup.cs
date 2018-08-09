@@ -10,24 +10,28 @@ public static class GameComponentsLookup {
 
     public const int Asset = 0;
     public const int AssetListener = 1;
-    public const int Direction = 2;
-    public const int GameProgress = 3;
-    public const int GameProgressListener = 4;
-    public const int Move = 5;
-    public const int Mover = 6;
-    public const int PlayerInfo = 7;
-    public const int PlayerSpeed = 8;
-    public const int Position = 9;
-    public const int Sprite = 10;
-    public const int UnitType = 11;
-    public const int View = 12;
+    public const int Destroyed = 2;
+    public const int GameDestroyedListener = 3;
+    public const int GameProgress = 4;
+    public const int GameProgressListener = 5;
+    public const int Move = 6;
+    public const int Mover = 7;
+    public const int PlayerInfo = 8;
+    public const int PlayerSpeed = 9;
+    public const int Position = 10;
+    public const int Rotation = 11;
+    public const int Sprite = 12;
+    public const int UID = 13;
+    public const int UnitType = 14;
+    public const int View = 15;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "Asset",
         "AssetListener",
-        "Direction",
+        "Destroyed",
+        "GameDestroyedListener",
         "GameProgress",
         "GameProgressListener",
         "Move",
@@ -35,7 +39,9 @@ public static class GameComponentsLookup {
         "PlayerInfo",
         "PlayerSpeed",
         "Position",
+        "Rotation",
         "Sprite",
+        "UID",
         "UnitType",
         "View"
     };
@@ -43,7 +49,8 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
         typeof(AssetListenerComponent),
-        typeof(DirectionComponent),
+        typeof(DestroyedComponent),
+        typeof(GameDestroyedListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),
         typeof(MoveComponent),
@@ -51,7 +58,9 @@ public static class GameComponentsLookup {
         typeof(PlayerInfoComponent),
         typeof(PlayerSpeedComponent),
         typeof(PositionComponent),
+        typeof(RotationComponent),
         typeof(SpriteComponent),
+        typeof(UIDComponent),
         typeof(UnitTypeComponent),
         typeof(ViewComponent)
     };
