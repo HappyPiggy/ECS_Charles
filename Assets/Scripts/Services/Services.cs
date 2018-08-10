@@ -5,15 +5,15 @@ using System.Text;
 
 public class Services
 {
-    public readonly IInputService input;
-    public readonly ConfigService config;
+    public readonly IInputService inputService;
+    public readonly ConfigService configService;
     public readonly IViewService unityViewService;
     public readonly IEntityFactoryService entityFactoryService;
 
-    public Services(IInputService input,ConfigService config,IViewService unityViewService, IEntityFactoryService entityFactoryService)
+    public Services(IInputService inputService, ConfigService configService, IViewService unityViewService, IEntityFactoryService entityFactoryService)
     {
-        this.input = input;
-        this.config = config;
+        this.inputService = inputService;
+        this.configService = configService;
         this.unityViewService = unityViewService;
         this.entityFactoryService = entityFactoryService;
     }

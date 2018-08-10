@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     }
 
     void Start()
-    { 
+    {
         _systems.Initialize();
     }
 

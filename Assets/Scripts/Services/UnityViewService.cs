@@ -7,7 +7,7 @@ using UnityEngine;
 /// 加载游戏中各种资源
 /// gameobject与entity的link
 /// </summary>
-public class UnityViewService : IAssetListener,IViewService
+public class UnityViewService : IAssetListener, IViewService
 {
     private GameEntity gameEntity;
     private GameContext context;
@@ -49,7 +49,7 @@ public class UnityViewService : IAssetListener,IViewService
             //从配置中读取prefab然后实例化，将view脚本和entity链接
             case UnitType.Player:
                 prefab = entity.playerInfo.value.prefab;
-                obj = GameObject.Instantiate(prefab,entity.position.value,entity.rotation.value, viewObjectRoot);
+                obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
                 view = obj.AddComponent<PlayerView>();
 
                 view.Link(context, entity);

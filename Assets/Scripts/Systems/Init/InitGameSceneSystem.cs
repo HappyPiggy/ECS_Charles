@@ -10,7 +10,7 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
     private GameContext context;
     private EntityFactoryService entityFactoryService;
 
-    public InitGameSceneSystem(Contexts contexts,IEntityFactoryService entityFactoryService) : base(contexts.game)
+    public InitGameSceneSystem(Contexts contexts, IEntityFactoryService entityFactoryService) : base(contexts.game)
     {
         this.context = contexts.game;
         this.entityFactoryService = entityFactoryService as EntityFactoryService;

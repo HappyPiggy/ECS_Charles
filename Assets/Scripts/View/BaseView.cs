@@ -29,18 +29,20 @@ public class BaseView : MonoBehaviour, IView
 
     public void Link(IContext context, IEntity entity)
     {
-        gameObject.Link(entity,context);
+        gameObject.Link(entity, context);
 
         gameEntity = entity as GameEntity;
     }
 
     protected virtual void Update()
     {
-        //同步view的transform属性
-        if(gameEntity!=null && gameEntity.isMover && !isDestroyed)
+        //读取entity中的数据 反应在view上
+        if (gameEntity != null && gameEntity.isMover && !isDestroyed)
         {
-            gameEntity.ReplacePosition(position);
-            gameEntity.ReplaceRotation(rotation);
+           // Debug.Log(gameEntity.rotation.value.eulerAngles.y);
+          //  gameEntity.ReplacePosition(position);
+          //  gameEntity.ReplaceRotation(rotation);
+            transform.eulerAngles = new Vector3(0, 0, -gameEntity.rotation.value.eulerAngles.y);
         }
     }
 
@@ -49,7 +51,7 @@ public class BaseView : MonoBehaviour, IView
         isDestroyed = true;
         gameEntity = null;
         DestroyUnityObject();
-        
+
     }
 
     public void DestroyUnityObject()

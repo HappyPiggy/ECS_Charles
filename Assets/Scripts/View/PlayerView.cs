@@ -5,7 +5,7 @@ using System.Text;
 /// <summary>
 /// 主角view
 /// </summary>
-public class PlayerView :BaseView
+public class PlayerView : BaseView
 {
 
 }

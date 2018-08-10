@@ -24,13 +24,11 @@ public class ControlPad : AppModule,IPointerDownHandler,IDragHandler,IPointerUpH
 
     public void OnPointerUp(PointerEventData eventData)
     {
-       // Debug.Log("OnPointerUp");
-
+       // direction = Vector2.zero;
     }
     public void OnDrag(PointerEventData eventData)
     {
         direction = (eventData.position - oldPos).normalized;
         oldPos = eventData.position;
-       // Debug.Log("direction " + Direction);
     }
 }

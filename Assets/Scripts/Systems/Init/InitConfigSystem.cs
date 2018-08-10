@@ -10,7 +10,7 @@ public class InitConfigSystem : ReactiveSystem<GameEntity>
     private GameContext context;
     private ConfigService configService;
 
-    public InitConfigSystem(Contexts contexts, ConfigService configService):base(contexts.game)
+    public InitConfigSystem(Contexts contexts, ConfigService configService) : base(contexts.game)
     {
         this.context = contexts.game;
         this.configService = configService;
@@ -26,7 +26,7 @@ public class InitConfigSystem : ReactiveSystem<GameEntity>
         return entity.gameProgress.state == GameProgressState.ParseConfig;
     }
 
- 
+
     protected override void Execute(List<GameEntity> entities)
     {
         LoadConfig();

@@ -8,14 +8,21 @@ public class GameSystemsController : Feature
     private Services services;
     private Contexts contexts;
 
-    public  GameSystemsController(Contexts contexts)
+    public GameSystemsController(Contexts contexts)
     {
 
         InitService(contexts);
 
-        Add(new InitConfigSystem(contexts,services.config));
-        Add(new InitGameSceneSystem(contexts,services.entityFactoryService));
-        Add(new MovementSystems(contexts));
+        //init
+        Add(new InitConfigSystem(contexts, services.configService));
+        Add(new InitGameSceneSystem(contexts, services.entityFactoryService));
+
+
+        //input
+        Add(new EmitInputSystem(contexts, services.inputService));
+
+
+        Add(new ChangeMoveDirectionSystem(contexts));
 
 
         // eventListener
@@ -35,9 +42,9 @@ public class GameSystemsController : Feature
         UnityInputService inputService = new UnityInputService();
         ConfigService configService = new ConfigService();
         UnityViewService unityViewService = new UnityViewService(contexts);
-        EntityFactoryService entityFactoryService = new EntityFactoryService(contexts,configService);
+        EntityFactoryService entityFactoryService = new EntityFactoryService(contexts, configService);
 
-
+        contexts.meta.ReplaceInputService(inputService);
 
         services = new Services(inputService,
                                 configService,

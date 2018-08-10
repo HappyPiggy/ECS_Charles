@@ -8,18 +8,24 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
-    public const int Destroyed = 0;
-    public const int InputDestroyedListener = 1;
+    public const int ControlPadInput = 0;
+    public const int Destroyed = 1;
+    public const int InputDestroyedListener = 2;
+    public const int MoveJoyStick = 3;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
+        "ControlPadInput",
         "Destroyed",
-        "InputDestroyedListener"
+        "InputDestroyedListener",
+        "MoveJoyStick"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ControlPadInputComponent),
         typeof(DestroyedComponent),
-        typeof(InputDestroyedListenerComponent)
+        typeof(InputDestroyedListenerComponent),
+        typeof(MoveJoyStickComponent)
     };
 }

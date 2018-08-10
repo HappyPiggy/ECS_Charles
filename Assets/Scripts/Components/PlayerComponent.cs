@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Game]
+public class HeroComponent : IComponent
+{
+}
+
+[Game]
 public class PositionComponent : IComponent
 {
     public Vector2 value;

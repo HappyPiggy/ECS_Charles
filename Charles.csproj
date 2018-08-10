@@ -248,12 +248,32 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/qianda/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Entitas\Compile.cs" />
     <Compile Include="Assets\Scripts\Components\AssetComponent.cs" />
     <Compile Include="Assets\Scripts\Components\DestroyedComponent.cs" />
     <Compile Include="Assets\Scripts\Components\GameProcessComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\InputComponent.cs" />
     <Compile Include="Assets\Scripts\Components\PlayerComponent.cs" />
     <Compile Include="Assets\Scripts\Components\ServiceComponent.cs" />
     <Compile Include="Assets\Scripts\Components\UnitComponent.cs" />
@@ -273,14 +293,15 @@
     <Compile Include="Assets\Scripts\Services\Services.cs" />
     <Compile Include="Assets\Scripts\Services\UnityInputService.cs" />
     <Compile Include="Assets\Scripts\Services\UnityViewService.cs" />
+    <Compile Include="Assets\Scripts\Systems\ChangeMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\MovementSystems.cs" />
-    <Compile Include="Assets\Scripts\Systems\MoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Input\EmitInputSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleManager.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleType.cs" />
     <Compile Include="Assets\Scripts\Utils\AssetUtils.cs" />
+    <Compile Include="Assets\Scripts\Utils\MathUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
@@ -307,6 +328,7 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameHeroComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoverComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerInfoComponent.cs" />
@@ -322,8 +344,10 @@
     <Compile Include="Assets\Sources\Generated\Game\GameContext.cs" />
     <Compile Include="Assets\Sources\Generated\Game\GameEntity.cs" />
     <Compile Include="Assets\Sources\Generated\Game\GameMatcher.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\Components\InputControlPadInputComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\Components\InputDestroyedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\Components\InputInputDestroyedListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\Components\InputMoveJoyStickComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputAttribute.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputComponentsLookup.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputContext.cs" />
@@ -338,6 +362,18 @@
     <Compile Include="Assets\Sources\Generated\Meta\MetaMatcher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
+    <None Include="Assets\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Demigiant\DOTweenPro\DOTweenPro.XML" />
+    <None Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.XML" />
+    <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Demigiant\DemiLib\Core\DemiLib.xml" />
+    <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
+    <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\Entitas\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

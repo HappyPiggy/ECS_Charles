@@ -6,13 +6,13 @@ using UnityEngine;
 /// <summary>
 /// 创建各种entity
 /// </summary>
-public class EntityFactoryService:IEntityFactoryService
+public class EntityFactoryService : IEntityFactoryService
 {
     private GameContext context;
     private ConfigService configService;
 
 
-    public EntityFactoryService(Contexts contexts,ConfigService config)
+    public EntityFactoryService(Contexts contexts, ConfigService config)
     {
         context = contexts.game;
         configService = config;
@@ -25,7 +25,7 @@ public class EntityFactoryService:IEntityFactoryService
     /// <param name="spawnPos"></param>
     /// <param name="rotation"></param>
     /// <returns></returns>
-    public GameEntity CreatePlayer(ulong uid,Vector2 spawnPos,Quaternion rotation)
+    public GameEntity CreatePlayer(ulong uid, Vector2 spawnPos, Quaternion rotation)
     {
         GameEntity gameEntity = context.GetEntityWithUID(uid);
         if (gameEntity != null && gameEntity.isDestroyed)
@@ -42,8 +42,7 @@ public class EntityFactoryService:IEntityFactoryService
 
         PlayerInfo playerInfo = configService.GetPlayerInfo();
         gameEntity.ReplacePlayerInfo(playerInfo);
-
-        gameEntity.AddAsset("Player");
+        gameEntity.ReplacePlayerSpeed(playerInfo.playerConfig.moveSpeed);
 
 
         return gameEntity;
@@ -61,11 +60,13 @@ public class EntityFactoryService:IEntityFactoryService
 
         gameEntity.AddUID(uid);
         gameEntity.AddUnitType(UnitType.Player);
-        gameEntity.isMover = true;
-        gameEntity.isDestroyed = false;
-
         gameEntity.AddPosition(Vector2.zero);
         gameEntity.AddRotation(Quaternion.identity);
+        gameEntity.AddAsset("Player");
+
+        gameEntity.isMover = true;
+        gameEntity.isDestroyed = false;
+        gameEntity.isHero = true;
 
         return gameEntity;
     }

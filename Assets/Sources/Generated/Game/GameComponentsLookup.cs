@@ -14,18 +14,19 @@ public static class GameComponentsLookup {
     public const int GameDestroyedListener = 3;
     public const int GameProgress = 4;
     public const int GameProgressListener = 5;
-    public const int Move = 6;
-    public const int Mover = 7;
-    public const int PlayerInfo = 8;
-    public const int PlayerSpeed = 9;
-    public const int Position = 10;
-    public const int Rotation = 11;
-    public const int Sprite = 12;
-    public const int UID = 13;
-    public const int UnitType = 14;
-    public const int View = 15;
+    public const int Hero = 6;
+    public const int Move = 7;
+    public const int Mover = 8;
+    public const int PlayerInfo = 9;
+    public const int PlayerSpeed = 10;
+    public const int Position = 11;
+    public const int Rotation = 12;
+    public const int Sprite = 13;
+    public const int UID = 14;
+    public const int UnitType = 15;
+    public const int View = 16;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -34,6 +35,7 @@ public static class GameComponentsLookup {
         "GameDestroyedListener",
         "GameProgress",
         "GameProgressListener",
+        "Hero",
         "Move",
         "Mover",
         "PlayerInfo",
@@ -53,6 +55,7 @@ public static class GameComponentsLookup {
         typeof(GameDestroyedListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),
+        typeof(HeroComponent),
         typeof(MoveComponent),
         typeof(MoverComponent),
         typeof(PlayerInfoComponent),
