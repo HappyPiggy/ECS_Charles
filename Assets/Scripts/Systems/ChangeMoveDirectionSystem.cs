@@ -12,6 +12,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
     private InputEntity controlPadInputEntity;
     private IGroup<GameEntity> heroGroup;
 
+
     public ChangeMoveDirectionSystem(Contexts contexts) : base(contexts.input)
     {
         this.contexts = contexts;
@@ -20,7 +21,6 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
 
     public void Initialize()
     {
-        context.isControlPadInput = true;
         controlPadInputEntity = context.controlPadInputEntity;
 
         heroGroup = contexts.game.GetGroup(GameMatcher.Hero);
@@ -38,13 +38,17 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
 
     protected override void Execute(List<InputEntity> entities)
     {
-        var rotation=MathUtils.Vector2Quaternion(controlPadInputEntity.moveJoyStick.value);
-       // var res = -rotation.eulerAngles.y ;
-
+        var dir = controlPadInputEntity.moveJoyStick.value;
+        var rotation=MathUtils.Vector2Quaternion(dir);
+       // Debug.Log("ro" + rotation);
+        // var res = -rotation.eulerAngles.y ;
         foreach (var item in heroGroup.GetEntities())
         {
             if (item.isHero)
             {
+                var newPos = item.position.value + dir * item.playerSpeed.value * Time.deltaTime;
+                item.isMover = true;
+                item.ReplacePosition(newPos);
                 item.ReplaceRotation(rotation);
             }
         }

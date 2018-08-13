@@ -42,7 +42,7 @@ public class BaseView : MonoBehaviour, IView
            // Debug.Log(gameEntity.rotation.value.eulerAngles.y);
           //  gameEntity.ReplacePosition(position);
           //  gameEntity.ReplaceRotation(rotation);
-            transform.eulerAngles = new Vector3(0, 0, -gameEntity.rotation.value.eulerAngles.y);
+           // transform.eulerAngles = new Vector3(0, 0, -gameEntity.rotation.value.eulerAngles.y);
         }
     }
 

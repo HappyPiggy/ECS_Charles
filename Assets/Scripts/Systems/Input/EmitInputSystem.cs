@@ -26,6 +26,7 @@ public class EmitInputSystem : IExecuteSystem,IInitializeSystem
     public void Execute()
     {
         var movement = inputService.MoveJoystick;
+        //Debug.Log("movement" + movement);
         controlPadInputEntity.ReplaceMoveJoyStick(movement);
     }
 
