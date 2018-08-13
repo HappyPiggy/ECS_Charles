@@ -46,5 +46,10 @@ public class ConfigService
         return globalInfo.mapInfo;
     }
 
+    public EnemyInfo GetEnemyInfo()
+    {
+        return globalInfo.enemyInfo;
+    }
+
     
 }

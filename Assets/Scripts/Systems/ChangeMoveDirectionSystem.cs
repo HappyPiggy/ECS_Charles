@@ -50,7 +50,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
         {
             if (item.isHero)
             {
-                var newPos = CalcNewPos(item.position.value,dir, item.playerSpeed.value);
+                var newPos = CalcNewPos(item.position.value,dir, item.speed.value);
                 item.isMover = true;
                 item.ReplacePosition(newPos);
                 item.ReplaceRotation(rotation);

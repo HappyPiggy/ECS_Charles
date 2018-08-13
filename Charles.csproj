@@ -13,14 +13,12 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -276,9 +274,11 @@
     <Compile Include="Assets\Scripts\Components\DestroyedComponent.cs" />
     <Compile Include="Assets\Scripts\Components\GameProcessComponent.cs" />
     <Compile Include="Assets\Scripts\Components\InputComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\PhysicsComponent.cs" />
     <Compile Include="Assets\Scripts\Components\PlayerComponent.cs" />
     <Compile Include="Assets\Scripts\Components\ServiceComponent.cs" />
     <Compile Include="Assets\Scripts\Components\UnitComponent.cs" />
+    <Compile Include="Assets\Scripts\Config\EnemyInfo.cs" />
     <Compile Include="Assets\Scripts\Config\GlobalInfo.cs" />
     <Compile Include="Assets\Scripts\Config\MapInfo.cs" />
     <Compile Include="Assets\Scripts\Config\PlayerConfig.cs" />
@@ -306,7 +306,11 @@
     <Compile Include="Assets\Scripts\Utils\AssetUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\MathUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
+    <Compile Include="Assets\Scripts\Utils\RecyclerKit\PoolUtil.cs" />
+    <Compile Include="Assets\Scripts\Utils\RecyclerKit\TrashMan.cs" />
+    <Compile Include="Assets\Scripts\Utils\RecyclerKit\TrashManRecycleBin.cs" />
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
+    <Compile Include="Assets\Scripts\View\EnemyView.cs" />
     <Compile Include="Assets\Scripts\View\MapView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
@@ -316,19 +320,27 @@
     <Compile Include="Assets\Sources\Generated\Events\Components\GameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GameProgressListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\InputDestroyedListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\OnTriggerEnterListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\OnTriggerExitListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\EventSystems.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IAssetListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameDestroyedListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameProgressListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IInputDestroyedListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IOnTriggerEnterListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IOnTriggerExitListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\AssetEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameDestroyedEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameProgressEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\InputDestroyedEventSystem.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\OnTriggerEnterEventSystem.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\OnTriggerExitEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Feature.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDestroyedComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyInfoComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />
@@ -336,10 +348,14 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMapInfoComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoverComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerEnterComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerEnterListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerExitComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerExitListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerInfoComponent.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerSpeedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePositionComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameRotationComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameSpeedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpriteComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameUIDComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameUnitTypeComponent.cs" />

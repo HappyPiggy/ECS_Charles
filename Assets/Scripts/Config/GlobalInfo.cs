@@ -6,6 +6,7 @@ public class GlobalInfo : ScriptableObject
 {
     public PlayerInfo playerInfo;
     public MapInfo mapInfo;
+    public EnemyInfo enemyInfo;
 }
 
 

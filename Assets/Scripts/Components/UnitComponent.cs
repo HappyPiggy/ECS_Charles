@@ -31,3 +31,10 @@ public class MapInfoComponent : IComponent
 {
     public MapInfo value;
 }
+
+
+[Game]
+public class EnemyInfoComponent : IComponent
+{
+    public EnemyInfo value;
+}

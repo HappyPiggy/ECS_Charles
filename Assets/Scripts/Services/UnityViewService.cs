@@ -40,7 +40,7 @@ public class UnityViewService : IAssetListener, IViewService
         }
 
         //根据entity中的asset类型来创建prefab
-        IView view;
+        IView view=null;
         UnitType type = entity.unitType.value;
         GameObject prefab = null;
         GameObject obj = null;
@@ -49,32 +49,31 @@ public class UnityViewService : IAssetListener, IViewService
             //从配置中读取prefab然后实例化，将view脚本和entity链接
             case UnitType.Player:
                 prefab = entity.playerInfo.value.prefab;
-                obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                //  obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
                 obj.name = prefab.name;
-                obj.SetActive(true);
 
                 view = obj.AddComponent<PlayerView>();
-                view.Link(context, entity);
-                entity.AddView(view);
                 break;
             case UnitType.Enemy:
                 break;
 
             case UnitType.GameMap:
                 prefab = entity.mapInfo.value.prefab;
-                obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                // obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
                 obj.name = prefab.name;
-                obj.SetActive(true);
 
                 view = obj.AddComponent<MapView>();
-                view.Link(context, entity);
-                entity.AddView(view);
                 break;
 
             default:
                 Debug.Log("无法创建预制体类型:" + type.ToString());
                 break;
         }
+        view.Link(context, entity);
+        entity.AddView(view);
+        entity.ReplaceUID((ulong)obj.GetInstanceID());//单机的话uid本地生成
     }
 
     public void Update()

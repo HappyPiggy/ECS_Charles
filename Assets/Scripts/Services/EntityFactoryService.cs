@@ -20,6 +20,31 @@ public class EntityFactoryService : IEntityFactoryService
 
 
     /// <summary>
+    /// 创建敌人
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="spawnPos"></param>
+    /// <returns></returns>
+    public GameEntity CreateEnemy(ulong uid, Vector2 spawnPos)
+    {
+        CheckDuplicateEntity(uid);
+        GameEntity gameEntity = context.CreateEntity();
+
+        gameEntity.AddUID(uid);
+        gameEntity.AddUnitType(UnitType.Enemy);
+        gameEntity.isEnemy = true;
+        gameEntity.AddPosition(spawnPos);
+
+        EnemyInfo enemyInfo = configService.GetEnemyInfo();
+        gameEntity.AddEnemyInfo(enemyInfo);
+
+        gameEntity.AddAsset("Enemy");
+
+        return gameEntity;
+    }
+
+
+    /// <summary>
     /// 创建游戏地图
     /// </summary>
     /// <param name="uid"></param>
@@ -65,7 +90,7 @@ public class EntityFactoryService : IEntityFactoryService
 
         PlayerInfo playerInfo = configService.GetPlayerInfo();
         gameEntity.ReplacePlayerInfo(playerInfo);
-        gameEntity.ReplacePlayerSpeed(playerInfo.playerConfig.moveSpeed);
+        gameEntity.ReplaceSpeed(playerInfo.playerConfig.moveSpeed);
         gameEntity.AddAsset("Player");
 
         return gameEntity;

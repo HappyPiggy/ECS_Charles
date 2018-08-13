@@ -9,13 +9,18 @@ public class HeroComponent : IComponent
 }
 
 [Game]
+public class EnemyComponent : IComponent
+{
+}
+
+[Game]
 public class PositionComponent : IComponent
 {
     public Vector2 value;
 }
 
 [Game]
-public class PlayerSpeedComponent : IComponent
+public class SpeedComponent : IComponent
 {
     public float value;
 }
