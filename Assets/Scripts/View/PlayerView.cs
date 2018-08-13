@@ -12,6 +12,8 @@ public class PlayerView : BaseView
   //  private float oldEuler = 0;
     private float curEuler = 0;
     private float oldEuler = 0;
+
+
     protected override void Update()
     {
         base.Update();

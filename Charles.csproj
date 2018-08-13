@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -221,6 +223,24 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/u3d2017.3/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
     <Reference Include="DesperateDevs.Logging">
       <HintPath>Assets/Entitas/DesperateDevs.Logging.dll</HintPath>
     </Reference>
@@ -248,24 +268,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/qianda/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween46">
-      <HintPath>Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
@@ -278,6 +280,7 @@
     <Compile Include="Assets\Scripts\Components\ServiceComponent.cs" />
     <Compile Include="Assets\Scripts\Components\UnitComponent.cs" />
     <Compile Include="Assets\Scripts\Config\GlobalInfo.cs" />
+    <Compile Include="Assets\Scripts\Config\MapInfo.cs" />
     <Compile Include="Assets\Scripts\Config\PlayerConfig.cs" />
     <Compile Include="Assets\Scripts\Config\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Enum\CommonEnum.cs" />
@@ -304,6 +307,7 @@
     <Compile Include="Assets\Scripts\Utils\MathUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
+    <Compile Include="Assets\Scripts\View\MapView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
     <Compile Include="Assets\Sources\Generated\Components\Interfaces\IDestroyedEntity.cs" />
@@ -329,6 +333,7 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameHeroComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameMapInfoComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoveComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoverComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerInfoComponent.cs" />

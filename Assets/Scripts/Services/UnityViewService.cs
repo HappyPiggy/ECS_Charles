@@ -50,13 +50,25 @@ public class UnityViewService : IAssetListener, IViewService
             case UnitType.Player:
                 prefab = entity.playerInfo.value.prefab;
                 obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
-                view = obj.AddComponent<PlayerView>();
+                obj.name = prefab.name;
+                obj.SetActive(true);
 
+                view = obj.AddComponent<PlayerView>();
                 view.Link(context, entity);
                 entity.AddView(view);
-
                 break;
             case UnitType.Enemy:
+                break;
+
+            case UnitType.GameMap:
+                prefab = entity.mapInfo.value.prefab;
+                obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                obj.name = prefab.name;
+                obj.SetActive(true);
+
+                view = obj.AddComponent<MapView>();
+                view.Link(context, entity);
+                entity.AddView(view);
                 break;
 
             default:

@@ -18,6 +18,29 @@ public class EntityFactoryService : IEntityFactoryService
         configService = config;
     }
 
+
+    /// <summary>
+    /// 创建游戏地图
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <returns></returns>
+    public GameEntity CreateMap(ulong uid)
+    {
+        CheckDuplicateEntity(uid);
+        GameEntity gameEntity = context.CreateEntity();
+
+        gameEntity.AddUID(uid);
+        gameEntity.AddUnitType(UnitType.GameMap);
+        gameEntity.AddPosition(Vector2.zero);
+        gameEntity.AddRotation(Quaternion.identity);
+
+        MapInfo mapInfo = configService.GetMapInfo();
+        gameEntity.AddMapInfo(mapInfo);
+        gameEntity.AddAsset("Map");
+
+        return gameEntity;
+    }
+
     /// <summary>
     /// 根据配置表信息创建一个player entity
     /// </summary>
@@ -43,7 +66,7 @@ public class EntityFactoryService : IEntityFactoryService
         PlayerInfo playerInfo = configService.GetPlayerInfo();
         gameEntity.ReplacePlayerInfo(playerInfo);
         gameEntity.ReplacePlayerSpeed(playerInfo.playerConfig.moveSpeed);
-
+        gameEntity.AddAsset("Player");
 
         return gameEntity;
     }
@@ -62,7 +85,6 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddUnitType(UnitType.Player);
         gameEntity.AddPosition(Vector2.zero);
         gameEntity.AddRotation(Quaternion.identity);
-        gameEntity.AddAsset("Player");
 
         gameEntity.isMover = true;
         gameEntity.isDestroyed = false;
@@ -71,6 +93,14 @@ public class EntityFactoryService : IEntityFactoryService
         return gameEntity;
     }
 
+    private void CheckDuplicateEntity(ulong uid)
+    {
+        GameEntity gameEntity = context.GetEntityWithUID(uid);
+        if (gameEntity != null && gameEntity.isDestroyed)
+        {
+            DestroyEntity(gameEntity);
+        }
+    }
 
     /// <summary>
     /// 判断entity是否还有view

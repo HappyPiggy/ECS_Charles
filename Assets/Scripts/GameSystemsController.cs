@@ -22,7 +22,7 @@ public class GameSystemsController : Feature
         Add(new EmitInputSystem(contexts, services.inputService));
 
 
-        Add(new ChangeMoveDirectionSystem(contexts));
+        Add(new ChangeMoveDirectionSystem(contexts, services.configService));
 
 
         // eventListener
@@ -45,7 +45,8 @@ public class GameSystemsController : Feature
         EntityFactoryService entityFactoryService = new EntityFactoryService(contexts, configService);
 
         contexts.meta.ReplaceInputService(inputService);
-
+        contexts.meta.ReplaceEntityFactoryService(entityFactoryService);
+    
         services = new Services(inputService,
                                 configService,
                                 unityViewService,

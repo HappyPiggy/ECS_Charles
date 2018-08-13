@@ -25,3 +25,9 @@ public class PlayerInfoComponent : IComponent
 {
     public PlayerInfo value;
 }
+
+[Game]
+public class MapInfoComponent : IComponent
+{
+    public MapInfo value;
+}

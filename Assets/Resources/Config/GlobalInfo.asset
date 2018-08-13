@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: GlobalInfo
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 195f0a8071f57914ea80468758d94068, type: 2}
+  mapInfo: {fileID: 11400000, guid: 1b8bc87d7704459448a1e8672cee28aa, type: 2}

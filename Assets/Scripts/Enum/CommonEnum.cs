@@ -23,6 +23,7 @@ public enum UnitType
     None=0,
     Player=1,
     Enemy,
+    GameMap, //游戏背景
 }
 
 public enum PlayerType

@@ -12,11 +12,15 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
     private InputEntity controlPadInputEntity;
     private IGroup<GameEntity> heroGroup;
 
+    private ConfigService configService;
+    private MapInfo mapInfo;
 
-    public ChangeMoveDirectionSystem(Contexts contexts) : base(contexts.input)
+
+    public ChangeMoveDirectionSystem(Contexts contexts,ConfigService configService) : base(contexts.input)
     {
         this.contexts = contexts;
         context = contexts.input;
+        this.configService = configService;
     }
 
     public void Initialize()
@@ -46,12 +50,35 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
         {
             if (item.isHero)
             {
-                var newPos = item.position.value + dir * item.playerSpeed.value * Time.deltaTime;
+                var newPos = CalcNewPos(item.position.value,dir, item.playerSpeed.value);
                 item.isMover = true;
                 item.ReplacePosition(newPos);
                 item.ReplaceRotation(rotation);
             }
         }
+    }
+
+
+    /// <summary>
+    /// 计算可以到达的位置
+    /// </summary>
+    /// <param name="oldPos"></param>
+    /// <param name="dir"></param>
+    /// <param name="speed"></param>
+    /// <returns></returns>
+    private Vector2 CalcNewPos(Vector2 oldPos,Vector2 dir,float speed)
+    {
+        if (mapInfo == null)
+        {
+            mapInfo = configService.GetMapInfo();
+        }
+
+        var tmp = oldPos + dir * speed* Time.deltaTime;
+        Vector2 pos = new Vector2(
+            Mathf.Clamp(tmp.x, mapInfo.border.minX, mapInfo.border.maxX),
+            Mathf.Clamp(tmp.y, mapInfo.border.minY, mapInfo.border.maxY)
+            );
+        return pos;
     }
 
 

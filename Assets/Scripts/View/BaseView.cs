@@ -26,7 +26,6 @@ public class BaseView : MonoBehaviour, IView
     public Transform objTransform { get { return transform; } }
 
 
-
     public void Link(IContext context, IEntity entity)
     {
         gameObject.Link(entity, context);
