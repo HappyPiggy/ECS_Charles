@@ -300,6 +300,7 @@
     <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Input\EmitInputSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleManager.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleType.cs" />
@@ -341,6 +342,8 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDestroyedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyInfoComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemySpawnCountComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemySpawnIntervalTimeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />

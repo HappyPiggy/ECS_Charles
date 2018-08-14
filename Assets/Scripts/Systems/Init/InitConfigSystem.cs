@@ -14,6 +14,8 @@ public class InitConfigSystem : ReactiveSystem<GameEntity>
     {
         this.context = contexts.game;
         this.configService = configService;
+
+        contexts.game.ReplaceGameProgress(GameProgressState.ParseConfig);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

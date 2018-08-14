@@ -24,4 +24,19 @@ public  static class MathUtils
         return rotation;
     }
 
+    /// <summary>
+    /// 生成随机float
+    /// </summary>
+    /// <param name="min"></param>
+    /// <param name="max"></param>
+    /// <returns></returns>
+    public static int RandomInt(int min,int max)
+    {
+       return  UnityEngine.Random.Range(min, max);
+    }
+
+    public static float RandomFloat(float min, float max)
+    {
+        return UnityEngine.Random.Range(min, max);
+    }
 }

@@ -21,15 +21,13 @@ public class GameSystemsController : Feature
         //input
         Add(new EmitInputSystem(contexts, services.inputService));
 
-
+        Add(new SpawnEnemySystem(contexts, services));
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
 
 
         // eventListener
         Add(new EventSystems(contexts));
 
-        //test
-        contexts.game.ReplaceGameProgress(GameProgressState.ParseConfig);
     }
 
 

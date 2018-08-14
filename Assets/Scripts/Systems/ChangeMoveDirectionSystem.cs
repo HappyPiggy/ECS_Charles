@@ -26,7 +26,6 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
     public void Initialize()
     {
         controlPadInputEntity = context.controlPadInputEntity;
-
         heroGroup = contexts.game.GetGroup(GameMatcher.Hero);
     }
 
@@ -69,9 +68,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
     private Vector2 CalcNewPos(Vector2 oldPos,Vector2 dir,float speed)
     {
         if (mapInfo == null)
-        {
             mapInfo = configService.GetMapInfo();
-        }
 
         var tmp = oldPos + dir * speed* Time.deltaTime;
         Vector2 pos = new Vector2(

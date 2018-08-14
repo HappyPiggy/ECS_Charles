@@ -34,6 +34,7 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddUnitType(UnitType.Enemy);
         gameEntity.isEnemy = true;
         gameEntity.AddPosition(spawnPos);
+        gameEntity.AddRotation(Quaternion.identity);
 
         EnemyInfo enemyInfo = configService.GetEnemyInfo();
         gameEntity.AddEnemyInfo(enemyInfo);

@@ -49,20 +49,21 @@ public class UnityViewService : IAssetListener, IViewService
             //从配置中读取prefab然后实例化，将view脚本和entity链接
             case UnitType.Player:
                 prefab = entity.playerInfo.value.prefab;
-                //  obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
-                obj.name = prefab.name;
 
                 view = obj.AddComponent<PlayerView>();
                 break;
             case UnitType.Enemy:
+                var index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
+                prefab = entity.enemyInfo.value.enemyList[index];
+                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+
+                view = obj.AddComponent<EnemyView>();
                 break;
 
             case UnitType.GameMap:
                 prefab = entity.mapInfo.value.prefab;
-                // obj = GameObject.Instantiate(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
-                obj.name = prefab.name;
 
                 view = obj.AddComponent<MapView>();
                 break;

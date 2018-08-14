@@ -19,6 +19,7 @@ public class PoolUtil  {
         GameObject obj=  TrashMan.spawn(go,pos,rot);
         obj.SetActive(true);
         obj.transform.SetParent(parent);
+        obj.name = go.name;
         return obj;
     }
 

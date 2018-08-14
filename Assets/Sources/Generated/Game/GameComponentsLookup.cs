@@ -13,27 +13,29 @@ public static class GameComponentsLookup {
     public const int Destroyed = 2;
     public const int Enemy = 3;
     public const int EnemyInfo = 4;
-    public const int GameDestroyedListener = 5;
-    public const int GameProgress = 6;
-    public const int GameProgressListener = 7;
-    public const int Hero = 8;
-    public const int MapInfo = 9;
-    public const int Move = 10;
-    public const int Mover = 11;
-    public const int OnTriggerEnter = 12;
-    public const int OnTriggerEnterListener = 13;
-    public const int OnTriggerExit = 14;
-    public const int OnTriggerExitListener = 15;
-    public const int PlayerInfo = 16;
-    public const int Position = 17;
-    public const int Rotation = 18;
-    public const int Speed = 19;
-    public const int Sprite = 20;
-    public const int UID = 21;
-    public const int UnitType = 22;
-    public const int View = 23;
+    public const int EnemySpawnCount = 5;
+    public const int EnemySpawnIntervalTime = 6;
+    public const int GameDestroyedListener = 7;
+    public const int GameProgress = 8;
+    public const int GameProgressListener = 9;
+    public const int Hero = 10;
+    public const int MapInfo = 11;
+    public const int Move = 12;
+    public const int Mover = 13;
+    public const int OnTriggerEnter = 14;
+    public const int OnTriggerEnterListener = 15;
+    public const int OnTriggerExit = 16;
+    public const int OnTriggerExitListener = 17;
+    public const int PlayerInfo = 18;
+    public const int Position = 19;
+    public const int Rotation = 20;
+    public const int Speed = 21;
+    public const int Sprite = 22;
+    public const int UID = 23;
+    public const int UnitType = 24;
+    public const int View = 25;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -41,6 +43,8 @@ public static class GameComponentsLookup {
         "Destroyed",
         "Enemy",
         "EnemyInfo",
+        "EnemySpawnCount",
+        "EnemySpawnIntervalTime",
         "GameDestroyedListener",
         "GameProgress",
         "GameProgressListener",
@@ -68,6 +72,8 @@ public static class GameComponentsLookup {
         typeof(DestroyedComponent),
         typeof(EnemyComponent),
         typeof(EnemyInfoComponent),
+        typeof(EnemySpawnCountComponent),
+        typeof(EnemySpawnIntervalTimeComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),

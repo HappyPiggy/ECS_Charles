@@ -2,14 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 /// <summary>
 /// 游戏主入口
 /// </summary>
-public class MainEntry:MonoSingleton<MainEntry>
+public class MainEntry:MonoBehaviour
 {
+
+    private static MainEntry _instance;
+    public static MainEntry Instance
+    {
+        get
+        {
+           return _instance;
+        }
+    }
 
     private void Awake()
     {
+        _instance = this;
         DontDestroyOnLoad(gameObject);
 
         ModuleManager.Instance.SetUp();

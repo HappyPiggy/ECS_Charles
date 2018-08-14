@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,18 @@ public class HeroComponent : IComponent
 [Game]
 public class EnemyComponent : IComponent
 {
+}
+
+[Game,Unique]
+public class EnemySpawnCountComponent : IComponent
+{
+    public int value;
+}
+
+[Game, Unique]
+public class EnemySpawnIntervalTimeComponent : IComponent
+{
+    public float value;
 }
 
 [Game]
