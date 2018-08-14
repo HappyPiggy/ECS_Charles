@@ -30,10 +30,8 @@ public class PlayerView : BaseView
     {
         if (gameEntity != null && gameEntity.isMover && !isDestroyed)
         {
-            transform.localPosition = gameEntity.position.value;
 
             var euler = -gameEntity.rotation.value.eulerAngles.y;
-
             if (euler != 0)
             {
                 //todo

@@ -10,27 +10,27 @@ public static class GameComponentsLookup {
 
     public const int Asset = 0;
     public const int AssetListener = 1;
-    public const int Destroyed = 2;
-    public const int Enemy = 3;
-    public const int EnemyInfo = 4;
-    public const int EnemySpawnCount = 5;
-    public const int EnemySpawnIntervalTime = 6;
-    public const int GameDestroyedListener = 7;
-    public const int GameProgress = 8;
-    public const int GameProgressListener = 9;
-    public const int Hero = 10;
-    public const int MapInfo = 11;
-    public const int Move = 12;
-    public const int Mover = 13;
-    public const int OnTriggerEnter = 14;
-    public const int OnTriggerEnterListener = 15;
-    public const int OnTriggerExit = 16;
-    public const int OnTriggerExitListener = 17;
-    public const int PlayerInfo = 18;
-    public const int Position = 19;
-    public const int Rotation = 20;
-    public const int Speed = 21;
-    public const int Sprite = 22;
+    public const int Dead = 2;
+    public const int DeadListener = 3;
+    public const int Destroyed = 4;
+    public const int Enemy = 5;
+    public const int EnemyInfo = 6;
+    public const int EnemySpawnCount = 7;
+    public const int EnemySpawnIntervalTime = 8;
+    public const int GameDestroyedListener = 9;
+    public const int GameProgress = 10;
+    public const int GameProgressListener = 11;
+    public const int Hero = 12;
+    public const int MapInfo = 13;
+    public const int Mover = 14;
+    public const int OnTriggerEnter = 15;
+    public const int OnTriggerEnterListener = 16;
+    public const int OnTriggerExit = 17;
+    public const int OnTriggerExitListener = 18;
+    public const int PlayerInfo = 19;
+    public const int Position = 20;
+    public const int Rotation = 21;
+    public const int Speed = 22;
     public const int UID = 23;
     public const int UnitType = 24;
     public const int View = 25;
@@ -40,6 +40,8 @@ public static class GameComponentsLookup {
     public static readonly string[] componentNames = {
         "Asset",
         "AssetListener",
+        "Dead",
+        "DeadListener",
         "Destroyed",
         "Enemy",
         "EnemyInfo",
@@ -50,7 +52,6 @@ public static class GameComponentsLookup {
         "GameProgressListener",
         "Hero",
         "MapInfo",
-        "Move",
         "Mover",
         "OnTriggerEnter",
         "OnTriggerEnterListener",
@@ -60,7 +61,6 @@ public static class GameComponentsLookup {
         "Position",
         "Rotation",
         "Speed",
-        "Sprite",
         "UID",
         "UnitType",
         "View"
@@ -69,6 +69,8 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
         typeof(AssetListenerComponent),
+        typeof(DeadComponent),
+        typeof(DeadListenerComponent),
         typeof(DestroyedComponent),
         typeof(EnemyComponent),
         typeof(EnemyInfoComponent),
@@ -79,7 +81,6 @@ public static class GameComponentsLookup {
         typeof(GameProgressListenerComponent),
         typeof(HeroComponent),
         typeof(MapInfoComponent),
-        typeof(MoveComponent),
         typeof(MoverComponent),
         typeof(OnTriggerEnterComponent),
         typeof(OnTriggerEnterListenerComponent),
@@ -89,7 +90,6 @@ public static class GameComponentsLookup {
         typeof(PositionComponent),
         typeof(RotationComponent),
         typeof(SpeedComponent),
-        typeof(SpriteComponent),
         typeof(UIDComponent),
         typeof(UnitTypeComponent),
         typeof(ViewComponent)

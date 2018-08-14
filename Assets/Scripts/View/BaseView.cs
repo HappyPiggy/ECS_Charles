@@ -38,10 +38,9 @@ public class BaseView : MonoBehaviour, IView
         //读取entity中的数据 反应在view上
         if (gameEntity != null && gameEntity.isMover && !isDestroyed)
         {
-           // Debug.Log(gameEntity.rotation.value.eulerAngles.y);
-          //  gameEntity.ReplacePosition(position);
-          //  gameEntity.ReplaceRotation(rotation);
-           // transform.eulerAngles = new Vector3(0, 0, -gameEntity.rotation.value.eulerAngles.y);
+            transform.localPosition = gameEntity.position.value;
+            //  gameEntity.ReplacePosition(position);
+            //  gameEntity.ReplaceRotation(rotation);
         }
     }
 

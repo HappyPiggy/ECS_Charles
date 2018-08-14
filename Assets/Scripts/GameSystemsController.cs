@@ -21,7 +21,8 @@ public class GameSystemsController : Feature
         //input
         Add(new EmitInputSystem(contexts, services.inputService));
 
-        Add(new SpawnEnemySystem(contexts, services));
+        Add(new SpawnEnemySystem(contexts, services)); 
+         Add(new EnemyMoveSystem(contexts, services));
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
 
 

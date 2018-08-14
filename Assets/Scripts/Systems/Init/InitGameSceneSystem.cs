@@ -40,9 +40,11 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
         uid = 1;
         entityFactoryService.CreateMap(uid);
 
-        context.ReplaceGameProgress(GameProgressState.InGame);
+        //初始化游戏场景配置
         context.ReplaceEnemySpawnCount(2);
         context.ReplaceEnemySpawnIntervalTime(2);
+
+        context.ReplaceGameProgress(GameProgressState.InGame);
     }
 
 

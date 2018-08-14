@@ -47,10 +47,9 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
         // var res = -rotation.eulerAngles.y ;
         foreach (var item in heroGroup.GetEntities())
         {
-            if (item.isHero)
+            if (item.isHero && item.isMover)
             {
                 var newPos = CalcNewPos(item.position.value,dir, item.speed.value);
-                item.isMover = true;
                 item.ReplacePosition(newPos);
                 item.ReplaceRotation(rotation);
             }

@@ -14,6 +14,11 @@ public class EnemyComponent : IComponent
 {
 }
 
+[Game,Event(true)]
+public class DeadComponent : IComponent
+{
+}
+
 [Game,Unique]
 public class EnemySpawnCountComponent : IComponent
 {
@@ -52,19 +57,8 @@ public class ViewComponent : IComponent
 }
 
 [Game]
-public class SpriteComponent : IComponent
-{
-    public string name;
-}
-
-[Game]
 public class MoverComponent : IComponent
 {
 }
 
-[Game]
-public class MoveComponent : IComponent
-{
-    public Vector2 target;
-}
 

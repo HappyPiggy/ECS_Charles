@@ -43,7 +43,13 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
             timer += Time.deltaTime;
             if (timer > contexts.game.enemySpawnIntervalTime.value)
             {
-                SpawnEnemy(contexts.game.enemySpawnCount.value);
+                //todo 需要一个系统来管理每次生成怪物的数量和间隔时间
+                var count = MathUtils.RandomInt(2, 4);
+                var time= MathUtils.RandomFloat(0.5f, 1.5f);
+                contexts.game.ReplaceEnemySpawnCount(count);
+                contexts.game.ReplaceEnemySpawnIntervalTime(time);
+
+                SpawnEnemyRandom(contexts.game.enemySpawnCount.value);
                 timer = 0;
             }
         }
@@ -51,10 +57,10 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
     }
 
     /// <summary>
-    /// 生成敌人
+    /// 随机生成敌人
     /// </summary>
     /// <param name="count"></param>
-    private void SpawnEnemy(int count)
+    private void SpawnEnemyRandom(int count)
     {
         while (count > 0)
         {

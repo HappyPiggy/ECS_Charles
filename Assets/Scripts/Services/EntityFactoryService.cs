@@ -32,12 +32,14 @@ public class EntityFactoryService : IEntityFactoryService
 
         gameEntity.AddUID(uid);
         gameEntity.AddUnitType(UnitType.Enemy);
-        gameEntity.isEnemy = true;
         gameEntity.AddPosition(spawnPos);
         gameEntity.AddRotation(Quaternion.identity);
+        gameEntity.isEnemy = true;
+        gameEntity.isDestroyed = false;
 
         EnemyInfo enemyInfo = configService.GetEnemyInfo();
         gameEntity.AddEnemyInfo(enemyInfo);
+        gameEntity.AddSpeed(enemyInfo.speed);
 
         gameEntity.AddAsset("Enemy");
 

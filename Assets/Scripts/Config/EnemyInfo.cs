@@ -6,5 +6,5 @@ using UnityEngine;
 public class EnemyInfo : BaseInfo
 {
     public GameObject[] enemyList;
-    public int index;  //敌人的种类
+    public float speed;
 }
