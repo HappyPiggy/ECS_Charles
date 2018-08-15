@@ -19,6 +19,13 @@ public class UnitTypeComponent : IComponent
     public UnitType value;
 }
 
+[Game]
+public class EnemyStateComponent : IComponent
+{
+    public EnemyState value;
+}
+
+
 
 [Game]
 public class PlayerInfoComponent : IComponent
@@ -37,4 +44,16 @@ public class MapInfoComponent : IComponent
 public class EnemyInfoComponent : IComponent
 {
     public EnemyInfo value;
+}
+
+[Game]
+public class SpiltInfoComponent : IComponent
+{
+    public SpiltInfo value;
+}
+
+[Game]
+public class ColorInfoComponent : IComponent
+{
+    public ColorInfo value;
 }

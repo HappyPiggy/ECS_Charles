@@ -4,6 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Unique,Event(false)]
+public class GlobalHeroComponent : IComponent
+{
+    public GameEntity value;
+}
+
 [Game]
 public class HeroComponent : IComponent
 {
@@ -17,6 +23,7 @@ public class EnemyComponent : IComponent
 [Game,Event(true)]
 public class DeadComponent : IComponent
 {
+    public bool value;
 }
 
 [Game,Unique]
@@ -61,4 +68,8 @@ public class MoverComponent : IComponent
 {
 }
 
+[Game]
+public class EnableComponent : IComponent
+{
+}
 

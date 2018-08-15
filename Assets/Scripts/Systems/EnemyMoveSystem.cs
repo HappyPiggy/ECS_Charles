@@ -34,22 +34,27 @@ public class EnemyMoveSystem : IExecuteSystem, IInitializeSystem
 
     public void Execute()
     {
-        foreach (var hero in heroGroup.GetEntities())
+
+        if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
-            foreach (var enemy in enemyGroup.GetEntities())
+            foreach (var hero in heroGroup.GetEntities())
             {
-                if (enemy.isMover)
+                foreach (var enemy in enemyGroup.GetEntities())
                 {
-                    var dir = (hero.position.value - enemy.position.value).normalized;
-                    var dis = (hero.position.value - enemy.position.value).magnitude;
-                    if (dis > 1e-3)
+                    if (enemy.isMover)
                     {
-                        var newPos = enemy.position.value + dir * enemy.speed.value * Time.deltaTime;
-                        enemy.ReplacePosition(newPos);
+                        var dir = (hero.position.value - enemy.position.value).normalized;
+                        var dis = (hero.position.value - enemy.position.value).magnitude;
+                        if (dis > 1e-3)
+                        {
+                            var newPos = enemy.position.value + dir * enemy.speed.value * Time.deltaTime;
+                            enemy.ReplacePosition(newPos);
+                        }
                     }
                 }
             }
         }
+
     }
 
 }

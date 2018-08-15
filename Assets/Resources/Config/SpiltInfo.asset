@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e085fafd55fc94eb66b283341d8ca0, type: 3}
+  m_Name: SpiltInfo
+  m_EditorClassIdentifier: 
+  uid: 0
+  resName: spilt
+  prefab: {fileID: 0}
+  spiltList:
+  - {fileID: 1179701630734846, guid: 4a6145a43d2b45a4f95a37687e22f6b0, type: 2}
+  - {fileID: 1311729475974094, guid: fb84b83efd32f0149850a030d0a643d6, type: 2}
+  - {fileID: 1846061141926260, guid: 1ee5374239f9f5645ab7c032c0171cb9, type: 2}

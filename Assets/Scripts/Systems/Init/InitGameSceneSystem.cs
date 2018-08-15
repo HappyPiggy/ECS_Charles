@@ -30,15 +30,13 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
     protected override void Execute(List<GameEntity> entities)
     {
         //创建玩家
-        ulong uid = 0;
         Vector2 playerSpawnPos = new Vector2(0, 4);
         Quaternion playerRotation = Quaternion.identity;
-        entityFactoryService.CreatePlayer(uid, playerSpawnPos, playerRotation);
-
+        GameEntity heroEntity= entityFactoryService.CreatePlayer(UidUtils.Uid, playerSpawnPos, playerRotation);
+        context.ReplaceGlobalHero(heroEntity);
 
         //创建游戏地图
-        uid = 1;
-        entityFactoryService.CreateMap(uid);
+        entityFactoryService.CreateMap(UidUtils.Uid);
 
         //初始化游戏场景配置
         context.ReplaceEnemySpawnCount(2);

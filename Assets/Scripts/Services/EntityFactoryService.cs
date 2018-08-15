@@ -19,6 +19,37 @@ public class EntityFactoryService : IEntityFactoryService
     }
 
 
+
+    /// <summary>
+    /// 创建敌人死亡后的涂鸦
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="spawnPos"></param>
+    /// <returns></returns>
+    public GameEntity CreateSpilt(ulong uid,Vector2 spawnPos,ColorInfo colorInfo)
+    {
+        CheckDuplicateEntity(uid);
+        GameEntity gameEntity = context.CreateEntity();
+
+        gameEntity.AddUID(uid);
+        gameEntity.AddUnitType(UnitType.Spilt);
+        gameEntity.AddPosition(spawnPos);
+
+        Quaternion randomQuaternion = Quaternion.Euler(0, 0, MathUtils.RandomFloat(0, 360));
+        gameEntity.AddRotation(randomQuaternion);
+        gameEntity.AddEnemyState(EnemyState.None);
+
+        gameEntity.isDestroyed = false;
+
+        SpiltInfo spiltInfo = configService.GetSpiltInfo();
+        gameEntity.AddSpiltInfo(spiltInfo);
+        gameEntity.AddColorInfo(colorInfo);
+
+        gameEntity.AddAsset("Spilt");
+
+        return gameEntity;
+    }
+
     /// <summary>
     /// 创建敌人
     /// </summary>
@@ -34,6 +65,7 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddUnitType(UnitType.Enemy);
         gameEntity.AddPosition(spawnPos);
         gameEntity.AddRotation(Quaternion.identity);
+        gameEntity.AddEnemyState(EnemyState.None);
         gameEntity.isEnemy = true;
         gameEntity.isDestroyed = false;
 

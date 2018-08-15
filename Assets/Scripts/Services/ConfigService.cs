@@ -51,5 +51,11 @@ public class ConfigService
         return globalInfo.enemyInfo;
     }
 
-    
+
+    public SpiltInfo GetSpiltInfo()
+    {
+        return globalInfo.spiltInfo;
+    }
+
+
 }

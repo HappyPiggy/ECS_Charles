@@ -55,6 +55,7 @@ public class UnityViewService : IAssetListener, IViewService
                 break;
             case UnitType.Enemy:
                 var index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
+              //  entity.enemyInfo.value.index = index;
                 prefab = entity.enemyInfo.value.enemyList[index];
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
 
@@ -68,13 +69,22 @@ public class UnityViewService : IAssetListener, IViewService
                 view = obj.AddComponent<MapView>();
                 break;
 
+            case UnitType.Spilt:
+                var index2 = MathUtils.RandomInt(0, entity.spiltInfo.value.spiltList.Length-1);
+                prefab = entity.spiltInfo.value.spiltList[index2];
+                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                obj.GetComponent<SpriteRenderer>().color = entity.colorInfo.value.color;
+
+                view = obj.AddComponent<SpiltView>();
+                break;
+
             default:
                 Debug.Log("无法创建预制体类型:" + type.ToString());
                 break;
         }
         view.Link(context, entity);
         entity.AddView(view);
-        entity.ReplaceUID((ulong)obj.GetInstanceID());//单机的话uid本地生成
+      //  entity.ReplaceUID((ulong)obj.GetInstanceID());//单机的话uid本地生成
     }
 
     public void Update()

@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly DeadComponent deadComponent = new DeadComponent();
+    public DeadComponent dead { get { return (DeadComponent)GetComponent(GameComponentsLookup.Dead); } }
+    public bool hasDead { get { return HasComponent(GameComponentsLookup.Dead); } }
 
-    public bool isDead {
-        get { return HasComponent(GameComponentsLookup.Dead); }
-        set {
-            if (value != isDead) {
-                var index = GameComponentsLookup.Dead;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : deadComponent;
+    public void AddDead(bool newValue) {
+        var index = GameComponentsLookup.Dead;
+        var component = CreateComponent<DeadComponent>(index);
+        component.value = newValue;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceDead(bool newValue) {
+        var index = GameComponentsLookup.Dead;
+        var component = CreateComponent<DeadComponent>(index);
+        component.value = newValue;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveDead() {
+        RemoveComponent(GameComponentsLookup.Dead);
     }
 }
 

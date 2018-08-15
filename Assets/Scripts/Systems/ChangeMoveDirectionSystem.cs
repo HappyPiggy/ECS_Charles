@@ -41,17 +41,20 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
 
     protected override void Execute(List<InputEntity> entities)
     {
-        var dir = controlPadInputEntity.moveJoyStick.value;
-        var rotation=MathUtils.Vector2Quaternion(dir);
-       // Debug.Log("ro" + rotation);
-        // var res = -rotation.eulerAngles.y ;
-        foreach (var item in heroGroup.GetEntities())
+        if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
-            if (item.isHero && item.isMover)
+            var dir = controlPadInputEntity.moveJoyStick.value;
+            var rotation = MathUtils.Vector2Quaternion(dir);
+            // Debug.Log("ro" + rotation);
+            // var res = -rotation.eulerAngles.y ;
+            foreach (var item in heroGroup.GetEntities())
             {
-                var newPos = CalcNewPos(item.position.value,dir, item.speed.value);
-                item.ReplacePosition(newPos);
-                item.ReplaceRotation(rotation);
+                if (item.isHero && item.isMover)
+                {
+                    var newPos = CalcNewPos(item.position.value, dir, item.speed.value);
+                    item.ReplacePosition(newPos);
+                    item.ReplaceRotation(rotation);
+                }
             }
         }
     }

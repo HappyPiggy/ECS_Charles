@@ -10,46 +10,57 @@ public static class GameComponentsLookup {
 
     public const int Asset = 0;
     public const int AssetListener = 1;
-    public const int Dead = 2;
-    public const int DeadListener = 3;
-    public const int Destroyed = 4;
-    public const int Enemy = 5;
-    public const int EnemyInfo = 6;
-    public const int EnemySpawnCount = 7;
-    public const int EnemySpawnIntervalTime = 8;
-    public const int GameDestroyedListener = 9;
-    public const int GameProgress = 10;
-    public const int GameProgressListener = 11;
-    public const int Hero = 12;
-    public const int MapInfo = 13;
-    public const int Mover = 14;
-    public const int OnTriggerEnter = 15;
-    public const int OnTriggerEnterListener = 16;
-    public const int OnTriggerExit = 17;
-    public const int OnTriggerExitListener = 18;
-    public const int PlayerInfo = 19;
-    public const int Position = 20;
-    public const int Rotation = 21;
-    public const int Speed = 22;
-    public const int UID = 23;
-    public const int UnitType = 24;
-    public const int View = 25;
+    public const int ColorInfo = 2;
+    public const int Dead = 3;
+    public const int DeadListener = 4;
+    public const int Destroyed = 5;
+    public const int Enable = 6;
+    public const int Enemy = 7;
+    public const int EnemyInfo = 8;
+    public const int EnemySpawnCount = 9;
+    public const int EnemySpawnIntervalTime = 10;
+    public const int EnemyState = 11;
+    public const int GameDestroyedListener = 12;
+    public const int GameProgress = 13;
+    public const int GameProgressListener = 14;
+    public const int GlobalHero = 15;
+    public const int GlobalHeroListener = 16;
+    public const int Hero = 17;
+    public const int MapInfo = 18;
+    public const int Mover = 19;
+    public const int OnTriggerEnter = 20;
+    public const int OnTriggerEnterListener = 21;
+    public const int OnTriggerExit = 22;
+    public const int OnTriggerExitListener = 23;
+    public const int PlayerInfo = 24;
+    public const int Position = 25;
+    public const int Rotation = 26;
+    public const int Speed = 27;
+    public const int SpiltInfo = 28;
+    public const int UID = 29;
+    public const int UnitType = 30;
+    public const int View = 31;
 
-    public const int TotalComponents = 26;
+    public const int TotalComponents = 32;
 
     public static readonly string[] componentNames = {
         "Asset",
         "AssetListener",
+        "ColorInfo",
         "Dead",
         "DeadListener",
         "Destroyed",
+        "Enable",
         "Enemy",
         "EnemyInfo",
         "EnemySpawnCount",
         "EnemySpawnIntervalTime",
+        "EnemyState",
         "GameDestroyedListener",
         "GameProgress",
         "GameProgressListener",
+        "GlobalHero",
+        "GlobalHeroListener",
         "Hero",
         "MapInfo",
         "Mover",
@@ -61,6 +72,7 @@ public static class GameComponentsLookup {
         "Position",
         "Rotation",
         "Speed",
+        "SpiltInfo",
         "UID",
         "UnitType",
         "View"
@@ -69,16 +81,21 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
         typeof(AssetListenerComponent),
+        typeof(ColorInfoComponent),
         typeof(DeadComponent),
         typeof(DeadListenerComponent),
         typeof(DestroyedComponent),
+        typeof(EnableComponent),
         typeof(EnemyComponent),
         typeof(EnemyInfoComponent),
         typeof(EnemySpawnCountComponent),
         typeof(EnemySpawnIntervalTimeComponent),
+        typeof(EnemyStateComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),
+        typeof(GlobalHeroComponent),
+        typeof(GlobalHeroListenerComponent),
         typeof(HeroComponent),
         typeof(MapInfoComponent),
         typeof(MoverComponent),
@@ -90,6 +107,7 @@ public static class GameComponentsLookup {
         typeof(PositionComponent),
         typeof(RotationComponent),
         typeof(SpeedComponent),
+        typeof(SpiltInfoComponent),
         typeof(UIDComponent),
         typeof(UnitTypeComponent),
         typeof(ViewComponent)

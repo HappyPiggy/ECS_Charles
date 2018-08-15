@@ -18,14 +18,14 @@ public sealed class DeadEventSystem : Entitas.ReactiveSystem<GameEntity> {
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.isDead && entity.hasDeadListener;
+        return entity.hasDead && entity.hasDeadListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<GameEntity> entities) {
         foreach (var e in entities) {
-            
+            var component = e.dead;
             foreach (var listener in e.deadListener.value) {
-                listener.OnDead(e);
+                listener.OnDead(e, component.value);
             }
         }
     }

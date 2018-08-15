@@ -46,10 +46,9 @@ public class BaseView : MonoBehaviour, IView
 
     public virtual void OnDestroyedView()
     {
+        DestroyUnityObject();
         isDestroyed = true;
         gameEntity = null;
-        DestroyUnityObject();
-
     }
 
     public void DestroyUnityObject()
@@ -58,7 +57,8 @@ public class BaseView : MonoBehaviour, IView
         {
             gameObject.Unlink();
             Destroy(this);
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            PoolUtil.DeSpawnGameObject(gameObject);
         }
     }
 }

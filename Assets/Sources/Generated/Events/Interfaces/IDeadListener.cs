@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface IDeadListener {
-    void OnDead(GameEntity entity);
+    void OnDead(GameEntity entity, bool value);
 }

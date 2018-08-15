@@ -13,6 +13,12 @@ public class PlayerView : BaseView
     private float curEuler = 0;
     private float oldEuler = 0;
 
+    private void Start()
+    {
+    }
+
+
+
 
     protected override void Update()
     {
@@ -46,6 +52,24 @@ public class PlayerView : BaseView
             }
 
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        switch (collision.gameObject.tag)
+        {
+            case "Enemy":
+                PlayerDead();
+                break;
+
+        }
+    }
+
+    private void PlayerDead()
+    {
+        gameEntity.isMover = false;
+        gameEntity.ReplaceDead(true);
     }
 
 

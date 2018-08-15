@@ -267,8 +267,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddf7a5150a474960a78be74651f1a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recycleBinCollection: []
-  cullExcessObjectsInterval: 10
+  recycleBinCollection:
+  - prefab: {fileID: 1664408979475932, guid: 8a97006fa9b964144ba65d14c645c242, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1272838980630078, guid: 9e208c9673b944f47bc9391a26081723, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1434824253379974, guid: f9ead35520141a7408bc19571957ee3b, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1589136386313648, guid: e6b449f7f757d6848b2de672a55114be, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1903754603075860, guid: bd6a9e77f9e2ce34bb7088ff9bb75267, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1454621370109766, guid: 4a287c8d8aef3fe4b818b1a8aa2d8b49, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1179701630734846, guid: 4a6145a43d2b45a4f95a37687e22f6b0, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1311729475974094, guid: fb84b83efd32f0149850a030d0a643d6, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1846061141926260, guid: 1ee5374239f9f5645ab7c032c0171cb9, type: 2}
+    instancesToPreallocate: 1
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  cullExcessObjectsInterval: 1
   persistBetweenScenes: 0
   transform: {fileID: 0}
 --- !u!4 &672378907
@@ -542,10 +632,6 @@ Prefab:
     - target: {fileID: 4182797057029532, guid: 02908d092e193324c90cd1c0aeabbdd3, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1299091623371056, guid: 02908d092e193324c90cd1c0aeabbdd3, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02908d092e193324c90cd1c0aeabbdd3, type: 2}

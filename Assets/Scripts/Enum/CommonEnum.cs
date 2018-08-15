@@ -15,7 +15,8 @@ public enum GameProgressState
     ParseConfig,
     StartGame,
     InGame,
-    EndGame,
+    GameOver,//玩家死亡
+    EndGame,//退出结算回到主界面
 }
 
 public enum UnitType
@@ -23,6 +24,7 @@ public enum UnitType
     None=0,
     Player=1,
     Enemy,
+    Spilt, //怪物死后效果
     GameMap, //游戏背景
 }
 
@@ -31,4 +33,11 @@ public enum PlayerType
     None,
     Fly1,
     Fly2,
+}
+
+public enum EnemyState
+{
+    None,
+    Move,
+    Die,
 }
