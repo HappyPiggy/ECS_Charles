@@ -45,8 +45,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
         {
             var dir = controlPadInputEntity.moveJoyStick.value;
             var rotation = MathUtils.Vector2Quaternion(dir);
-            // Debug.Log("ro" + rotation);
-            // var res = -rotation.eulerAngles.y ;
+
             foreach (var item in heroGroup.GetEntities())
             {
                 if (item.isHero && item.isMover)

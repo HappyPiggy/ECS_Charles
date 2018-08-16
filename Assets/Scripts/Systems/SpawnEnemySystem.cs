@@ -16,7 +16,7 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
     private MapInfo mapInfo;
     private IGroup<GameEntity> enemyGroup;
 
-    private float timer = 0;
+    private float timer = 999;
 
 
     public SpawnEnemySystem(Contexts contexts, Services services)
@@ -39,7 +39,6 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
     {
         if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
-            timer += Time.deltaTime;
             if (timer > contexts.game.enemySpawnIntervalTime.value)
             {
                 //todo 需要一个系统来管理每次生成怪物的数量和间隔时间
@@ -51,6 +50,7 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
                 SpawnEnemyRandom(contexts.game.enemySpawnCount.value);
                 timer = 0;
             }
+            timer += Time.deltaTime;
         }
 
     }

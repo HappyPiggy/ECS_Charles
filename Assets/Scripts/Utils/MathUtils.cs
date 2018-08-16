@@ -15,9 +15,13 @@ public  static class MathUtils
     {
         Quaternion rotation=Quaternion.identity;
         if (vector != Vector2.zero) {
-            var lookRotation = vector.normalized;
-            var dir = new Vector3(lookRotation.x, 0, lookRotation.y);
-            rotation = Quaternion.LookRotation(dir, -Vector3.up);
+            //var lookRotation = vector.normalized;
+            //var dir = new Vector3(lookRotation.x, 0, lookRotation.y);
+            //rotation = Quaternion.LookRotation(dir, -Vector3.up);
+            float angle = Mathf.Atan2(vector.y,vector.x);
+            Vector2 eulerAngles = rotation.eulerAngles;
+            eulerAngles.y = angle * Mathf.Rad2Deg - 90;
+            rotation.eulerAngles = eulerAngles;
         }
 
         

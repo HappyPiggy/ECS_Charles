@@ -33,7 +33,7 @@ public class SpiltView : BaseView,IGameDestroyedListener
 
         if(isHide)
         {
-            float a = (float)alpha / 255;
+            float a = alpha / 255;
             gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, a);
 
             if (a == 0)

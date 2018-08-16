@@ -38,14 +38,30 @@ public class PlayerView : BaseView,IDeadListener
         if (gameEntity != null && gameEntity.isMover && !isDestroyed)
         {
 
-            var euler = -gameEntity.rotation.value.eulerAngles.y;
+            var euler = gameEntity.rotation.value.eulerAngles.y;
             if (euler != 0)
             {
-                //todo
                 //旋转的平滑过渡
-                // DOTween.To(() => curEuler, x => curEuler = x, euler, 2);
-                transform.eulerAngles = new Vector3(0, 0, euler);
-                oldEuler = euler;
+                if (curEuler < 0)
+                {
+                    curEuler += 360;
+                    curEuler = curEuler % 360;
+                }
+               
+
+                if (euler - curEuler > 180)
+                {
+                    euler -= 360;
+                }
+                else if (curEuler - euler > 180)
+                {
+                    euler += 360;
+                }
+                
+
+                DOTween.To(() => curEuler, x => curEuler = x, euler, 0.5f);
+                transform.eulerAngles = new Vector3(0, 0, curEuler);
+                oldEuler = curEuler;
             }
             else
             {
