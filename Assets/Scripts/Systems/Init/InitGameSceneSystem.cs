@@ -42,6 +42,9 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
         context.ReplaceEnemySpawnCount(2);
         context.ReplaceEnemySpawnIntervalTime(2);
 
+        //创建控制摇杆
+        ModuleManager.Instance.Show(ModuleType.ControlPad);
+
         context.ReplaceGameProgress(GameProgressState.InGame);
     }
 

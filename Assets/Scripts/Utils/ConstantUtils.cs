@@ -11,4 +11,5 @@ public class ConstantUtils
                                               new Color((float)161/255,(float)145/255,(float)138/255),
                                               new Color((float)234/255,(float)95/255,(float)216/255)};
 
+    public static float delayTime = 0.5f;
 }

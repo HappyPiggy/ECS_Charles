@@ -30,6 +30,7 @@ public class GameSystemsController : Feature
         //end
         Add(new GameOverSystem(contexts));
         Add(new SpawnSpiltSystem(contexts,services));
+        Add(new GameEndSystem(contexts));
 
 
         // eventListener

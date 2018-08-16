@@ -16,7 +16,8 @@ public enum GameProgressState
     StartGame,
     InGame,
     GameOver,//玩家死亡
-    EndGame,//退出结算回到主界面
+    EndGame,//结算界面
+    GameRestart,
 }
 
 public enum UnitType

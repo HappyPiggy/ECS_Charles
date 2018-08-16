@@ -1,5 +1,6 @@
-﻿
-
+﻿/// <summary>
+/// 为游戏对象分配uid
+/// </summary>
 public class UidUtils
 {
 
@@ -12,6 +13,11 @@ public class UidUtils
             uid++;
             return uid;
         }
+    }
 
+   
+    public static void ResetUid()
+    {
+        uid = 0;
     }
 }

@@ -26,6 +26,7 @@ public class ModuleManager:MonoSingleton<ModuleManager>
         uiClassNameMap = new Dictionary<ModuleType, Type>();
         uiObjMap = new Dictionary<ModuleType, AppModule>();
         uiClassNameMap.Add(ModuleType.ControlPad,typeof(ControlPad)); //在ControlPad的ui上添加名为ControlPad的脚本
+        uiClassNameMap.Add(ModuleType.EndGamePad, typeof(EndGamePad));
 
         UIRoot = GameObject.Find("Canvas/UI").transform;
     }
@@ -71,6 +72,40 @@ public class ModuleManager:MonoSingleton<ModuleManager>
             });
         }
 
+    }
+
+    /// <summary>
+    /// 隐藏ui
+    /// </summary>
+    /// <param name="type"></param>
+    public void Hide(ModuleType type)
+    {
+        AppModule baseUI = null;
+        if (uiObjMap.ContainsKey(type))
+        {
+            baseUI = uiObjMap[type];
+        }
+        else
+        {
+            Debug.Log("找不到ui类型:"+type);
+        }
+
+        if (baseUI != null)
+            baseUI.OnHide();
+    }
+
+    /// <summary>
+    /// 隐藏所有面板
+    /// </summary>
+    public void HideAll()
+    {
+        foreach (var ui in uiObjMap)
+        {
+            if (ui.Value.IsHide == false)
+            {
+                ui.Value.OnHide();
+            }
+        }
     }
 
     private void ShowModule(AppModule baseUI,ModuleType type,object data =null)

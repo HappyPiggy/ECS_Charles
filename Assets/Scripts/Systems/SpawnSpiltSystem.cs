@@ -40,6 +40,7 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     protected override void Execute(List<GameEntity> entities)
     {
+        //游戏结束的话所有enemy都要变成spilt 如果在战斗中则特定enemy变成spilt
         if (contexts.game.gameProgress.state == GameProgressState.GameOver)
         {
             foreach (var enemy in entities)
@@ -50,13 +51,42 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
                     enemy.ReplaceDead(true);
                     enemy.isMover = false;
                 }
-                var pos = enemy.position.value;
-                var index = (int)enemy.uID.value % (enemy.enemyInfo.value.enemyList.Length);
+                CreateSpilt(enemy);
+            }
 
-                ColorInfo colorInfo = new ColorInfo();
-                colorInfo.color = ConstantUtils.spiltColorList[index];
-                entityFactoryService.CreateSpilt(UidUtils.Uid, pos, colorInfo);
+            //弹出结算面板
+            contexts.game.ReplaceGameProgress(GameProgressState.EndGame);
+        }
+        else if (contexts.game.gameProgress.state == GameProgressState.InGame)
+        {
+            foreach (var enemy in entities)
+            {
+                if (enemy.hasDead && enemy.dead.value == true)
+                {
+                    enemy.ReplaceEnemyState(EnemyState.Die);
+                    enemy.ReplaceDead(true);
+                    enemy.isMover = false;
+                    CreateSpilt(enemy);
+                }
             }
         }
+    }
+
+
+
+    /// <summary>
+    /// 创建spilt实体
+    /// </summary>
+    /// <param name="enemy"></param>
+    private void CreateSpilt(GameEntity enemy)
+    {
+        var pos = enemy.position.value;
+        var index = (int)enemy.uID.value % (enemy.enemyInfo.value.enemyList.Length);
+
+        ColorInfo colorInfo = new ColorInfo
+        {
+            color = ConstantUtils.spiltColorList[index]
+        };
+        entityFactoryService.CreateSpilt(UidUtils.Uid, pos, colorInfo);
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// 主角view
 /// </summary>
-public class PlayerView : BaseView
+public class PlayerView : BaseView,IDeadListener
 {
   //  private float oldEuler = 0;
     private float curEuler = 0;
@@ -15,6 +15,7 @@ public class PlayerView : BaseView
 
     private void Start()
     {
+        gameEntity.AddDeadListener(this);
     }
 
 
@@ -60,17 +61,16 @@ public class PlayerView : BaseView
         switch (collision.gameObject.tag)
         {
             case "Enemy":
-                PlayerDead();
+                gameEntity.ReplaceDead(true);
                 break;
 
         }
     }
 
-    private void PlayerDead()
+
+    public void OnDead(GameEntity entity, bool value)
     {
         gameEntity.isMover = false;
-        gameEntity.ReplaceDead(true);
+        OnDestroyedView();
     }
-
-
 }

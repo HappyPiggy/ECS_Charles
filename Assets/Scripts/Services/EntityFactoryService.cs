@@ -115,10 +115,8 @@ public class EntityFactoryService : IEntityFactoryService
         {
             DestroyEntity(gameEntity);
         }
-        else
-        {
-            gameEntity = CreateBasePlayer(uid);
-        }
+
+        gameEntity = CreateBasePlayer(uid);
 
         gameEntity.ReplacePosition(spawnPos);
         gameEntity.ReplaceRotation(rotation);
@@ -163,9 +161,9 @@ public class EntityFactoryService : IEntityFactoryService
     }
 
     /// <summary>
-    /// 判断entity是否还有view
-    /// 彻底清除entity
+    /// 如果存在遗留entity，则清除它身上链接的view后 destroy它自己
     /// </summary>
+    /// <param name="gameEntity"></param>
     private void DestroyEntity(GameEntity gameEntity)
     {
         if (gameEntity.hasView)

@@ -43,6 +43,8 @@ public class EnemyMoveSystem : IExecuteSystem, IInitializeSystem
                 {
                     if (enemy.isMover)
                     {
+                       // Debug.Log("hero pos "+hero.position.value);
+
                         var dir = (hero.position.value - enemy.position.value).normalized;
                         var dis = (hero.position.value - enemy.position.value).magnitude;
                         if (dis > 1e-3)

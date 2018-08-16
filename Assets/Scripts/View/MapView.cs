@@ -7,29 +7,36 @@ using UnityEngine;
 /// <summary>
 /// 游戏地图的view
 /// </summary>
-public class MapView : BaseView
+public class MapView : BaseView,IGameProgressListener
 {
-    private GameObject border;
-    private BoxCollider2D[] borderBoxes;
 
-    public void Start()
+    private void Start()
     {
-       // InitBorder();
+        gameEntity.AddGameProgressListener(this);
     }
 
 
 
-    /// <summary>
-    /// 初始化地图边界
-    /// </summary>
-    //private void InitBorder()
-    //{
-    //    border = transform.Find("border").gameObject;
-    //    borderBoxes = border.transform.GetComponentsInChildren<BoxCollider2D>();
+    public void OnGameProgress(GameEntity entity, GameProgressState state)
+    {
+     //   Debug.Log("GameRestart "+ state);
 
-    //    Vector3 upBorderPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height));
-    //    borderBoxes[0].transform.position = upBorderPos + new Vector3(0, 0.5f, 0); ;
-    //    float width = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x * 2;
-    //    borderBoxes[0].size = new Vector2(width, 1);
-    //}
+        if (state== GameProgressState.GameRestart)
+        {
+            CleanGameScene();
+        }
+    }
+
+    /// <summary>
+    /// 清除游戏场景数据
+    /// </summary>
+    private void CleanGameScene()
+    {
+        UidUtils.ResetUid();
+        ModuleManager.Instance.HideAll();
+        Contexts.sharedInstance.game.ReplaceGameProgress(GameProgressState.StartGame);
+        OnDestroyedView();
+    }
+
+
 }

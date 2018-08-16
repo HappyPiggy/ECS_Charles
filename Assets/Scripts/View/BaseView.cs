@@ -44,10 +44,14 @@ public class BaseView : MonoBehaviour, IView
         }
     }
 
+    /// <summary>
+    /// 回收unityview对象 撤销和entity的链接
+    /// </summary>
     public virtual void OnDestroyedView()
     {
         DestroyUnityObject();
         isDestroyed = true;
+        gameEntity.isDestroyed = isDestroyed;
         gameEntity = null;
     }
 
@@ -57,7 +61,8 @@ public class BaseView : MonoBehaviour, IView
         {
             gameObject.Unlink();
             Destroy(this);
-            // Destroy(gameObject);
+            gameEntity.RemoveView();
+
             PoolUtil.DeSpawnGameObject(gameObject);
         }
     }

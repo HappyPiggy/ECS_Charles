@@ -15,7 +15,7 @@ public class AppModule:MonoBehaviour
     protected object data;
 
 
-    private bool isHide=false;
+    private bool isHide=true;
     private bool isNeedCache = false;
 
     public bool IsHide
@@ -76,7 +76,7 @@ public class AppModule:MonoBehaviour
     public virtual void OnHide()
     {
         IsHide = true;
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
         ModuleManager.FireModule(false, type);
     }
 

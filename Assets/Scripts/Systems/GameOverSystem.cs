@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 处理游戏结束
+/// 处理玩家死亡后的操作
 /// </summary>
 public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 {
@@ -34,6 +34,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     protected override void Execute(List<GameEntity> entities)
     {
+        //消除屏幕上的敌人
         foreach (var enemy in enemyGroup.GetEntities())
         {
             if (enemy.isEnable)
@@ -43,6 +44,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
                 enemy.isMover = false;
             }
         }
+
         contexts.game.ReplaceGameProgress(GameProgressState.GameOver);
     }
 

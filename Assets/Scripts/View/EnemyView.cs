@@ -17,9 +17,7 @@ public class EnemyView : BaseView,IDeadListener
 
     public void Start()
     {
-        // color = gameObject.GetComponent<SpriteRenderer>().color;
-        // DOTween.To(() => alpha, x => alpha = x, 255, delayTime-0.2f);
-
+        delayTime = ConstantUtils.delayTime;
         DoScale();
         Invoke("DelayMove", delayTime);
 
@@ -32,10 +30,6 @@ public class EnemyView : BaseView,IDeadListener
     protected override void Update()
     {
         base.Update();
-
-        //渐变显示敌人
-     //   float a = (float)alpha / 255;
-     //   gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r,color.g,color.b,a);
     }
 
     /// <summary>

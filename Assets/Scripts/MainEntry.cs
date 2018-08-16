@@ -31,7 +31,7 @@ public class MainEntry:MonoBehaviour
 
     private void Start()
     {
-        ModuleManager.Instance.Show(ModuleType.ControlPad);
+       
     }
 
 

@@ -55,7 +55,6 @@ public class UnityViewService : IAssetListener, IViewService
                 break;
             case UnitType.Enemy:
                 var index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
-              //  entity.enemyInfo.value.index = index;
                 prefab = entity.enemyInfo.value.enemyList[index];
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
 
