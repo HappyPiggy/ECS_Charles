@@ -12,14 +12,14 @@ public class CreateAsset : Editor
     static void Create()
     {
 
-        ScriptableObject obj = new SpiltInfo();// CreateInstance<PlayerConfig>();
+        ScriptableObject obj = new ItemInfo();// CreateInstance<PlayerConfig>();
         if (!obj)
         {
             Debug.LogWarning("Obj not found");
             return;
         }
 
-        var path = string.Format("Assets/Resources/Config/{0}.asset", (typeof(SpiltInfo).ToString()));
+        var path = string.Format("Assets/Resources/Config/{0}.asset", (typeof(ItemInfo).ToString()));
         AssetDatabase.CreateAsset(obj, path);
         EditorUtility.SetDirty(obj);
         AssetDatabase.SaveAssets();

@@ -16,7 +16,7 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
     private MapInfo mapInfo;
     private IGroup<GameEntity> enemyGroup;
 
-    private float timer = 999;
+    private float timer =999;
 
 
     public SpawnEnemySystem(Contexts contexts, Services services)
@@ -30,7 +30,7 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
 
     public void Initialize()
     {
-        enemyGroup = contexts.game.GetGroup(GameMatcher.Enemy);
+        enemyGroup = contexts.game.GetGroup(GameMatcher.EnemyInfo);
     }
 
 
@@ -42,7 +42,7 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
             if (timer > contexts.game.enemySpawnIntervalTime.value)
             {
                 //todo 需要一个系统来管理每次生成怪物的数量和间隔时间
-                var count = MathUtils.RandomInt(2, 4);
+                var count = MathUtils.RandomInt(2, 6);
                 var time = MathUtils.RandomFloat(0.5f, 1.5f);
                 contexts.game.ReplaceEnemySpawnCount(count);
                 contexts.game.ReplaceEnemySpawnIntervalTime(time);
@@ -51,6 +51,9 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
                 timer = 0;
             }
             timer += Time.deltaTime;
+        }else if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
+        {
+            timer = 999; //立即生成第一波怪
         }
 
     }
@@ -61,14 +64,11 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
     /// <param name="count"></param>
     private void SpawnEnemyRandom(int count)
     {
-        if (contexts.game.gameProgress.state == GameProgressState.InGame)
+        while (count > 0)
         {
-            while (count > 0)
-            {
-                var pos = GetRandomPosition();
-                entityFactoryService.CreateEnemy(UidUtils.Uid, pos);
-                count--;
-            }
+            var pos = GetRandomPosition();
+            entityFactoryService.CreateEnemy(UidUtils.Uid, pos);
+            count--;
         }
     }
 

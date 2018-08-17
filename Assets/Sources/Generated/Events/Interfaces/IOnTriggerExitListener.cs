@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface IOnTriggerExitListener {
-    void OnOnTriggerExit(GameEntity entity);
+    void OnOnTriggerExit(GameEntity entity, UnityEngine.Collider2D collision);
 }

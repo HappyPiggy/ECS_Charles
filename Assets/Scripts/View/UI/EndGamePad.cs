@@ -24,7 +24,7 @@ public class EndGamePad:AppModule
         base.OnUpdate();
 
         timer += Time.deltaTime;
-        if (timer >= ConstantUtils.delayTime && !isDelayShow)
+        if (timer >= ConstantUtils.collisionDelayTime && !isDelayShow)
         {
             isDelayShow = true;
             transform.DOLocalMoveY(0, 1f).SetEase(Ease.OutFlash); ;

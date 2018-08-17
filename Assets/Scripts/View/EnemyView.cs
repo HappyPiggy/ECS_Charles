@@ -17,7 +17,7 @@ public class EnemyView : BaseView,IDeadListener
 
     public void Start()
     {
-        delayTime = ConstantUtils.delayTime;
+        delayTime = ConstantUtils.collisionDelayTime;
         DoScale();
         Invoke("DelayMove", delayTime);
 

@@ -18,7 +18,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     public void Initialize()
     {
-        enemyGroup = contexts.game.GetGroup(GameMatcher.Enemy);
+        enemyGroup = contexts.game.GetGroup(GameMatcher.AnyOf(GameMatcher.EnemyInfo,GameMatcher.ItemInfo));
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -34,15 +34,23 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     protected override void Execute(List<GameEntity> entities)
     {
-        //消除屏幕上的敌人
-        foreach (var enemy in enemyGroup.GetEntities())
+        foreach (var item in enemyGroup.GetEntities())
         {
-            if (enemy.isEnable)
+            //消除屏幕上的敌人
+            if (item.hasEnemyInfo)
             {
-                enemy.ReplaceEnemyState(EnemyState.Die);
-                enemy.ReplaceDead(true);
-                enemy.isMover = false;
+                if (item.isEnable)
+                {
+                    item.ReplaceEnemyState(EnemyState.Die);
+                    item.ReplaceDead(true);
+                    item.isMover = false;
+                }
             }
+            else if (item.hasItemInfo) //消除道具
+            {
+                item.isDestroyed = true;
+            }
+
         }
 
         contexts.game.ReplaceGameProgress(GameProgressState.GameOver);

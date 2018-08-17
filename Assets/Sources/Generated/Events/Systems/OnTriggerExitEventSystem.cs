@@ -21,15 +21,15 @@ public sealed class OnTriggerExitEventSystem : Entitas.ReactiveSystem<GameEntity
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.isOnTriggerExit;
+        return entity.hasOnTriggerExit;
     }
 
     protected override void Execute(System.Collections.Generic.List<GameEntity> entities) {
         foreach (var e in entities) {
-            
+            var component = e.onTriggerExit;
             foreach (var listenerEntity in _listeners) {
                 foreach (var listener in listenerEntity.onTriggerExitListener.value) {
-                    listener.OnOnTriggerExit(e);
+                    listener.OnOnTriggerExit(e, component.collision);
                 }
             }
         }

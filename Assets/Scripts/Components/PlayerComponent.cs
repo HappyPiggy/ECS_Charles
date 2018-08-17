@@ -15,10 +15,6 @@ public class HeroComponent : IComponent
 {
 }
 
-[Game]
-public class EnemyComponent : IComponent
-{
-}
 
 [Game,Event(true)]
 public class DeadComponent : IComponent
@@ -73,3 +69,7 @@ public class EnableComponent : IComponent
 {
 }
 
+[Game]
+public class InvincibleComponent : IComponent
+{
+}

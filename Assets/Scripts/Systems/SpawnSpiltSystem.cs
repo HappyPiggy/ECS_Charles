@@ -25,7 +25,7 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     public void Initialize()
     {
-        enemyGroup = contexts.game.GetGroup(GameMatcher.Enemy);
+        enemyGroup = contexts.game.GetGroup(GameMatcher.EnemyInfo);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -35,7 +35,7 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.enemyState.value == EnemyState.Die || entity.enemyState.value == EnemyState.Move;
+        return entity.enemyState.value == EnemyState.Die || entity.enemyState.value == EnemyState.Move || entity.enemyState.value == EnemyState.None;
     }
 
     protected override void Execute(List<GameEntity> entities)
@@ -83,10 +83,10 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
         var pos = enemy.position.value;
         var index = (int)enemy.uID.value % (enemy.enemyInfo.value.enemyList.Length);
 
-        ColorInfo colorInfo = new ColorInfo
-        {
-            color = ConstantUtils.spiltColorList[index]
-        };
-        entityFactoryService.CreateSpilt(UidUtils.Uid, pos, colorInfo);
+        //ColorInfo colorInfo = new ColorInfo
+        //{
+        //    color = ConstantUtils.spiltColorList[index]
+        //};
+        entityFactoryService.CreateSpilt(UidUtils.Uid, pos, index);
     }
 }

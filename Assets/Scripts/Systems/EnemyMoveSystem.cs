@@ -26,7 +26,7 @@ public class EnemyMoveSystem : IExecuteSystem, IInitializeSystem
 
     public void Initialize()
     {
-        enemyGroup = contexts.game.GetGroup(GameMatcher.Enemy);
+        enemyGroup = contexts.game.GetGroup(GameMatcher.EnemyInfo);
         heroGroup = contexts.game.GetGroup(GameMatcher.Hero);
     }
 

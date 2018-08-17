@@ -20,7 +20,7 @@ public class SpiltView : BaseView,IGameDestroyedListener
     {
         gameEntity.AddGameDestroyedListener(this);
 
-        delayTime = ConstantUtils.delayTime;
+        delayTime = ConstantUtils.collisionDelayTime;
         DoScale();
         Invoke("DelayHide", delayTime);
     }

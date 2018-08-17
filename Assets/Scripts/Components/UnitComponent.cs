@@ -20,11 +20,22 @@ public class UnitTypeComponent : IComponent
 }
 
 [Game]
+public class ItemTypeComponent : IComponent
+{
+    public ItemType value;
+}
+
+[Game]
 public class EnemyStateComponent : IComponent
 {
     public EnemyState value;
 }
 
+[Game]
+public class TypeIndexComponent : IComponent
+{
+    public int value;
+}
 
 
 [Game]
@@ -52,8 +63,9 @@ public class SpiltInfoComponent : IComponent
     public SpiltInfo value;
 }
 
+
 [Game]
-public class ColorInfoComponent : IComponent
+public class ItemInfoComponent : IComponent
 {
-    public ColorInfo value;
+    public ItemInfo value;
 }

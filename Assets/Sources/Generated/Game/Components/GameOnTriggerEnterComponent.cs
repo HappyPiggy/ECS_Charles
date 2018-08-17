@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly OnTriggerEnterComponent onTriggerEnterComponent = new OnTriggerEnterComponent();
+    public OnTriggerEnterComponent onTriggerEnter { get { return (OnTriggerEnterComponent)GetComponent(GameComponentsLookup.OnTriggerEnter); } }
+    public bool hasOnTriggerEnter { get { return HasComponent(GameComponentsLookup.OnTriggerEnter); } }
 
-    public bool isOnTriggerEnter {
-        get { return HasComponent(GameComponentsLookup.OnTriggerEnter); }
-        set {
-            if (value != isOnTriggerEnter) {
-                var index = GameComponentsLookup.OnTriggerEnter;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : onTriggerEnterComponent;
+    public void AddOnTriggerEnter(UnityEngine.Collider2D newCollision) {
+        var index = GameComponentsLookup.OnTriggerEnter;
+        var component = CreateComponent<OnTriggerEnterComponent>(index);
+        component.collision = newCollision;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceOnTriggerEnter(UnityEngine.Collider2D newCollision) {
+        var index = GameComponentsLookup.OnTriggerEnter;
+        var component = CreateComponent<OnTriggerEnterComponent>(index);
+        component.collision = newCollision;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveOnTriggerEnter() {
+        RemoveComponent(GameComponentsLookup.OnTriggerEnter);
     }
 }
 

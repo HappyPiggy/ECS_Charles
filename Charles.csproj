@@ -278,9 +278,9 @@
     <Compile Include="Assets\Scripts\Components\PlayerComponent.cs" />
     <Compile Include="Assets\Scripts\Components\ServiceComponent.cs" />
     <Compile Include="Assets\Scripts\Components\UnitComponent.cs" />
-    <Compile Include="Assets\Scripts\Config\ColorInfo.cs" />
     <Compile Include="Assets\Scripts\Config\EnemyInfo.cs" />
     <Compile Include="Assets\Scripts\Config\GlobalInfo.cs" />
+    <Compile Include="Assets\Scripts\Config\ItemInfo.cs" />
     <Compile Include="Assets\Scripts\Config\MapInfo.cs" />
     <Compile Include="Assets\Scripts\Config\PlayerConfig.cs" />
     <Compile Include="Assets\Scripts\Config\PlayerInfo.cs" />
@@ -299,6 +299,7 @@
     <Compile Include="Assets\Scripts\Services\UnityInputService.cs" />
     <Compile Include="Assets\Scripts\Services\UnityViewService.cs" />
     <Compile Include="Assets\Scripts\Systems\ChangeMoveDirectionSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\CollisionDetectionSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\EnemyMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\GameEndSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\GameOverSystem.cs" />
@@ -306,6 +307,7 @@
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Input\EmitInputSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\SpawnItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnSpiltSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleManager.cs" />
@@ -320,8 +322,10 @@
     <Compile Include="Assets\Scripts\Utils\UidUtils.cs" />
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
+    <Compile Include="Assets\Scripts\View\ItemView.cs" />
     <Compile Include="Assets\Scripts\View\MapView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
+    <Compile Include="Assets\Scripts\View\ShieldView.cs" />
     <Compile Include="Assets\Scripts\View\SpiltView.cs" />
     <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
     <Compile Include="Assets\Scripts\View\UI\EndGamePad.cs" />
@@ -355,12 +359,10 @@
     <Compile Include="Assets\Sources\Generated\Feature.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetListenerComponent.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\Components\GameColorInfoComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDeadComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDeadListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDestroyedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnableComponent.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyInfoComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemySpawnCountComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemySpawnIntervalTimeComponent.cs" />
@@ -371,6 +373,9 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGlobalHeroComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGlobalHeroListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameHeroComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameInvincibleComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameItemInfoComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameItemTypeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMapInfoComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameMoverComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerEnterComponent.cs" />
@@ -382,6 +387,7 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameRotationComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpeedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpiltInfoComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameTypeIndexComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameUIDComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameUnitTypeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameViewComponent.cs" />

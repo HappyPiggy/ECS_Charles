@@ -40,6 +40,7 @@ public class UnityViewService : IAssetListener, IViewService
         }
 
         //根据entity中的asset类型来创建prefab
+        int index = -1;
         IView view=null;
         UnitType type = entity.unitType.value;
         GameObject prefab = null;
@@ -54,7 +55,7 @@ public class UnityViewService : IAssetListener, IViewService
                 view = obj.AddComponent<PlayerView>();
                 break;
             case UnitType.Enemy:
-                var index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
+                index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
                 prefab = entity.enemyInfo.value.enemyList[index];
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
 
@@ -69,12 +70,20 @@ public class UnityViewService : IAssetListener, IViewService
                 break;
 
             case UnitType.Spilt:
-                var index2 = MathUtils.RandomInt(0, entity.spiltInfo.value.spiltList.Length-1);
-                prefab = entity.spiltInfo.value.spiltList[index2];
+                index = MathUtils.RandomInt(0, entity.spiltInfo.value.spiltList.Length-1);
+                prefab = entity.spiltInfo.value.spiltList[index];
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
-                obj.GetComponent<SpriteRenderer>().color = entity.colorInfo.value.color;
+                obj.GetComponent<SpriteRenderer>().color = ConstantUtils.spiltColorList[entity.typeIndex.value];
 
                 view = obj.AddComponent<SpiltView>();
+                break;
+
+            case UnitType.Item:
+                index = entity.typeIndex.value;
+                prefab = entity.itemInfo.value.itemList[index];
+                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+
+                view = obj.AddComponent<ItemView>();
                 break;
 
             default:

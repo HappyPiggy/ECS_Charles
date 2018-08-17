@@ -19,14 +19,41 @@ public class EntityFactoryService : IEntityFactoryService
     }
 
 
+    /// <summary>
+    ///  创造道具
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="spawnPos"></param>
+    /// <returns></returns>
+    public GameEntity CreateItem(ulong uid,Vector2 spawnPos)
+    {
+        CheckDuplicateEntity(uid);
+        GameEntity gameEntity = context.CreateEntity();
+
+        gameEntity.AddUID(uid);
+        gameEntity.AddUnitType(UnitType.Item);
+        gameEntity.AddPosition(spawnPos);
+        gameEntity.AddRotation(Quaternion.identity);
+
+        ItemInfo itemInfo = configService.GetItemInfo();
+        gameEntity.AddItemInfo(itemInfo);
+
+        var index=MathUtils.RandomInt(0, (int)ItemType.None- 1);
+        gameEntity.AddTypeIndex(index);
+
+        gameEntity.AddAsset("Item");
+
+        return gameEntity;
+    }
 
     /// <summary>
     /// 创建敌人死亡后的涂鸦
     /// </summary>
     /// <param name="uid"></param>
     /// <param name="spawnPos"></param>
+    /// <param name="typeIndex"></param>
     /// <returns></returns>
-    public GameEntity CreateSpilt(ulong uid,Vector2 spawnPos,ColorInfo colorInfo)
+    public GameEntity CreateSpilt(ulong uid,Vector2 spawnPos,int typeIndex)
     {
         CheckDuplicateEntity(uid);
         GameEntity gameEntity = context.CreateEntity();
@@ -39,11 +66,9 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddRotation(randomQuaternion);
         gameEntity.AddEnemyState(EnemyState.None);
 
-        gameEntity.isDestroyed = false;
-
         SpiltInfo spiltInfo = configService.GetSpiltInfo();
         gameEntity.AddSpiltInfo(spiltInfo);
-        gameEntity.AddColorInfo(colorInfo);
+        gameEntity.AddTypeIndex(typeIndex);
 
         gameEntity.AddAsset("Spilt");
 
@@ -66,7 +91,7 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddPosition(spawnPos);
         gameEntity.AddRotation(Quaternion.identity);
         gameEntity.AddEnemyState(EnemyState.None);
-        gameEntity.isEnemy = true;
+
         gameEntity.isDestroyed = false;
 
         EnemyInfo enemyInfo = configService.GetEnemyInfo();
@@ -120,11 +145,13 @@ public class EntityFactoryService : IEntityFactoryService
 
         gameEntity.ReplacePosition(spawnPos);
         gameEntity.ReplaceRotation(rotation);
+        gameEntity.isInvincible = false; //不开启无敌
 
         PlayerInfo playerInfo = configService.GetPlayerInfo();
         gameEntity.ReplacePlayerInfo(playerInfo);
         gameEntity.ReplaceSpeed(playerInfo.playerConfig.moveSpeed);
         gameEntity.AddAsset("Player");
+        context.ReplaceGlobalHero(gameEntity);
 
         return gameEntity;
     }

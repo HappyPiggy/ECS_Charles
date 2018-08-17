@@ -27,6 +27,18 @@ public enum UnitType
     Enemy,
     Spilt, //怪物死后效果
     GameMap, //游戏背景
+    Item,//游戏道具
+}
+
+public enum EffectType
+{
+    Missile,
+}
+
+public enum ItemType
+{
+    Shield=0,//保护罩
+    None=1,
 }
 
 public enum PlayerType

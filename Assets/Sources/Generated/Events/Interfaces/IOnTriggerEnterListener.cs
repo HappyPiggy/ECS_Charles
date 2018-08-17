@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface IOnTriggerEnterListener {
-    void OnOnTriggerEnter(GameEntity entity);
+    void OnOnTriggerEnter(GameEntity entity, UnityEngine.Collider2D collision);
 }

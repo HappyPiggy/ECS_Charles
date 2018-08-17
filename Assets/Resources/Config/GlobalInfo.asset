@@ -15,3 +15,4 @@ MonoBehaviour:
   mapInfo: {fileID: 11400000, guid: 1b8bc87d7704459448a1e8672cee28aa, type: 2}
   enemyInfo: {fileID: 11400000, guid: 103e227401f453543b298ca575d7d2fa, type: 2}
   spiltInfo: {fileID: 11400000, guid: c7b03c2601ce317458ec033054b46b86, type: 2}
+  itemInfo: {fileID: 11400000, guid: 37e713b44febbaa40b733aa95f453f06, type: 2}

@@ -8,6 +8,7 @@ public class GlobalInfo : ScriptableObject
     public MapInfo mapInfo;
     public EnemyInfo enemyInfo;
     public SpiltInfo spiltInfo;
+    public ItemInfo itemInfo;
 }
 
 

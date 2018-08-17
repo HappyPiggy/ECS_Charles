@@ -57,5 +57,10 @@ public class ConfigService
         return globalInfo.spiltInfo;
     }
 
+    public ItemInfo GetItemInfo()
+    {
+        return globalInfo.itemInfo;
+    }
+
 
 }

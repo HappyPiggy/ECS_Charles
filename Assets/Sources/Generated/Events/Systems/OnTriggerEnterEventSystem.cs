@@ -21,15 +21,15 @@ public sealed class OnTriggerEnterEventSystem : Entitas.ReactiveSystem<GameEntit
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.isOnTriggerEnter;
+        return entity.hasOnTriggerEnter;
     }
 
     protected override void Execute(System.Collections.Generic.List<GameEntity> entities) {
         foreach (var e in entities) {
-            
+            var component = e.onTriggerEnter;
             foreach (var listenerEntity in _listeners) {
                 foreach (var listener in listenerEntity.onTriggerEnterListener.value) {
-                    listener.OnOnTriggerEnter(e);
+                    listener.OnOnTriggerEnter(e, component.collision);
                 }
             }
         }

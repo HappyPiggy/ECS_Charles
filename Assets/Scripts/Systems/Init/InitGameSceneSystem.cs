@@ -33,7 +33,6 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
         Vector2 playerSpawnPos = new Vector2(0, 4);
         Quaternion playerRotation = Quaternion.identity;
         GameEntity heroEntity= entityFactoryService.CreatePlayer(UidUtils.Uid, playerSpawnPos, playerRotation);
-        context.ReplaceGlobalHero(heroEntity);
 
         //创建游戏地图
         entityFactoryService.CreateMap(UidUtils.Uid);

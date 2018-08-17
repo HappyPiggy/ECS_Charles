@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 1589136386313648, guid: e6b449f7f757d6848b2de672a55114be, type: 2}
   - {fileID: 1903754603075860, guid: bd6a9e77f9e2ce34bb7088ff9bb75267, type: 2}
   - {fileID: 1454621370109766, guid: 4a287c8d8aef3fe4b818b1a8aa2d8b49, type: 2}
-  speed: 0.6
+  speed: 0.5
