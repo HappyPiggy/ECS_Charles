@@ -22,11 +22,12 @@ public class GameSystemsController : Feature
         Add(new EmitInputSystem(contexts, services.inputService));
 
         //in game
-        Add(new CollisionDetectionSystem(contexts));
+        Add(new CollisionDetectionSystem(contexts, services.entityFactoryService));
         Add(new SpawnEnemySystem(contexts, services)); 
         Add(new EnemyMoveSystem(contexts, services));
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
         Add(new SpawnItemSystem(contexts, services));
+        Add(new PlayerItemFollowSystem(contexts, services));
 
 
         //end

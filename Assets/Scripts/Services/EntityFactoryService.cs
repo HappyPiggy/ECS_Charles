@@ -20,7 +20,33 @@ public class EntityFactoryService : IEntityFactoryService
 
 
     /// <summary>
-    ///  创造道具
+    /// 创造角色当前身上的道具
+    /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="spawnPos"></param>
+    /// <param name="itemType">当前吃的道具类型</param>
+    /// <returns></returns>
+    public GameEntity CreatePlayerItem(ulong uid, Vector2 spawnPos,int itemType)
+    {
+        CheckDuplicateEntity(uid);
+        GameEntity gameEntity = context.CreateEntity();
+
+        gameEntity.AddUID(uid);
+        gameEntity.AddUnitType(UnitType.PlayerItem);
+        gameEntity.AddItemType((ItemType)itemType);
+        gameEntity.AddPosition(spawnPos);
+        gameEntity.AddRotation(Quaternion.identity);
+
+        ItemInfo playerItemInfo = configService.GetPlayerItemInfo();
+        gameEntity.AddItemInfo(playerItemInfo);
+
+        gameEntity.AddAsset("PlayerItem");
+
+        return gameEntity;
+    }
+
+    /// <summary>
+    ///  创造地图上的道具
     /// </summary>
     /// <param name="uid"></param>
     /// <param name="spawnPos"></param>
@@ -39,7 +65,7 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddItemInfo(itemInfo);
 
         var index=MathUtils.RandomInt(0, (int)ItemType.None- 1);
-        gameEntity.AddTypeIndex(index);
+        gameEntity.AddItemType((ItemType)index);
 
         gameEntity.AddAsset("Item");
 
@@ -145,6 +171,7 @@ public class EntityFactoryService : IEntityFactoryService
 
         gameEntity.ReplacePosition(spawnPos);
         gameEntity.ReplaceRotation(rotation);
+        gameEntity.ReplaceItemType(ItemType.None); //人物当前的身上道具
         gameEntity.isInvincible = false; //不开启无敌
 
         PlayerInfo playerInfo = configService.GetPlayerInfo();

@@ -306,6 +306,7 @@
     <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Input\EmitInputSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\PlayerItemFollowSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnSpiltSystem.cs" />

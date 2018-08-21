@@ -12,9 +12,10 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
     private EntityFactoryService entityFactoryService;
     private GameEntity heroEntity;
 
-    public CollisionDetectionSystem(Contexts contexts) : base(contexts.game)
+    public CollisionDetectionSystem(Contexts contexts,IEntityFactoryService entityFactoryService) : base(contexts.game)
     {
         this.contexts = contexts;
+        this.entityFactoryService = entityFactoryService as EntityFactoryService;
     }
 
     public void Initialize()
@@ -35,33 +36,78 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
     protected override void Execute(List<GameEntity> entities)
     {
-        //有关角色的碰撞
-        heroEntity = contexts.game.globalHero.value;
-        if (heroEntity.hasOnTriggerEnter)
+        foreach (var item in entities)
         {
-            var collision = heroEntity.onTriggerEnter.collision;
-            var tag = collision.gameObject.tag;
-            BaseView view = collision.gameObject.GetComponent<BaseView>();
-            switch (tag)
+            if (item.hasEnemyInfo) //敌人相关碰撞
             {
-                //怪物移动才进行碰撞检测
-                case "Enemy":
-                    if(view!=null && view.gameEntity.isMover && !heroEntity.isInvincible)
-                        heroEntity.ReplaceDead(true);
-                    break;
-
-                case "Item": 
-                    break;
-
-                default:
-                    Debug.Log("未知碰撞体 :"+ tag);
-                    break;
-
+                EnemyCollision(item);
+            }
+            else if (item.hasPlayerInfo)  //有关角色的碰撞
+            {
+                HeroCollision(item);
             }
         }
+    }
 
 
+    /// <summary>
+    /// 敌人相关碰撞
+    /// </summary>
+    /// <param name="item"></param>
+    private void EnemyCollision(GameEntity item)
+    {
+        var collision = item.onTriggerEnter.collision;
+        var tag = collision.gameObject.tag;
+        BaseView view = collision.gameObject.GetComponent<BaseView>();
 
+        switch (tag)
+        {
+
+            case "PlayerItem":
+                Debug.Log("xx");
+                break;
+            default:
+                // Debug.Log("未知碰撞体 :" + tag);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 主角相关碰撞
+    /// </summary>
+    /// <param name="item"></param>
+    private void HeroCollision(GameEntity item)
+    {
+        heroEntity = contexts.game.globalHero.value;
+
+        var collision = item.onTriggerEnter.collision;
+        var tag = collision.gameObject.tag;
+        BaseView view = collision.gameObject.GetComponent<BaseView>();
+
+        switch (tag)
+        {
+            //怪物移动才进行碰撞检测
+            case "Enemy":
+                if (view != null && view.gameEntity.isMover && !heroEntity.isInvincible)
+                    heroEntity.ReplaceDead(true);
+                break;
+
+            case "Item"://碰到相同道具效果不叠加
+                        //  Debug.Log(view.gameEntity.typeIndex.value);
+                var type = view.gameEntity.itemType.value;
+                if (type != heroEntity.itemType.value)
+                {
+                    entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
+                    heroEntity.ReplaceItemType(type);
+                }
+
+                view.gameEntity.isDestroyed = true;
+                break;
+            default:
+                Debug.Log("未知碰撞体 :" + tag);
+                break;
+
+        }
     }
 
 

@@ -18,7 +18,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     public void Initialize()
     {
-        enemyGroup = contexts.game.GetGroup(GameMatcher.AnyOf(GameMatcher.EnemyInfo,GameMatcher.ItemInfo));
+        enemyGroup = contexts.game.GetGroup(GameMatcher.Asset);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -46,7 +46,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
                     item.isMover = false;
                 }
             }
-            else if (item.hasItemInfo) //消除道具
+            else if (item.hasItemInfo || item.hasItemType) //消除道具
             {
                 item.isDestroyed = true;
             }

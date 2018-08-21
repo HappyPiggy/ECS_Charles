@@ -79,11 +79,18 @@ public class UnityViewService : IAssetListener, IViewService
                 break;
 
             case UnitType.Item:
-                index = entity.typeIndex.value;
+                index = (int)entity.itemType.value;
                 prefab = entity.itemInfo.value.itemList[index];
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
 
                 view = obj.AddComponent<ItemView>();
+                break;
+            case UnitType.PlayerItem:
+                index =(int) entity.itemType.value;
+                prefab = entity.itemInfo.value.itemList[index];
+                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+
+                view = obj.GetComponent<BaseView>();  //预先在人物item的gameobjct上挂好脚本
                 break;
 
             default:

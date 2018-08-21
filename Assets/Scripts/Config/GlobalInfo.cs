@@ -9,6 +9,7 @@ public class GlobalInfo : ScriptableObject
     public EnemyInfo enemyInfo;
     public SpiltInfo spiltInfo;
     public ItemInfo itemInfo;
+    public ItemInfo playerItemInfo;
 }
 
 

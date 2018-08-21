@@ -13,13 +13,13 @@ public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
     private float curEuler = 0;
     private float oldEuler = 0;
 
-    private GameObject shieldEffect;//保护罩
-    private ShieldView shieldView;
+ //   private GameObject shieldEffect;//保护罩
+ //   private ShieldView shieldView;
 
     private void Start()
     {
-        shieldEffect = transform.Find("shield").gameObject;
-        shieldView = shieldEffect.AddComponent<ShieldView>();
+       // shieldEffect = transform.Find("shield").gameObject;
+        //shieldView = shieldEffect.AddComponent<ShieldView>();
 
         HideAllEffect();
 
@@ -99,7 +99,7 @@ public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
     public void OnDead(GameEntity entity, bool value)
     {
         gameEntity.isMover = false;
-        shieldView.OnDestroyedView();
+    //    shieldView.OnDestroyedView();
         HideAllEffect();
         OnDestroyedView();
     }
@@ -110,47 +110,11 @@ public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
     /// </summary>
     private void HideAllEffect()
     {
-        shieldEffect.SetActive(false);
+      //  shieldEffect.SetActive(false);
     }
 
     //ecs碰撞检测的监听
     public void OnOnTriggerEnter(GameEntity entity, Collider2D collision)
     {
-        //因为碰撞检测消息是广播
-        //此处需要判断是不是自身的碰撞检测
-        //if(entity == gameEntity)
-        //{
-        //    BaseView view = collision.gameObject.GetComponent<BaseView>();
-        //    if (collision.gameObject.tag == "Item")
-        //    {
-        //        if (view.gameEntity != null)
-        //        {
-        //            var index = view.gameEntity.typeIndex.value;
-        //            ShowEffect(index);
-        //            view.gameEntity.isDestroyed = true;
-        //        }
-                  
-        //    }
-        //}
     }
-
-
-    ///// <summary>
-    ///// player吃道具后的特效显示
-    ///// </summary>
-    ///// <param name="index">道具类型</param>
-    //private void ShowEffect(int index)
-    //{
-    //    switch (index)
-    //    {
-    //        case (int)ItemType.Shield:
-    //            gameEntity.isInvincible=true; //生成了保护罩后 无敌
-    //            shieldEffect.SetActive(true);
-    //            break;
-
-    //        default:
-    //            Debug.Log("未知道具类型:"+ index);
-    //            break;
-    //    }
-    //}
 }

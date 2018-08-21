@@ -62,5 +62,9 @@ public class ConfigService
         return globalInfo.itemInfo;
     }
 
+    public ItemInfo GetPlayerItemInfo()
+    {
+        return globalInfo.playerItemInfo;
+    }
 
 }

@@ -1,9 +1,11 @@
 ﻿using DG.Tweening;
+using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 /// <summary>
 /// 保护罩view
 /// </summary>
-public class ShieldView:BaseView
+public class ShieldView:BaseView,IGameDestroyedListener
 {
 
     private float delayTime = 0.5f;
@@ -11,13 +13,16 @@ public class ShieldView:BaseView
 
     private void Start()
     {
-
+        gameEntity.AddGameDestroyedListener(this);
         DoScale();
 
     }
 
+
+
     protected override void Update()
     {
+        transform.localPosition = gameEntity.position.value;
     }
 
     private void DoScale()
@@ -36,8 +41,12 @@ public class ShieldView:BaseView
 
     public override void OnDestroyedView()
     {
-
+        base.OnDestroyedView();
     }
 
-
+    public void OnDestroyed(GameEntity entity)
+    {
+        OnDestroyedView();
+        //Debug.Log("OnDestroyed");
+    }
 }

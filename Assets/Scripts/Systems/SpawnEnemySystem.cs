@@ -42,7 +42,7 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
             if (timer > contexts.game.enemySpawnIntervalTime.value)
             {
                 //todo 需要一个系统来管理每次生成怪物的数量和间隔时间
-                var count = MathUtils.RandomInt(2, 6);
+                var count = MathUtils.RandomInt(1, 1);
                 var time = MathUtils.RandomFloat(0.5f, 1.5f);
                 contexts.game.ReplaceEnemySpawnCount(count);
                 contexts.game.ReplaceEnemySpawnIntervalTime(time);

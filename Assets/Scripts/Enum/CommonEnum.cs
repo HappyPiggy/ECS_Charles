@@ -28,6 +28,7 @@ public enum UnitType
     Spilt, //怪物死后效果
     GameMap, //游戏背景
     Item,//游戏道具
+    PlayerItem,//玩家身上道具
 }
 
 public enum EffectType
