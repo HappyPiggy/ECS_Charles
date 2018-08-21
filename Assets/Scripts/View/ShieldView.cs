@@ -36,7 +36,18 @@ public class ShieldView:BaseView,IGameDestroyedListener
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            gameEntity.ReplaceOnTriggerEnter(collision);
+        }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            gameEntity.ReplaceOnTriggerEnter(collision);
+        }
     }
 
     public override void OnDestroyedView()
@@ -47,6 +58,5 @@ public class ShieldView:BaseView,IGameDestroyedListener
     public void OnDestroyed(GameEntity entity)
     {
         OnDestroyedView();
-        //Debug.Log("OnDestroyed");
     }
 }

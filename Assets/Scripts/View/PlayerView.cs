@@ -7,25 +7,17 @@ using UnityEngine;
 /// <summary>
 /// 主角view
 /// </summary>
-public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
+public class PlayerView : BaseView,IDeadListener
 {
 
     private float curEuler = 0;
     private float oldEuler = 0;
 
- //   private GameObject shieldEffect;//保护罩
- //   private ShieldView shieldView;
+
 
     private void Start()
     {
-       // shieldEffect = transform.Find("shield").gameObject;
-        //shieldView = shieldEffect.AddComponent<ShieldView>();
-
-        HideAllEffect();
-
-
         gameEntity.AddDeadListener(this);
-        gameEntity.AddOnTriggerEnterListener(this);
     }
 
 
@@ -34,7 +26,6 @@ public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
     protected override void Update()
     {
         base.Update();
-
 
         PlayerMove();
     }
@@ -84,13 +75,48 @@ public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
     //unity 碰撞检测接口
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameEntity.ReplaceOnTriggerEnter(collision);
+        //开启无敌 防止人物移动速度过快导致立即死亡
+        if (collision.gameObject.name == "shield")
+        {
+            gameEntity.isInvincible = true;
+        }
+
+        if (collision.gameObject.tag == "Effect")
+        {
+            return;
+        }
+        
+        if (collision.gameObject.tag != "PlayerItem")
+        {
+            gameEntity.ReplaceOnTriggerEnter(collision);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //开启无敌 防止人物移动速度过快导致立即死亡
+        if (collision.gameObject.name == "shield")
+        {
+            gameEntity.isInvincible = true;
+        }
 
-        gameEntity.ReplaceOnTriggerEnter(collision);
+        if (collision.gameObject.tag == "Effect")
+        {
+            return;
+        }
+
+        if (collision.gameObject.tag != "PlayerItem")
+        {
+            gameEntity.ReplaceOnTriggerEnter(collision);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Missile")
+        {
+            gameEntity.isInvincible = false;
+        }
     }
 
 
@@ -99,22 +125,11 @@ public class PlayerView : BaseView,IDeadListener,IOnTriggerEnterListener
     public void OnDead(GameEntity entity, bool value)
     {
         gameEntity.isMover = false;
-    //    shieldView.OnDestroyedView();
-        HideAllEffect();
         OnDestroyedView();
     }
 
 
-    /// <summary>
-    /// 隐藏所有人物特效
-    /// </summary>
-    private void HideAllEffect()
-    {
-      //  shieldEffect.SetActive(false);
-    }
 
-    //ecs碰撞检测的监听
-    public void OnOnTriggerEnter(GameEntity entity, Collider2D collision)
-    {
-    }
+
+
 }

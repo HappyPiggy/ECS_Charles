@@ -94,7 +94,7 @@ public class EntityFactoryService : IEntityFactoryService
 
         SpiltInfo spiltInfo = configService.GetSpiltInfo();
         gameEntity.AddSpiltInfo(spiltInfo);
-        gameEntity.AddTypeIndex(typeIndex);
+        gameEntity.AddColorType(typeIndex);
 
         gameEntity.AddAsset("Spilt");
 
@@ -178,6 +178,7 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.ReplacePlayerInfo(playerInfo);
         gameEntity.ReplaceSpeed(playerInfo.playerConfig.moveSpeed);
         gameEntity.AddAsset("Player");
+
         context.ReplaceGlobalHero(gameEntity);
 
         return gameEntity;

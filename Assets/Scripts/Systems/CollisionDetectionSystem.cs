@@ -12,6 +12,8 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
     private EntityFactoryService entityFactoryService;
     private GameEntity heroEntity;
 
+    private Transform viewObjectRoot;
+
     public CollisionDetectionSystem(Contexts contexts,IEntityFactoryService entityFactoryService) : base(contexts.game)
     {
         this.contexts = contexts;
@@ -20,7 +22,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
     public void Initialize()
     {
-
+     
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -36,35 +38,49 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
     protected override void Execute(List<GameEntity> entities)
     {
+        if(heroEntity==null)
+            heroEntity = contexts.game.globalHero.value;
+
+        if(viewObjectRoot == null)
+            viewObjectRoot = GameObject.Find("Game").transform;
+
         foreach (var item in entities)
         {
-            if (item.hasEnemyInfo) //敌人相关碰撞
+            if (item.hasUnitType && item.unitType.value==UnitType.PlayerItem && !item.isHero) //人物携带道具相关碰撞
             {
-                EnemyCollision(item);
+                PlayerItemCollision(item);
             }
-            else if (item.hasPlayerInfo)  //有关角色的碰撞
+            else if (item.isHero)  //角色相关碰撞
             {
                 HeroCollision(item);
+            }else if (item.hasEnemyInfo)
+            {
+
             }
         }
     }
 
 
     /// <summary>
-    /// 敌人相关碰撞
+    /// 敌人碰撞带道具的player
     /// </summary>
-    /// <param name="item"></param>
-    private void EnemyCollision(GameEntity item)
+    /// <param name="item">人物身上的道具</param>
+    private void PlayerItemCollision(GameEntity item)
     {
         var collision = item.onTriggerEnter.collision;
-        var tag = collision.gameObject.tag;
+        var type = item.itemType.value;
         BaseView view = collision.gameObject.GetComponent<BaseView>();
 
-        switch (tag)
+        switch (type)
         {
-
-            case "PlayerItem":
-                Debug.Log("xx");
+            //保护罩碰到怪物后 保护罩消失
+            case ItemType.Shield:
+                if (view.gameEntity.isMover)
+                {
+                    MissileEffect(heroEntity.position.value);
+                    heroEntity.ReplaceItemType(ItemType.None);
+                    item.isDestroyed = true;
+                }
                 break;
             default:
                 // Debug.Log("未知碰撞体 :" + tag);
@@ -78,22 +94,18 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
     /// <param name="item"></param>
     private void HeroCollision(GameEntity item)
     {
-        heroEntity = contexts.game.globalHero.value;
-
         var collision = item.onTriggerEnter.collision;
         var tag = collision.gameObject.tag;
         BaseView view = collision.gameObject.GetComponent<BaseView>();
 
         switch (tag)
         {
-            //怪物移动才进行碰撞检测
-            case "Enemy":
+            case "Enemy": //怪物移动才进行碰撞检测
                 if (view != null && view.gameEntity.isMover && !heroEntity.isInvincible)
                     heroEntity.ReplaceDead(true);
                 break;
 
             case "Item"://碰到相同道具效果不叠加
-                        //  Debug.Log(view.gameEntity.typeIndex.value);
                 var type = view.gameEntity.itemType.value;
                 if (type != heroEntity.itemType.value)
                 {
@@ -103,11 +115,25 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
                 view.gameEntity.isDestroyed = true;
                 break;
+            case "Effect": 
+                break;
             default:
-                Debug.Log("未知碰撞体 :" + tag);
+                Debug.Log("未知碰撞体 :" + collision.gameObject.name);
                 break;
 
         }
+    }
+
+    /// <summary>
+    /// 保护罩破裂后产生爆炸
+    /// </summary>
+    /// <param name="spawnPos"></param>
+    private void MissileEffect(Vector3 spawnPos)
+    {
+        var res = Resources.Load("Unit/Effect/Missile");
+        GameObject go = GameObject.Instantiate(res,spawnPos,Quaternion.identity,viewObjectRoot) as GameObject;
+        go.name = res.name;
+        go.AddComponent<MissileView>();
     }
 
 

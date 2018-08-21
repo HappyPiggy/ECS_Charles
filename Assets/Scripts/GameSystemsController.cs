@@ -27,7 +27,7 @@ public class GameSystemsController : Feature
         Add(new EnemyMoveSystem(contexts, services));
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
         Add(new SpawnItemSystem(contexts, services));
-        Add(new PlayerItemFollowSystem(contexts, services));
+        Add(new PlayerItemSystem(contexts, services));
 
 
         //end

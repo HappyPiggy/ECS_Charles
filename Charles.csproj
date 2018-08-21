@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -306,7 +308,7 @@
     <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Input\EmitInputSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\PlayerItemFollowSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\PlayerItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnSpiltSystem.cs" />
@@ -322,6 +324,7 @@
     <Compile Include="Assets\Scripts\Utils\RecyclerKit\TrashManRecycleBin.cs" />
     <Compile Include="Assets\Scripts\Utils\UidUtils.cs" />
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
+    <Compile Include="Assets\Scripts\View\Effect\MissileView.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
     <Compile Include="Assets\Scripts\View\ItemView.cs" />
     <Compile Include="Assets\Scripts\View\MapView.cs" />
@@ -360,6 +363,7 @@
     <Compile Include="Assets\Sources\Generated\Feature.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameAssetListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameColorTypeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDeadComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDeadListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameDestroyedComponent.cs" />
@@ -388,7 +392,6 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameRotationComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpeedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpiltInfoComponent.cs" />
-    <Compile Include="Assets\Sources\Generated\Game\Components\GameTypeIndexComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameUIDComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameUnitTypeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameViewComponent.cs" />

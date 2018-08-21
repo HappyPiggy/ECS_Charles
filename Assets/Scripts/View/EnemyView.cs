@@ -32,15 +32,6 @@ public class EnemyView : BaseView,IDeadListener
         base.Update();
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    gameEntity.ReplaceOnTriggerEnter(collision);
-    //}
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    gameEntity.ReplaceOnTriggerEnter(collision);
-    //}
 
     /// <summary>
     /// 延时移动

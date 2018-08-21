@@ -57,13 +57,13 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
             //弹出结算面板
             contexts.game.ReplaceGameProgress(GameProgressState.EndGame);
         }
+        //游戏中敌人死亡
         else if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
             foreach (var enemy in entities)
             {
-                if (enemy.hasDead && enemy.dead.value == true)
+                if (enemy.enemyState.value==EnemyState.Die)
                 {
-                    enemy.ReplaceEnemyState(EnemyState.Die);
                     enemy.ReplaceDead(true);
                     enemy.isMover = false;
                     CreateSpilt(enemy);
@@ -83,10 +83,6 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
         var pos = enemy.position.value;
         var index = (int)enemy.uID.value % (enemy.enemyInfo.value.enemyList.Length);
 
-        //ColorInfo colorInfo = new ColorInfo
-        //{
-        //    color = ConstantUtils.spiltColorList[index]
-        //};
         entityFactoryService.CreateSpilt(UidUtils.Uid, pos, index);
     }
 }

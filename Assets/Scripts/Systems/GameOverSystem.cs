@@ -34,6 +34,8 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     protected override void Execute(List<GameEntity> entities)
     {
+        contexts.game.ReplaceGameProgress(GameProgressState.GameOver);
+
         foreach (var item in enemyGroup.GetEntities())
         {
             //消除屏幕上的敌人
@@ -53,7 +55,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
         }
 
-        contexts.game.ReplaceGameProgress(GameProgressState.GameOver);
+       
     }
 
 

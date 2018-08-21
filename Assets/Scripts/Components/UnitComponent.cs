@@ -26,16 +26,19 @@ public class ItemTypeComponent : IComponent
 }
 
 [Game]
+public class ColorTypeComponent : IComponent
+{
+    public int value;
+}
+
+[Game]
 public class EnemyStateComponent : IComponent
 {
     public EnemyState value;
 }
 
-[Game]
-public class TypeIndexComponent : IComponent
-{
-    public int value;
-}
+
+
 
 
 [Game]

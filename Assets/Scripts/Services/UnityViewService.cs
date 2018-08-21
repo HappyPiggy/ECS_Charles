@@ -73,7 +73,7 @@ public class UnityViewService : IAssetListener, IViewService
                 index = MathUtils.RandomInt(0, entity.spiltInfo.value.spiltList.Length-1);
                 prefab = entity.spiltInfo.value.spiltList[index];
                 obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
-                obj.GetComponent<SpriteRenderer>().color = ConstantUtils.spiltColorList[entity.typeIndex.value];
+                obj.GetComponent<SpriteRenderer>().color = ConstantUtils.spiltColorList[entity.colorType.value];
 
                 view = obj.AddComponent<SpiltView>();
                 break;
