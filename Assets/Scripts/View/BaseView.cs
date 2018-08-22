@@ -46,12 +46,12 @@ public class BaseView : MonoBehaviour, IView
 
     /// <summary>
     /// 回收unityview对象 撤销和entity的链接
+    /// 用于销毁gameentity时自动调用的接口
     /// </summary>
     public virtual void OnDestroyedView()
     {
         DestroyUnityObject();
         isDestroyed = true;
-        gameEntity.isDestroyed = isDestroyed;
         gameEntity = null;
     }
 

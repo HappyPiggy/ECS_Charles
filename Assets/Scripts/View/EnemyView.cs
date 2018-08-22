@@ -63,7 +63,12 @@ public class EnemyView : BaseView,IDeadListener
     public void OnDead(GameEntity entity, bool value)
     {
         gameEntity.isEnable = false;
-        OnDestroyedView();
+        gameEntity.isDestroyed = true;
+    }
+
+    public override void OnDestroyedView()
+    {
+        base.OnDestroyedView();
     }
 
 

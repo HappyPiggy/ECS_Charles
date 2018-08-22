@@ -13,14 +13,12 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -300,18 +298,19 @@
     <Compile Include="Assets\Scripts\Services\Services.cs" />
     <Compile Include="Assets\Scripts\Services\UnityInputService.cs" />
     <Compile Include="Assets\Scripts\Services\UnityViewService.cs" />
-    <Compile Include="Assets\Scripts\Systems\ChangeMoveDirectionSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\CollisionDetectionSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\EnemyMoveSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\GameEndSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\GameOverSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\EntityDestroySystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\ChangeMoveDirectionSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\CollisionDetectionSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\EnemyMoveSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\GameEndSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\GameOverSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\PlayerItemSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\SpawnEnemySystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\SpawnItemSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\SpawnSpiltSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Input\EmitInputSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\PlayerItemSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\SpawnItemSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\SpawnSpiltSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleManager.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleType.cs" />
@@ -326,21 +325,25 @@
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
     <Compile Include="Assets\Scripts\View\Effect\MissileView.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
+    <Compile Include="Assets\Scripts\View\Item\MachineGunView.cs" />
+    <Compile Include="Assets\Scripts\View\Item\ShieldView.cs" />
     <Compile Include="Assets\Scripts\View\ItemView.cs" />
     <Compile Include="Assets\Scripts\View\MapView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerView.cs" />
-    <Compile Include="Assets\Scripts\View\ShieldView.cs" />
     <Compile Include="Assets\Scripts\View\SpiltView.cs" />
     <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
     <Compile Include="Assets\Scripts\View\UI\EndGamePad.cs" />
     <Compile Include="Assets\Sources\Generated\Components\Interfaces\IDestroyedEntity.cs" />
+    <Compile Include="Assets\Sources\Generated\Components\Interfaces\IViewEntity.cs" />
     <Compile Include="Assets\Sources\Generated\Contexts.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\AssetListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\DeadListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GameProgressListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\GameViewListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GlobalHeroListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\InputDestroyedListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\InputViewListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\OnTriggerEnterListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\OnTriggerExitListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\EventSystems.cs" />
@@ -348,16 +351,20 @@
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IDeadListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameDestroyedListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameProgressListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameViewListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGlobalHeroListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IInputDestroyedListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IInputViewListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IOnTriggerEnterListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IOnTriggerExitListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\AssetEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\DeadEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameDestroyedEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameProgressEventSystem.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\GameViewEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GlobalHeroEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\InputDestroyedEventSystem.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\InputViewEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\OnTriggerEnterEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\OnTriggerExitEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Feature.cs" />
@@ -375,6 +382,7 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameGameViewListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGlobalHeroComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGlobalHeroListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameHeroComponent.cs" />
@@ -403,7 +411,9 @@
     <Compile Include="Assets\Sources\Generated\Input\Components\InputControlPadInputComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\Components\InputDestroyedComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\Components\InputInputDestroyedListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\Components\InputInputViewListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\Components\InputMoveJoyStickComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Input\Components\InputViewComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputAttribute.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputComponentsLookup.cs" />
     <Compile Include="Assets\Sources\Generated\Input\InputContext.cs" />

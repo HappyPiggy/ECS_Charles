@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class ItemView :BaseView,IGameDestroyedListener
+public class ItemView :BaseView
 {
 
     private void Start()
     {
-        gameEntity.AddGameDestroyedListener(this);
     }
 
-    public void OnDestroyed(GameEntity entity)
+    public override void OnDestroyedView()
     {
-        OnDestroyedView();
+        base.OnDestroyedView();
     }
-
 
 }

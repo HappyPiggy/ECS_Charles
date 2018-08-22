@@ -32,6 +32,7 @@ public class MapView : BaseView,IGameProgressListener
     /// </summary>
     private void CleanGameScene()
     {
+        gameEntity.isDestroyed = true;
         UidUtils.ResetUid();
         ModuleManager.Instance.HideAll();
         Contexts.sharedInstance.game.ReplaceGameProgress(GameProgressState.StartGame);

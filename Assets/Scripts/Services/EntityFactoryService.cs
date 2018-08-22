@@ -64,7 +64,8 @@ public class EntityFactoryService : IEntityFactoryService
         ItemInfo itemInfo = configService.GetItemInfo();
         gameEntity.AddItemInfo(itemInfo);
 
-        var index=MathUtils.RandomInt(0, (int)ItemType.None- 1);
+        //var index=MathUtils.RandomInt(0, (int)ItemType.None);
+        var index = 0;
         gameEntity.AddItemType((ItemType)index);
 
         gameEntity.AddAsset("Item");

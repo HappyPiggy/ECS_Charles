@@ -38,8 +38,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
     protected override void Execute(List<GameEntity> entities)
     {
-        if(heroEntity==null)
-            heroEntity = contexts.game.globalHero.value;
+        heroEntity = contexts.game.globalHero.value;
 
         if(viewObjectRoot == null)
             viewObjectRoot = GameObject.Find("Game").transform;
@@ -79,6 +78,8 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
                 {
                     MissileEffect(heroEntity.position.value);
                     heroEntity.ReplaceItemType(ItemType.None);
+
+                    item.ReplaceItemType(ItemType.None);
                     item.isDestroyed = true;
                 }
                 break;
@@ -115,8 +116,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
                 view.gameEntity.isDestroyed = true;
                 break;
-            case "Effect": 
-                break;
+
             default:
                 Debug.Log("未知碰撞体 :" + collision.gameObject.name);
                 break;

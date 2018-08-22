@@ -29,7 +29,7 @@ public  static class MathUtils
     }
 
     /// <summary>
-    /// 生成随机float
+    /// 生成随机int
     /// </summary>
     /// <param name="min"></param>
     /// <param name="max"></param>

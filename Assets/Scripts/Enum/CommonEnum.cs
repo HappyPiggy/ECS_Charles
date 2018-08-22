@@ -39,7 +39,8 @@ public enum EffectType
 public enum ItemType
 {
     Shield=0,//保护罩
-    None=1,
+    MachineGun=1,//机关枪
+    None=2,
 }
 
 public enum PlayerType

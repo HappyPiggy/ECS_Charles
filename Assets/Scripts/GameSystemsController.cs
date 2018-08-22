@@ -22,8 +22,8 @@ public class GameSystemsController : Feature
         Add(new EmitInputSystem(contexts, services.inputService));
 
         //in game
+        Add(new SpawnEnemySystem(contexts, services));
         Add(new CollisionDetectionSystem(contexts, services.entityFactoryService));
-        Add(new SpawnEnemySystem(contexts, services)); 
         Add(new EnemyMoveSystem(contexts, services));
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
         Add(new SpawnItemSystem(contexts, services));
@@ -38,6 +38,9 @@ public class GameSystemsController : Feature
 
         // eventListener
         Add(new EventSystems(contexts));
+
+        //clean
+        Add(new EntityDestroySystem(contexts));
 
     }
 

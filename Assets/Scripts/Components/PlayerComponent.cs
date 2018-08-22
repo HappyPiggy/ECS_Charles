@@ -53,7 +53,7 @@ public class RotationComponent : IComponent
     public Quaternion value;
 }
 
-[Game]
+[Game,Input,Event(true)]
 public class ViewComponent : IComponent
 {
     public IView instance;

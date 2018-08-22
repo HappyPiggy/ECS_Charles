@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 保护罩view
 /// </summary>
-public class ShieldView:BaseView,IGameDestroyedListener
+public class ShieldView:BaseView//,IGameDestroyedListener
 {
 
     private float delayTime = 0.5f;
@@ -13,9 +13,8 @@ public class ShieldView:BaseView,IGameDestroyedListener
 
     private void Start()
     {
-        gameEntity.AddGameDestroyedListener(this);
+       // gameEntity.AddGameDestroyedListener(this);
         DoScale();
-
     }
 
 
@@ -30,8 +29,6 @@ public class ShieldView:BaseView,IGameDestroyedListener
         var curScale = scale;
         transform.localScale = Vector3.zero;
         transform.DOScale(curScale, delayTime).SetEase(Ease.OutBounce);
-
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,8 +52,8 @@ public class ShieldView:BaseView,IGameDestroyedListener
         base.OnDestroyedView();
     }
 
-    public void OnDestroyed(GameEntity entity)
-    {
-        OnDestroyedView();
-    }
+    //public void OnDestroyed(GameEntity entity)
+    //{
+    //    OnDestroyedView();
+    //}
 }

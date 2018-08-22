@@ -125,9 +125,14 @@ public class PlayerView : BaseView,IDeadListener
     public void OnDead(GameEntity entity, bool value)
     {
         gameEntity.isMover = false;
-        OnDestroyedView();
+        gameEntity.isDestroyed = true;
     }
 
+
+    public override void OnDestroyedView()
+    {
+        base.OnDestroyedView();
+    }
 
 
 

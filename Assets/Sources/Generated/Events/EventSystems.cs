@@ -17,5 +17,7 @@ public sealed class EventSystems : Feature {
         Add(new GlobalHeroEventSystem(contexts)); // priority: 0
         Add(new OnTriggerEnterEventSystem(contexts)); // priority: 0
         Add(new OnTriggerExitEventSystem(contexts)); // priority: 0
+        Add(new InputViewEventSystem(contexts)); // priority: 0
+        Add(new GameViewEventSystem(contexts)); // priority: 0
     }
 }

@@ -38,8 +38,7 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
     {
         if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
-            if(heroEntity==null)
-                heroEntity = contexts.game.globalHero.value;
+            heroEntity = contexts.game.globalHero.value;
 
             foreach (var item in itemGroup.GetEntities())
             {
@@ -48,12 +47,19 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
                     var type = item.itemType.value;
                     switch (type)
                     {
-                        //如果是保护罩 就一直跟着player
-                        case ItemType.Shield:
-                            item.ReplacePosition(heroEntity.position.value);
+                        case ItemType.Shield://如果是保护罩 就一直跟着player
+                            if (item.hasPosition)
+                                 item.ReplacePosition(heroEntity.position.value);
                             break;
-                        case ItemType.None:
+
+                        case ItemType.MachineGun:
+                            heroEntity.isMover = false;
                             break;
+                        case ItemType.None://清除身上道具
+                        //    item.isDestroyed = true;
+                         //   item.RemoveItemType();  //身上道具的gameentity实际上没有被destroy 还可以被get到，此处移除相应组件就get不到
+                            break;
+
                         default:
                             Debug.Log("未知道具类型:" + type);
                             break;

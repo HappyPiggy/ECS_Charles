@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 ///  敌人死亡后涂鸦的view
 /// </summary>
-public class SpiltView : BaseView,IGameDestroyedListener
+public class SpiltView : BaseView
 {
     private Color color;
     private float alpha = 255;
@@ -18,8 +18,6 @@ public class SpiltView : BaseView,IGameDestroyedListener
 
     public void Start()
     {
-        gameEntity.AddGameDestroyedListener(this);
-
         delayTime = ConstantUtils.collisionDelayTime;
         DoScale();
         Invoke("DelayHide", delayTime);
@@ -63,9 +61,9 @@ public class SpiltView : BaseView,IGameDestroyedListener
         isHide = true;
     }
 
-    public void OnDestroyed(GameEntity entity)
+    public override void OnDestroyedView()
     {
-        OnDestroyedView();
+        base.OnDestroyedView();
     }
 }
 
