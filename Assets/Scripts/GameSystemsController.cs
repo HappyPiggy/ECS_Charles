@@ -28,6 +28,7 @@ public class GameSystemsController : Feature
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
         Add(new SpawnItemSystem(contexts, services));
         Add(new PlayerItemSystem(contexts, services));
+        Add(new PlayerStateChangeSystem(contexts));
 
 
         //end

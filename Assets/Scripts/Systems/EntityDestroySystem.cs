@@ -36,7 +36,7 @@ public class EntityDestroySystem : MultiReactiveSystem<IDestroyEntity, Contexts>
     {
         foreach (var e in entities)
         {
-            Debug.Log("Destroyed Entity from " + e.contextInfo.name + " context");
+         //   Debug.Log("Destroyed Entity from " + e.contextInfo.name + " context");
             if (e.hasView)
             {
                 var view = e.view.instance;

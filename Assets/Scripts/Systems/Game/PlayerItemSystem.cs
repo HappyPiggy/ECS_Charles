@@ -54,10 +54,11 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
 
                         case ItemType.MachineGun:
                             heroEntity.isMover = false;
+                            heroEntity.ReplacePosition(item.position.value);
+                            item.ReplaceRotation(heroEntity.view.instance.objTransform.rotation);
                             break;
-                        case ItemType.None://清除身上道具
-                        //    item.isDestroyed = true;
-                         //   item.RemoveItemType();  //身上道具的gameentity实际上没有被destroy 还可以被get到，此处移除相应组件就get不到
+                        case ItemType.None:
+
                             break;
 
                         default:

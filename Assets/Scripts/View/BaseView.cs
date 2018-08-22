@@ -39,8 +39,6 @@ public class BaseView : MonoBehaviour, IView
         if (gameEntity != null && gameEntity.isMover && !isDestroyed)
         {
             transform.localPosition = gameEntity.position.value;
-            //  gameEntity.ReplacePosition(position);
-            //  gameEntity.ReplaceRotation(rotation);
         }
     }
 

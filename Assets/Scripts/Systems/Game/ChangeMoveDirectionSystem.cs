@@ -48,7 +48,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
 
             foreach (var item in heroGroup.GetEntities())
             {
-                if (item.isHero && item.isMover)
+                if (item.isHero)
                 {
                     var newPos = CalcNewPos(item.position.value, dir, item.speed.value);
                     item.ReplacePosition(newPos);

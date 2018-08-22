@@ -42,29 +42,34 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
         if(viewObjectRoot == null)
             viewObjectRoot = GameObject.Find("Game").transform;
-
         foreach (var item in entities)
         {
-            if (item.hasUnitType && item.unitType.value==UnitType.PlayerItem && !item.isHero) //人物携带道具相关碰撞
+            if (item.hasOnTriggerEnter)
             {
-                PlayerItemCollision(item);
+                if (item.hasUnitType && item.unitType.value == UnitType.PlayerItem && !item.isHero) //人物携带道具相关碰撞
+                {
+                    PlayerItemCollisionEnter(item);
+                }
+                else if (item.isHero)  //角色相关碰撞
+                {
+                    HeroCollisionEnter(item);
+                }
             }
-            else if (item.isHero)  //角色相关碰撞
-            {
-                HeroCollision(item);
-            }else if (item.hasEnemyInfo)
-            {
+            
 
-            }
+
+
         }
     }
+
+
 
 
     /// <summary>
     /// 敌人碰撞带道具的player
     /// </summary>
     /// <param name="item">人物身上的道具</param>
-    private void PlayerItemCollision(GameEntity item)
+    private void PlayerItemCollisionEnter(GameEntity item)
     {
         var collision = item.onTriggerEnter.collision;
         var type = item.itemType.value;
@@ -72,16 +77,16 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
         switch (type)
         {
-            //保护罩碰到怪物后 保护罩消失
-            case ItemType.Shield:
+            case ItemType.Shield://保护罩碰到怪物后 保护罩消失
                 if (view.gameEntity.isMover)
                 {
                     MissileEffect(heroEntity.position.value);
                     heroEntity.ReplaceItemType(ItemType.None);
 
-                    item.ReplaceItemType(ItemType.None);
                     item.isDestroyed = true;
                 }
+                break;
+            case ItemType.MachineGun://机关枪按理说碰不到怪物
                 break;
             default:
                 // Debug.Log("未知碰撞体 :" + tag);
@@ -93,39 +98,47 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
     /// 主角相关碰撞
     /// </summary>
     /// <param name="item"></param>
-    private void HeroCollision(GameEntity item)
+    private void HeroCollisionEnter(GameEntity item)
     {
         var collision = item.onTriggerEnter.collision;
-        var tag = collision.gameObject.tag;
-        BaseView view = collision.gameObject.GetComponent<BaseView>();
-
-        switch (tag)
+        if (collision != null)
         {
-            case "Enemy": //怪物移动才进行碰撞检测
-                if (view != null && view.gameEntity.isMover && !heroEntity.isInvincible)
-                    heroEntity.ReplaceDead(true);
-                break;
+            var tag = collision.gameObject.tag;
+            BaseView view = collision.gameObject.GetComponent<BaseView>();
 
-            case "Item"://碰到相同道具效果不叠加
-                var type = view.gameEntity.itemType.value;
-                if (type != heroEntity.itemType.value)
-                {
-                    entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
-                    heroEntity.ReplaceItemType(type);
-                }
+            switch (tag)
+            {
+                case "Enemy": //怪物移动才进行碰撞检测
+                    if (view != null && view.gameEntity.isMover && !heroEntity.isInvincible)
+                        heroEntity.ReplaceDead(true);
+                    break;
 
-                view.gameEntity.isDestroyed = true;
-                break;
+                case "Item"://碰到相同道具效果不叠加
+                    var type = view.gameEntity.itemType.value;
+                    if (type != heroEntity.itemType.value)
+                    {
+                        entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
+                        heroEntity.ReplaceItemType(type);
+                    }
 
-            default:
-                Debug.Log("未知碰撞体 :" + collision.gameObject.name);
-                break;
+                    view.gameEntity.isDestroyed = true;
+                    break;
+                case "PlayerItem": //携带道具时 player身上效果
+                    break;
+                case "Effect": // 道具被怪物碰掉后的特效
+                    break;
 
+                default:
+                    Debug.Log("未知碰撞体 :" + collision.gameObject.name);
+                    break;
+
+            }
         }
+  
     }
 
     /// <summary>
-    /// 保护罩破裂后产生爆炸
+    /// 保护罩破裂后产生爆炸效果
     /// </summary>
     /// <param name="spawnPos"></param>
     private void MissileEffect(Vector3 spawnPos)
@@ -135,7 +148,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
         go.name = res.name;
         go.AddComponent<MissileView>();
     }
-
+    
 
 
 }
