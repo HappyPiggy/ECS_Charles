@@ -32,7 +32,7 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
         //创建玩家
         Vector2 playerSpawnPos = new Vector2(0, 4);
         Quaternion playerRotation = Quaternion.identity;
-        GameEntity heroEntity= entityFactoryService.CreatePlayer(UidUtils.Uid, playerSpawnPos, playerRotation);
+        entityFactoryService.CreatePlayer(UidUtils.Uid, playerSpawnPos, playerRotation);
 
         //创建游戏地图
         entityFactoryService.CreateMap(UidUtils.Uid);

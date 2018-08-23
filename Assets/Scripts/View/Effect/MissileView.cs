@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-
+/// <summary>
+///  保护罩炸裂后
+/// </summary>
 public class MissileView:BaseView
 {
     private void Start()
     {
         DoScale();
         //todo 将特效消失的时间配置成player的属性 可控
-        Invoke("DelayDestroy",3f);
+        Invoke("DelayDestroy",ConstantUtils.itemDuration);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

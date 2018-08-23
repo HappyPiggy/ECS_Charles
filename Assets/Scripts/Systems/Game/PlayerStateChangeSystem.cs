@@ -10,6 +10,7 @@ public class PlayerStateChangeSystem : IExecuteSystem
 {
     private Contexts contexts;
     private GameEntity heroEntity;
+  //  private IGroup<GameEntity> enemyGroup;
 
     private float timer = 0;
     private float invincibleTime = 0.5f;
@@ -17,6 +18,7 @@ public class PlayerStateChangeSystem : IExecuteSystem
     public PlayerStateChangeSystem(Contexts contexts)
     {
         this.contexts = contexts;
+      //  enemyGroup = contexts.game.GetGroup(GameMatcher.EnemyInfo);
     }
 
 
@@ -32,11 +34,13 @@ public class PlayerStateChangeSystem : IExecuteSystem
                     heroEntity.isInvincible = true;
                     timer = 0;
                     break;
-                case ItemType.MachineGun:
+                case ItemType.MachineGun: //机枪状态人物不能移动 怪物躲避
+                    heroEntity.isMover = false;
                     heroEntity.isInvincible = true;
                     timer = 0;
                     break;
                 case ItemType.None:
+                    heroEntity.isMover = true;
                     timer += Time.deltaTime;
                     if(timer>=invincibleTime)
                          heroEntity.isInvincible = false;
@@ -46,9 +50,9 @@ public class PlayerStateChangeSystem : IExecuteSystem
                     break;
             }
         }
-
         
     }
+
 }
 
 

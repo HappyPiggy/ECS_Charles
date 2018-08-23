@@ -37,6 +37,11 @@ public class EnemyStateComponent : IComponent
     public EnemyState value;
 }
 
+[Game]
+public class EnemyTypeComponent : IComponent
+{
+    public EnemyType value;
+}
 
 
 

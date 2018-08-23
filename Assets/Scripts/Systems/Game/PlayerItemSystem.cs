@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 人物吃道具后的道具表现效果
+/// 人物吃道具后的  道具表现效果
 /// </summary>
 public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
 {
@@ -16,6 +16,7 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
     private GameEntity heroEntity;
     private IGroup<GameEntity> itemGroup;
 
+    private Stack<ItemType> playerItemStack=new Stack<ItemType>();
 
 
     public PlayerItemSystem(Contexts contexts, Services services)
@@ -53,12 +54,14 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
                             break;
 
                         case ItemType.MachineGun:
-                            heroEntity.isMover = false;
                             heroEntity.ReplacePosition(item.position.value);
                             item.ReplaceRotation(heroEntity.view.instance.objTransform.rotation);
-                            break;
-                        case ItemType.None:
 
+                            break;
+                        case ItemType.None: //清除道具效果
+                            heroEntity.ReplaceItemType(ItemType.None);
+                            item.ReplaceEnemyType(EnemyType.Normal);
+                            item.isDestroyed = true;
                             break;
 
                         default:
@@ -67,6 +70,9 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
                     }
                 }
             }
+        }else if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
+        {
+
         }
 
 

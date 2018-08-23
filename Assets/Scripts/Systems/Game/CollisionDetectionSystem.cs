@@ -42,6 +42,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
         if(viewObjectRoot == null)
             viewObjectRoot = GameObject.Find("Game").transform;
+
         foreach (var item in entities)
         {
             if (item.hasOnTriggerEnter)
@@ -55,9 +56,6 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
                     HeroCollisionEnter(item);
                 }
             }
-            
-
-
 
         }
     }
@@ -81,9 +79,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
                 if (view.gameEntity.isMover)
                 {
                     MissileEffect(heroEntity.position.value);
-                    heroEntity.ReplaceItemType(ItemType.None);
-
-                    item.isDestroyed = true;
+                    item.ReplaceItemType(ItemType.None);
                 }
                 break;
             case ItemType.MachineGun://机关枪按理说碰不到怪物
@@ -113,13 +109,11 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
                         heroEntity.ReplaceDead(true);
                     break;
 
-                case "Item"://碰到相同道具效果不叠加
+                case "Item"://碰到相同道具效果叠加
                     var type = view.gameEntity.itemType.value;
-                    if (type != heroEntity.itemType.value)
-                    {
-                        entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
-                        heroEntity.ReplaceItemType(type);
-                    }
+
+                    entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
+                    heroEntity.ReplaceItemType(type);
 
                     view.gameEntity.isDestroyed = true;
                     break;

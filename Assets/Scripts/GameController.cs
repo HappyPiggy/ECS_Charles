@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
         _contexts = Contexts.sharedInstance;
         _systems = new GameSystemsController(_contexts);
 
-        DontDestroyOnLoad(_systems.gameObject);
+        //DontDestroyOnLoad(_systems.gameObject);
     }
 
     void Start()

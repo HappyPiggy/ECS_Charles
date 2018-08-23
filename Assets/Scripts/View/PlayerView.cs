@@ -40,7 +40,7 @@ public class PlayerView : BaseView,IDeadListener
             var euler = gameEntity.rotation.value.eulerAngles.y;
             if (euler != 0)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, euler),10 * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, euler),5 * Time.deltaTime);
                 oldEuler = transform.eulerAngles.z;
             }
             else

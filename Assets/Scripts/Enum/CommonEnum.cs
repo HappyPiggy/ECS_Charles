@@ -33,7 +33,7 @@ public enum UnitType
 
 public enum EffectType
 {
-    Missile,
+    Missile,//护盾破后的特效
 }
 
 public enum ItemType
@@ -50,6 +50,12 @@ public enum PlayerType
     Fly2,
 }
 
+public enum EnemyType
+{
+    None,
+    Normal,
+    Flee,//反向速度
+}
 public enum EnemyState
 {
     None,

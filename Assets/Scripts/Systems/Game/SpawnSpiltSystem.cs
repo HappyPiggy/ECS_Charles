@@ -81,8 +81,9 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     private void CreateSpilt(GameEntity enemy)
     {
         var pos = enemy.position.value;
-        var index = (int)enemy.uID.value % (enemy.enemyInfo.value.enemyList.Length);
-
+        var index = 0;
+        if(enemy.hasColorType)
+             index = enemy.colorType.value;
         entityFactoryService.CreateSpilt(UidUtils.Uid, pos, index);
     }
 }
