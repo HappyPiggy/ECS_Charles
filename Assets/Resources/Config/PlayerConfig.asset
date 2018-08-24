@@ -14,5 +14,5 @@ MonoBehaviour:
   type: 1
   name: fly1
   desc: can fly
-  moveSpeed: 6
+  moveSpeed: 4
   size: 1

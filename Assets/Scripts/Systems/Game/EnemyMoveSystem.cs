@@ -64,7 +64,7 @@ public class EnemyMoveSystem : IExecuteSystem, IInitializeSystem
     private Vector2 GetEnemyDirection(GameEntity hero,GameEntity enemy)
     {
         //根据player当前道具 改变敌人状态
-        var itemType = hero.itemType.value;
+        var itemType = hero.playerItemList.value.Peek();
         switch (itemType)
         {
             case ItemType.Shield:

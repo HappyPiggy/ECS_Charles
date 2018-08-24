@@ -10,7 +10,7 @@ using UnityEngine;
 /// </summary>
 public class BulletView : BaseView
 {
-    private float speed = 8;
+    private float speed = 10;
 
     private void Start()
     {

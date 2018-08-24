@@ -22,7 +22,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
 
     public void Initialize()
     {
-     
+        viewObjectRoot = GameObject.Find("Game").transform;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -39,9 +39,6 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
     protected override void Execute(List<GameEntity> entities)
     {
         heroEntity = contexts.game.globalHero.value;
-
-        if(viewObjectRoot == null)
-            viewObjectRoot = GameObject.Find("Game").transform;
 
         foreach (var item in entities)
         {
@@ -112,8 +109,8 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
                 case "Item"://碰到相同道具效果叠加
                     var type = view.gameEntity.itemType.value;
 
-                    entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
-                    heroEntity.ReplaceItemType(type);
+                    if(CheckRepeatPlayerItem(type))
+                        entityFactoryService.CreatePlayerItem(UidUtils.Uid, heroEntity.position.value, (int)type);
 
                     view.gameEntity.isDestroyed = true;
                     break;
@@ -129,6 +126,23 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
             }
         }
   
+    }
+
+    /// <summary>
+    /// 排除不能叠加效果的道具
+    /// </summary>
+    /// <param name="curType"></param>
+    /// <returns></returns>
+    private bool CheckRepeatPlayerItem(ItemType curType)
+    {
+        //保护罩效果不叠加
+        if (curType == ItemType.Shield)
+        {
+            if (heroEntity.playerItemList.value.Contains(curType))
+                return false;
+        }
+        heroEntity.playerItemList.value.Push(curType);
+        return true;
     }
 
     /// <summary>

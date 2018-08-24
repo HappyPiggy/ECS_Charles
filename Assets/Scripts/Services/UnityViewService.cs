@@ -20,10 +20,7 @@ public class UnityViewService : IAssetListener, IViewService
         gameEntity = context.CreateEntity();
 
         gameEntity.AddAssetListener(this);
-    }
 
-    public void OnAsset(GameEntity entity, string value)
-    {
 
         //创建所有view的根目录
         if (viewObjectRoot == null)
@@ -38,6 +35,11 @@ public class UnityViewService : IAssetListener, IViewService
             viewObjectRoot = go.transform;
             GameObject.DontDestroyOnLoad(viewObjectRoot);
         }
+    }
+
+    public void OnAsset(GameEntity entity, string value)
+    {
+
 
         //根据entity中的asset类型来创建prefab
         int index = -1;
@@ -55,12 +57,19 @@ public class UnityViewService : IAssetListener, IViewService
                 view = obj.AddComponent<PlayerView>();
                 break;
             case UnitType.Enemy:
-                index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
-                entity.AddColorType(index);
-                prefab = entity.enemyInfo.value.enemyList[index];
-                obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                if (context.gameProgress.state == GameProgressState.InGame)
+                {
+                    index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
+                    entity.AddColorType(index);
+                    prefab = entity.enemyInfo.value.enemyList[index];
+                    obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
 
-                view = obj.AddComponent<EnemyView>();
+                    view = obj.AddComponent<EnemyView>();
+                }
+                else
+                {
+                    entity.isDestroyed = true;
+                }
                 break;
 
             case UnitType.GameMap:
@@ -98,9 +107,11 @@ public class UnityViewService : IAssetListener, IViewService
                 Debug.Log("无法创建预制体类型:" + type.ToString());
                 break;
         }
-        view.Link(context, entity);
-        entity.AddView(view);
-      //  entity.ReplaceUID((ulong)obj.GetInstanceID());//单机的话uid本地生成
+        if (view != null)
+        {
+            view.Link(context, entity);
+            entity.AddView(view);
+        }
     }
 
     public void Update()

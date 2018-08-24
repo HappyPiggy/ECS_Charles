@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -266,6 +268,9 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/qianda/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
@@ -306,6 +311,7 @@
     <Compile Include="Assets\Scripts\Systems\Game\GameOverSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\PlayerItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\PlayerStateChangeSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\ScoreSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\SpawnItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\SpawnSpiltSystem.cs" />
@@ -315,6 +321,9 @@
     <Compile Include="Assets\Scripts\Systems\UISystem\AppModule.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleManager.cs" />
     <Compile Include="Assets\Scripts\Systems\UISystem\ModuleType.cs" />
+    <Compile Include="Assets\Scripts\Utils\Archival\ArchivalUtils.cs" />
+    <Compile Include="Assets\Scripts\Utils\Archival\GlobalArchival.cs" />
+    <Compile Include="Assets\Scripts\Utils\Archival\IOHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\AssetUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\ConstantUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\MathUtils.cs" />
@@ -325,6 +334,7 @@
     <Compile Include="Assets\Scripts\Utils\UidUtils.cs" />
     <Compile Include="Assets\Scripts\View\BaseView.cs" />
     <Compile Include="Assets\Scripts\View\Effect\BulletView.cs" />
+    <Compile Include="Assets\Scripts\View\Effect\CoinView.cs" />
     <Compile Include="Assets\Scripts\View\Effect\MissileView.cs" />
     <Compile Include="Assets\Scripts\View\EnemyView.cs" />
     <Compile Include="Assets\Scripts\View\ItemView.cs" />
@@ -335,6 +345,7 @@
     <Compile Include="Assets\Scripts\View\SpiltView.cs" />
     <Compile Include="Assets\Scripts\View\UI\ControlPad\ControlPad.cs" />
     <Compile Include="Assets\Scripts\View\UI\EndGamePad.cs" />
+    <Compile Include="Assets\Scripts\View\UI\InGamePad.cs" />
     <Compile Include="Assets\Sources\Generated\Components\Interfaces\IDestroyedEntity.cs" />
     <Compile Include="Assets\Sources\Generated\Components\Interfaces\IViewEntity.cs" />
     <Compile Include="Assets\Sources\Generated\Contexts.cs" />
@@ -342,6 +353,7 @@
     <Compile Include="Assets\Sources\Generated\Events\Components\DeadListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GameProgressListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Components\GameScoreListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GameViewListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\GlobalHeroListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Components\InputDestroyedListenerComponent.cs" />
@@ -353,6 +365,7 @@
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IDeadListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameDestroyedListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameProgressListener.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameScoreListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGameViewListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IGlobalHeroListener.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Interfaces\IInputDestroyedListener.cs" />
@@ -363,6 +376,7 @@
     <Compile Include="Assets\Sources\Generated\Events\Systems\DeadEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameDestroyedEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameProgressEventSystem.cs" />
+    <Compile Include="Assets\Sources\Generated\Events\Systems\GameScoreEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GameViewEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\GlobalHeroEventSystem.cs" />
     <Compile Include="Assets\Sources\Generated\Events\Systems\InputDestroyedEventSystem.cs" />
@@ -385,6 +399,8 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameGameScoreComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameGameScoreListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameViewListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGlobalHeroComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGlobalHeroListenerComponent.cs" />
@@ -399,6 +415,7 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerExitComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameOnTriggerExitListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerInfoComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GamePlayerItemListComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GamePositionComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameRotationComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameSpeedComponent.cs" />
@@ -444,6 +461,7 @@
     <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\Entitas\LICENSE.txt" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

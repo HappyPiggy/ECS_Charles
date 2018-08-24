@@ -10,12 +10,14 @@ public class ControlPad : AppModule, IPointerDownHandler, IDragHandler, IPointer
     private Vector2 oldPoint = Vector2.zero;
 
     private static Vector2 direction = Vector2.zero;
+    private static Vector2 distance = Vector2.zero;
+
     private static bool isMove = false;
-    public static Vector2 Direction
+    public static Vector2 Distance
     {
         get
         {
-            return direction;
+            return distance;
         }
 
     }
@@ -31,11 +33,13 @@ public class ControlPad : AppModule, IPointerDownHandler, IDragHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         isMove = true;
+
+        oldPoint = Input.mousePosition;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        direction = Vector2.zero;
+        distance= Vector2.zero;
         isMove = false;
     }
     public void OnDrag(PointerEventData eventData)
@@ -58,8 +62,10 @@ public class ControlPad : AppModule, IPointerDownHandler, IDragHandler, IPointer
         if (isMove)
         {
             direction = (curPoint - oldPoint).normalized;
+            var dis = (curPoint - oldPoint).magnitude;
+            distance = dis * direction;
+
             oldPoint = curPoint;
-           // Debug.Log("dir "+direction);
         }
 
     }

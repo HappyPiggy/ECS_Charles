@@ -179,3 +179,5 @@ fabcfe9e357813f9a21556a68a721103 Assembly-CSharp.dll:DG.Tweening.DOTweenAnimatio
 7a75edc83a9f267c790ac1425865847a Assembly-CSharp.dll:.ControlPad
 cd225f5420834bd27b14f66bb3f689ea Assembly-CSharp.dll:.PlayerInfo
 7ffb447624ae4e61b9b9c5535184ddbb Assembly-CSharp.dll:.ItemView
+7a75edc83a9f267c790ac1425865847a Assembly-CSharp.dll:.InGamePad
+7ffb447624ae4e61b9b9c5535184ddbb Assembly-CSharp.dll:.CoinView

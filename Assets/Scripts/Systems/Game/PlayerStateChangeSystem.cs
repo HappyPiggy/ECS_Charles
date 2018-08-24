@@ -13,7 +13,6 @@ public class PlayerStateChangeSystem : IExecuteSystem
   //  private IGroup<GameEntity> enemyGroup;
 
     private float timer = 0;
-    private float invincibleTime = 0.5f;
 
     public PlayerStateChangeSystem(Contexts contexts)
     {
@@ -27,11 +26,12 @@ public class PlayerStateChangeSystem : IExecuteSystem
         if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
             heroEntity = contexts.game.globalHero.value;
-            var type = heroEntity.itemType.value;
+            var type = heroEntity.playerItemList.value.Peek(); //取得人物最后吃得的道具
             switch (type)
             {
                 case ItemType.Shield:  //开启无敌 防止人物移动速度过快导致立即死亡
                     heroEntity.isInvincible = true;
+                    heroEntity.isMover = true;
                     timer = 0;
                     break;
                 case ItemType.MachineGun: //机枪状态人物不能移动 怪物躲避
@@ -42,7 +42,7 @@ public class PlayerStateChangeSystem : IExecuteSystem
                 case ItemType.None:
                     heroEntity.isMover = true;
                     timer += Time.deltaTime;
-                    if(timer>=invincibleTime)
+                    if(timer>=ConstantUtils.invincibleTime)
                          heroEntity.isInvincible = false;
                     break;
                 default:

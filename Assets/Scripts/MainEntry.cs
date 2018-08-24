@@ -31,7 +31,6 @@ public class MainEntry:MonoBehaviour
 
     private void Start()
     {
-       
     }
 
 

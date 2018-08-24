@@ -10,16 +10,10 @@ using UnityEngine.UI;
 /// </summary>
 public class EnemyView : BaseView,IDeadListener
 {
-
-    private float delayTime = 0.8f; //延迟移动时间
-
-
-
     public void Start()
-    {
-        delayTime = ConstantUtils.collisionDelayTime;
+    { 
         DoScale();
-        Invoke("DelayMove", delayTime);
+        Invoke("DelayMove", ConstantUtils.EnemyDelayMoveTime);
 
         gameEntity.AddDeadListener(this);
         gameEntity.isEnable = true;
@@ -52,7 +46,7 @@ public class EnemyView : BaseView,IDeadListener
     {
         var curScale = scale;
         transform.localScale = Vector3.zero;
-        transform.DOScale(curScale, delayTime - 0.2f).SetEase(Ease.OutBounce);
+        transform.DOScale(curScale, ConstantUtils.EnemyDelayMoveTime - 0.2f).SetEase(Ease.OutBounce);
     }
 
     /// <summary>

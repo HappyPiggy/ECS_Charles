@@ -27,6 +27,7 @@ public class ModuleManager:MonoSingleton<ModuleManager>
         uiObjMap = new Dictionary<ModuleType, AppModule>();
         uiClassNameMap.Add(ModuleType.ControlPad,typeof(ControlPad)); //在ControlPad的ui上添加名为ControlPad的脚本
         uiClassNameMap.Add(ModuleType.EndGamePad, typeof(EndGamePad));
+        uiClassNameMap.Add(ModuleType.InGamePad, typeof(InGamePad));
 
         UIRoot = GameObject.Find("Canvas/UI").transform;
     }

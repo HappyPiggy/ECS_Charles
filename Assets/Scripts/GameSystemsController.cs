@@ -29,6 +29,7 @@ public class GameSystemsController : Feature
         Add(new SpawnItemSystem(contexts, services));
         Add(new PlayerItemSystem(contexts, services));
         Add(new PlayerStateChangeSystem(contexts));
+        Add(new ScoreSystem(contexts));
 
 
         //end

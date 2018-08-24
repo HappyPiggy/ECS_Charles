@@ -11,7 +11,7 @@ public class MachineGunView : BaseView
     private Transform bulletPos;
     private Transform viewObjectRoot;
 
-    private float spawnInterval = 0.1f; //生成子弹间隔
+    private float spawnInterval = 0.05f; //生成子弹间隔
     private float timer = 999;
 
     private void Start()
@@ -20,7 +20,7 @@ public class MachineGunView : BaseView
         viewObjectRoot = GameObject.Find("Game").transform;
 
         DoScale();
-        Invoke("DelayDestroy", ConstantUtils.itemDuration);
+        Invoke("DelayDestroy", ConstantUtils.itemDuration+2);
     }
     protected override void Update()
     {
@@ -39,12 +39,19 @@ public class MachineGunView : BaseView
     {
         var curScale = scale;
         transform.localScale = Vector3.zero;
-        transform.DOScale(curScale, 0.5f).SetEase(Ease.OutBounce);
+        transform.DOScale(curScale, 0.8f).SetEase(Ease.OutBounce);
     }
 
     private void DelayDestroy()
     {
-        gameEntity.ReplaceItemType(ItemType.None);
+        var hideTime = 0.8f;
+        transform.DOScale(Vector3.zero, hideTime).SetEase(Ease.InBounce);
+        Invoke("DestroySelf", hideTime);
+    }
+
+    private void DestroySelf()
+    {
+         gameEntity.ReplaceItemType(ItemType.None);
     }
 
     /// <summary>

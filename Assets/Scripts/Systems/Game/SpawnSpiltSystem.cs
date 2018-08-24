@@ -35,7 +35,7 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.enemyState.value == EnemyState.Die || entity.enemyState.value == EnemyState.Move || entity.enemyState.value == EnemyState.None;
+        return true;
     }
 
     protected override void Execute(List<GameEntity> entities)

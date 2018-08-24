@@ -22,7 +22,7 @@ public class ConfigService
     {
 
        //初始化border
-       var up = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height));
+       var up = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height-150));
         var down = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, 0));
         var left = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height / 2));
         var right = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width , Screen.height/2));

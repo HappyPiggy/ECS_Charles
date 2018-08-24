@@ -5,8 +5,7 @@
 public enum ModuleType
 {
     UI_NONE,
-    MainScreen,
-    BattleScreen,
+    InGamePad,// 游戏中界面
     ControlPad , //战斗界面的控制面板
     EndGamePad,//结算界面
 }

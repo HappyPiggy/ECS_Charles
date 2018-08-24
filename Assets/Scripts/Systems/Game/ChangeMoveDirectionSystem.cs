@@ -50,7 +50,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
             {
                 if (item.isHero)
                 {
-                    var newPos = CalcNewPos(item.position.value, dir, item.speed.value);
+                    var newPos = CalcNewPos(item.position.value, dir);
                     item.ReplacePosition(newPos);
                     item.ReplaceRotation(rotation);
                 }
@@ -64,14 +64,13 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
     /// </summary>
     /// <param name="oldPos"></param>
     /// <param name="dir"></param>
-    /// <param name="speed"></param>
     /// <returns></returns>
-    private Vector2 CalcNewPos(Vector2 oldPos,Vector2 dir,float speed)
+    private Vector2 CalcNewPos(Vector2 oldPos,Vector2 dir)
     {
         if (mapInfo == null)
             mapInfo = configService.GetMapInfo();
 
-        var tmp = oldPos + dir * speed* Time.deltaTime;
+        var tmp = oldPos + dir/2 * Time.deltaTime;
         Vector2 pos = new Vector2(
             Mathf.Clamp(tmp.x, mapInfo.border.minX, mapInfo.border.maxX),
             Mathf.Clamp(tmp.y, mapInfo.border.minY, mapInfo.border.maxY)

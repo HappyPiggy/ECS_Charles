@@ -34,6 +34,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     protected override void Execute(List<GameEntity> entities)
     {
+        ModuleManager.Instance.Hide(ModuleType.InGamePad);
         contexts.game.ReplaceGameProgress(GameProgressState.GameOver);
 
         foreach (var item in enemyGroup.GetEntities())

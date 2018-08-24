@@ -9,11 +9,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerView : BaseView,IDeadListener
 {
-
-    private float curEuler = 0;
     private float oldEuler = 0;
-
-
 
     private void Start()
     {

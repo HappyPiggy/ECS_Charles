@@ -73,3 +73,10 @@ public class EnableComponent : IComponent
 public class InvincibleComponent : IComponent
 {
 }
+
+//游戏内分数
+[Game,Unique,Event(false)]
+public class GameScoreComponent : IComponent
+{
+    public int value;
+}

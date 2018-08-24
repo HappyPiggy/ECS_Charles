@@ -11,7 +11,7 @@ public class UnityInputService : IInputService {
     {
         get
         {
-            return ControlPad.Direction;
+            return ControlPad.Distance;
         }
     }
 

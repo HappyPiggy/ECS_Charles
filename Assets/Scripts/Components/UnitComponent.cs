@@ -25,6 +25,13 @@ public class ItemTypeComponent : IComponent
     public ItemType value;
 }
 
+//人物身上道具的列表
+[Game]
+public class PlayerItemListComponent : IComponent
+{
+    public Stack<ItemType> value;
+}
+
 [Game]
 public class ColorTypeComponent : IComponent
 {

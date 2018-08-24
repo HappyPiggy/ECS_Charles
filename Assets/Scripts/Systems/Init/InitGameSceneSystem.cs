@@ -43,6 +43,8 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
 
         //创建控制摇杆
         ModuleManager.Instance.Show(ModuleType.ControlPad);
+        //创建游戏内UI
+        ModuleManager.Instance.Show(ModuleType.InGamePad);
 
         context.ReplaceGameProgress(GameProgressState.InGame);
     }

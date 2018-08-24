@@ -14,6 +14,7 @@ public sealed class EventSystems : Feature {
         Add(new InputDestroyedEventSystem(contexts)); // priority: 0
         Add(new GameDestroyedEventSystem(contexts)); // priority: 0
         Add(new GameProgressEventSystem(contexts)); // priority: 0
+        Add(new GameScoreEventSystem(contexts)); // priority: 0
         Add(new GlobalHeroEventSystem(contexts)); // priority: 0
         Add(new OnTriggerEnterEventSystem(contexts)); // priority: 0
         Add(new OnTriggerExitEventSystem(contexts)); // priority: 0

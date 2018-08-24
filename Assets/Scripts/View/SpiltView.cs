@@ -18,7 +18,6 @@ public class SpiltView : BaseView
 
     public void Start()
     {
-        delayTime = ConstantUtils.collisionDelayTime;
         DoScale();
         Invoke("DelayHide", delayTime);
     }

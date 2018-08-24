@@ -28,7 +28,7 @@ public class GameEndSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        ModuleManager.Instance.Show(ModuleType.EndGamePad);
+       // ModuleManager.Instance.Show(ModuleType.EndGamePad);
     }
 
 

@@ -64,8 +64,8 @@ public class EntityFactoryService : IEntityFactoryService
         ItemInfo itemInfo = configService.GetItemInfo();
         gameEntity.AddItemInfo(itemInfo);
 
-        //var index=MathUtils.RandomInt(0, (int)ItemType.None);
-        var index = 0;
+        var index=MathUtils.RandomInt(0, (int)ItemType.None);
+       // var index = 0;
         gameEntity.AddItemType((ItemType)index);
 
         gameEntity.AddAsset("Item");
@@ -173,12 +173,17 @@ public class EntityFactoryService : IEntityFactoryService
 
         gameEntity.ReplacePosition(spawnPos);
         gameEntity.ReplaceRotation(rotation);
-        gameEntity.ReplaceItemType(ItemType.None); //人物当前的身上道具
         gameEntity.isInvincible = false; //不开启无敌
+
+
+        // gameEntity.ReplaceItemType(ItemType.None); //人物当前的身上道具
+        var stack = new Stack<ItemType>();
+        stack.Push(ItemType.None);
+        gameEntity.ReplacePlayerItemList(stack);
+
 
         PlayerInfo playerInfo = configService.GetPlayerInfo();
         gameEntity.ReplacePlayerInfo(playerInfo);
-        gameEntity.ReplaceSpeed(playerInfo.playerConfig.moveSpeed);
         gameEntity.AddAsset("Player");
 
         context.ReplaceGlobalHero(gameEntity);

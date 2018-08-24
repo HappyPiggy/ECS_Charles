@@ -11,9 +11,15 @@ public class ConstantUtils
                                               new Color((float)161/255,(float)145/255,(float)138/255),
                                               new Color((float)234/255,(float)95/255,(float)216/255)};
 
-    public static float collisionDelayTime = 1; //延迟碰撞检测时间 ，延迟消失spilt时间
-    public static float itemSpawnTime = 1f; //道具生成时间间隔
+    public static float EnemyDelayMoveTime = 1; //敌人延迟移动
+    public static float itemSpawnTime = 5f; //道具生成时间间隔
     public static int maxItemInGame = 3;//最多道具存在数
     public static float itemDuration = 3;//道具效果持续时间
+
+    public static float invincibleTime = 0.2f;//护盾破裂后无敌持续时间
+
+    //定义存档路径
+    public static string dirpath = Application.persistentDataPath + "/Save";
+    public static string filename = dirpath + "/GameData.sav";
 
 }
