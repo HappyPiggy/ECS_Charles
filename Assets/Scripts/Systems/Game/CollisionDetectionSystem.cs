@@ -76,7 +76,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
                 if (view.gameEntity.isMover)
                 {
                     MissileEffect(heroEntity.position.value);
-                    item.ReplaceItemType(ItemType.None);
+                    item.ReplaceItemType(ItemType.None,item.itemType.value);
                 }
                 break;
             case ItemType.MachineGun://机关枪按理说碰不到怪物
@@ -141,7 +141,7 @@ public class CollisionDetectionSystem : ReactiveSystem<GameEntity>,IInitializeSy
             if (heroEntity.playerItemList.value.Contains(curType))
                 return false;
         }
-        heroEntity.playerItemList.value.Push(curType);
+        heroEntity.playerItemList.value.Add(curType);
         return true;
     }
 

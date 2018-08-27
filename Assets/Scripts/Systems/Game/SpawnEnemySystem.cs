@@ -66,7 +66,13 @@ public class SpawnEnemySystem : IExecuteSystem,IInitializeSystem
     {
         while (count > 0)
         {
-            var pos = GetRandomPosition();
+            //不在主角身上生成敌人 防止立即碰到
+            Vector2 pos = Vector2.zero;
+            do
+            {
+                pos = GetRandomPosition();
+            } while (pos == contexts.game.globalHero.value.position.value);
+
             entityFactoryService.CreateEnemy(UidUtils.Uid, pos);
             count--;
         }

@@ -51,7 +51,7 @@ public class MachineGunView : BaseView
 
     private void DestroySelf()
     {
-         gameEntity.ReplaceItemType(ItemType.None);
+         gameEntity.ReplaceItemType(ItemType.None,gameEntity.itemType.value);
     }
 
     /// <summary>
@@ -60,7 +60,6 @@ public class MachineGunView : BaseView
     private void SpawnBullet()
     {
         var res = Resources.Load("Unit/Effect/Bullet");
-        // GameObject go = GameObject.Instantiate(res, bulletPos.position, gameEntity.rotation.value, viewObjectRoot) as GameObject;
         GameObject go = PoolUtil.SpawnGameObject((GameObject)res, bulletPos.position, gameEntity.rotation.value, viewObjectRoot);
         go.name = res.name;
         if(go.GetComponent<BulletView>()==null)

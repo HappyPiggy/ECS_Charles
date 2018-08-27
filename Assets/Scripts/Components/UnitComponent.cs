@@ -23,13 +23,14 @@ public class UnitTypeComponent : IComponent
 public class ItemTypeComponent : IComponent
 {
     public ItemType value;
+    public ItemType lastType=ItemType.None;  //用于检查是什么道具使用完毕
 }
 
 //人物身上道具的列表
 [Game]
 public class PlayerItemListComponent : IComponent
 {
-    public Stack<ItemType> value;
+    public List<ItemType> value;
 }
 
 [Game]

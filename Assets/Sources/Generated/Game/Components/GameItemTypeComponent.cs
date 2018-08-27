@@ -11,17 +11,19 @@ public partial class GameEntity {
     public ItemTypeComponent itemType { get { return (ItemTypeComponent)GetComponent(GameComponentsLookup.ItemType); } }
     public bool hasItemType { get { return HasComponent(GameComponentsLookup.ItemType); } }
 
-    public void AddItemType(ItemType newValue) {
+    public void AddItemType(ItemType newValue, ItemType newLastType) {
         var index = GameComponentsLookup.ItemType;
         var component = CreateComponent<ItemTypeComponent>(index);
         component.value = newValue;
+        component.lastType = newLastType;
         AddComponent(index, component);
     }
 
-    public void ReplaceItemType(ItemType newValue) {
+    public void ReplaceItemType(ItemType newValue, ItemType newLastType) {
         var index = GameComponentsLookup.ItemType;
         var component = CreateComponent<ItemTypeComponent>(index);
         component.value = newValue;
+        component.lastType = newLastType;
         ReplaceComponent(index, component);
     }
 

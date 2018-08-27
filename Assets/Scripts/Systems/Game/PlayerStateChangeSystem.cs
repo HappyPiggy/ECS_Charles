@@ -26,7 +26,8 @@ public class PlayerStateChangeSystem : IExecuteSystem
         if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
             heroEntity = contexts.game.globalHero.value;
-            var type = heroEntity.playerItemList.value.Peek(); //取得人物最后吃得的道具
+            var cnt = heroEntity.playerItemList.value.Count;
+            var type = heroEntity.playerItemList.value[cnt-1]; //取得人物最后吃得的道具
             switch (type)
             {
                 case ItemType.Shield:  //开启无敌 防止人物移动速度过快导致立即死亡

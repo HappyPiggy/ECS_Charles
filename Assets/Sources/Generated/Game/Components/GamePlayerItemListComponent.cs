@@ -11,14 +11,14 @@ public partial class GameEntity {
     public PlayerItemListComponent playerItemList { get { return (PlayerItemListComponent)GetComponent(GameComponentsLookup.PlayerItemList); } }
     public bool hasPlayerItemList { get { return HasComponent(GameComponentsLookup.PlayerItemList); } }
 
-    public void AddPlayerItemList(System.Collections.Generic.Stack<ItemType> newValue) {
+    public void AddPlayerItemList(System.Collections.Generic.List<ItemType> newValue) {
         var index = GameComponentsLookup.PlayerItemList;
         var component = CreateComponent<PlayerItemListComponent>(index);
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplacePlayerItemList(System.Collections.Generic.Stack<ItemType> newValue) {
+    public void ReplacePlayerItemList(System.Collections.Generic.List<ItemType> newValue) {
         var index = GameComponentsLookup.PlayerItemList;
         var component = CreateComponent<PlayerItemListComponent>(index);
         component.value = newValue;
