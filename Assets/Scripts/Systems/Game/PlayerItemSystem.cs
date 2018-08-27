@@ -60,7 +60,7 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
                             break;
                         case ItemType.None: //清除道具效果
                             heroEntity.playerItemList.value.Remove(item.itemType.lastType);
-                            item.ReplaceEnemyType(EnemyType.Normal);
+                            item.ReplaceEnemyBehavior(EnemyBehavior.Normal);
                             item.isDestroyed = true;
                             break;
 

@@ -51,8 +51,9 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
                 if (item.isHero)
                 {
                     var newPos = CalcNewPos(item.position.value, dir);
-                    item.ReplacePosition(newPos);
                     item.ReplaceRotation(rotation);
+                    if(item.isMover)
+                        item.ReplacePosition(newPos);
                 }
             }
         }

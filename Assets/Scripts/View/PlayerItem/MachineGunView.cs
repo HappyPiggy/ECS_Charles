@@ -62,7 +62,12 @@ public class MachineGunView : BaseView
         var res = Resources.Load("Unit/Effect/Bullet");
         GameObject go = PoolUtil.SpawnGameObject((GameObject)res, bulletPos.position, gameEntity.rotation.value, viewObjectRoot);
         go.name = res.name;
-        if(go.GetComponent<BulletView>()==null)
-            go.AddComponent<BulletView>();
+
+        if(go.GetComponent<BulletView>()!=null)
+            Destroy(go.GetComponent<BulletView>());
+
+        go.AddComponent<BulletView>();
+
+
     }
 }

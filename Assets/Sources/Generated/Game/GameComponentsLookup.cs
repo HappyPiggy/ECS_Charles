@@ -15,11 +15,11 @@ public static class GameComponentsLookup {
     public const int DeadListener = 4;
     public const int Destroyed = 5;
     public const int Enable = 6;
-    public const int EnemyInfo = 7;
-    public const int EnemySpawnCount = 8;
-    public const int EnemySpawnIntervalTime = 9;
-    public const int EnemyState = 10;
-    public const int EnemyType = 11;
+    public const int EnemyBehavior = 7;
+    public const int EnemyInfo = 8;
+    public const int EnemySpawnCount = 9;
+    public const int EnemySpawnIntervalTime = 10;
+    public const int EnemyState = 11;
     public const int GameDestroyedListener = 12;
     public const int GameProgress = 13;
     public const int GameProgressListener = 14;
@@ -58,11 +58,11 @@ public static class GameComponentsLookup {
         "DeadListener",
         "Destroyed",
         "Enable",
+        "EnemyBehavior",
         "EnemyInfo",
         "EnemySpawnCount",
         "EnemySpawnIntervalTime",
         "EnemyState",
-        "EnemyType",
         "GameDestroyedListener",
         "GameProgress",
         "GameProgressListener",
@@ -100,11 +100,11 @@ public static class GameComponentsLookup {
         typeof(DeadListenerComponent),
         typeof(DestroyedComponent),
         typeof(EnableComponent),
+        typeof(EnemyBehaviorComponent),
         typeof(EnemyInfoComponent),
         typeof(EnemySpawnCountComponent),
         typeof(EnemySpawnIntervalTimeComponent),
         typeof(EnemyStateComponent),
-        typeof(EnemyTypeComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),

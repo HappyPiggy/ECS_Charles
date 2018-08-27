@@ -69,26 +69,26 @@ public class EnemyMoveSystem : IExecuteSystem, IInitializeSystem
         switch (itemType)
         {
             case ItemType.Shield:
-                enemy.ReplaceEnemyType(EnemyType.Normal);
+                enemy.ReplaceEnemyBehavior(EnemyBehavior.Normal);
                 break;
             case ItemType.MachineGun:
-                enemy.ReplaceEnemyType(EnemyType.Flee);
+                enemy.ReplaceEnemyBehavior(EnemyBehavior.Flee);
                 break;
             default:
-                enemy.ReplaceEnemyType(EnemyType.Normal);
+                enemy.ReplaceEnemyBehavior(EnemyBehavior.Normal);
                 break;
         }
 
 
         //根据敌人状态改变运动方向
-        var type = enemy.enemyType.value;
+        var type =  enemy.enemyBehavior.value;
         Vector2 dir = Vector2.zero;
         switch (type)
         {
-            case EnemyType.Normal:
+            case EnemyBehavior.Normal:
                 dir = (hero.position.value - enemy.position.value).normalized;
                 break;
-            case EnemyType.Flee:
+            case EnemyBehavior.Flee:
                 dir = -(hero.position.value - enemy.position.value).normalized;
                 break;
             default:

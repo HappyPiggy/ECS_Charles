@@ -46,9 +46,9 @@ public class EnemyStateComponent : IComponent
 }
 
 [Game]
-public class EnemyTypeComponent : IComponent
+public class EnemyBehaviorComponent : IComponent
 {
-    public EnemyType value;
+    public EnemyBehavior value;
 }
 
 

@@ -50,7 +50,7 @@ public enum PlayerType
     Fly2,
 }
 
-public enum EnemyType
+public enum EnemyBehavior
 {
     None,
     Normal,

@@ -118,7 +118,7 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddPosition(spawnPos);
         gameEntity.AddRotation(Quaternion.identity);
         gameEntity.AddEnemyState(EnemyState.None);
-        gameEntity.AddEnemyType(EnemyType.Normal);
+        gameEntity.AddEnemyBehavior(EnemyBehavior.Normal);
 
         gameEntity.isDestroyed = false;
 

@@ -14,13 +14,18 @@ public class BulletView : BaseView
 
     private void Start()
     {
+        isDestroyed = false;
         Invoke("DelayDestroy", 2);
     }
 
     protected override void Update()
     {
-        var newPos = transform.position + transform.up * speed * Time.deltaTime;
-        transform.position = newPos;
+        if (!isDestroyed)
+        {
+            var newPos = transform.position + transform.up * speed * Time.deltaTime;
+            transform.position = newPos;
+        }
+
     }
 
 
@@ -54,7 +59,8 @@ public class BulletView : BaseView
 
     private void DelayDestroy()
     {
-        Destroy(this);
         PoolUtil.DeSpawnGameObject(gameObject);
+        isDestroyed = true;
+       // Destroy(this);
     }
 }
