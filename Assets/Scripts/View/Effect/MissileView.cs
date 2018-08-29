@@ -13,14 +13,14 @@ public class MissileView:BaseView
     {
         DoScale();
         //todo 将特效消失的时间配置成player的属性 可控
-        Invoke("DelayDestroy",ConstantUtils.itemDuration);
+        Invoke("DelayDestroy",ConstantUtils.itemDuration-2);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyView view = collision.gameObject.GetComponent<BaseView>() as EnemyView;
+            BaseView view = collision.gameObject.GetComponent<BaseView>();
             if (view != null)
             {
                 view.gameEntity.ReplaceEnemyState(EnemyState.Die);
@@ -32,7 +32,7 @@ public class MissileView:BaseView
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyView view = collision.gameObject.GetComponent<BaseView>() as EnemyView;
+            BaseView view = collision.gameObject.GetComponent<BaseView>() ;
             if (view != null)
             {
                 view.gameEntity.ReplaceEnemyState(EnemyState.Die);

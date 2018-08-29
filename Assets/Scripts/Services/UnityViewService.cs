@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,7 +65,20 @@ public class UnityViewService : IAssetListener, IViewService
                     prefab = entity.enemyInfo.value.enemyList[index];
                     obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
 
-                    view = obj.AddComponent<EnemyView>();
+                    var enemyType = entity.enemyType.value;
+                    //不同类型的敌人
+                    switch (enemyType)
+                    {
+                        case EnemyType.Random:
+                            view = obj.AddComponent<RandomEnemyView>();
+                            break;
+                        case EnemyType.Pingpong:
+                            view = obj.AddComponent<PingpongEnemyView>();
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
                 else
                 {
@@ -113,6 +127,8 @@ public class UnityViewService : IAssetListener, IViewService
             entity.AddView(view);
         }
     }
+
+
 
     public void Update()
     {

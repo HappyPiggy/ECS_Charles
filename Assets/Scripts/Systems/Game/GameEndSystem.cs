@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using DG.Tweening;
+using Entitas;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,8 @@ public class GameEndSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-       // ModuleManager.Instance.Show(ModuleType.EndGamePad);
+        // ModuleManager.Instance.Show(ModuleType.EndGamePad);
+
     }
 
 

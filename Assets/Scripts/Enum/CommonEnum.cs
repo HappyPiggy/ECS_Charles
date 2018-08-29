@@ -56,6 +56,13 @@ public enum EnemyBehavior
     Normal,
     Flee,//反向速度
 }
+
+public enum EnemyType
+{
+    Random, //随机位置 跟随player
+    Pingpong, //固定位置来回移动
+}
+
 public enum EnemyState
 {
     None,

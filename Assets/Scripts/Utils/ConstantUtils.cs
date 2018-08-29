@@ -22,4 +22,8 @@ public class ConstantUtils
     public static string dirpath = Application.persistentDataPath + "/Save";
     public static string filename = dirpath + "/GameData.sav";
 
+    public static bool isStartSpawnPingpong = true;//开始生成pingpong敌人
+    public static bool isDestroySpawnPingpong = false;//销毁pingpong敌人
+
+
 }

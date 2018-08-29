@@ -304,14 +304,15 @@
     <Compile Include="Assets\Scripts\Systems\EntityDestroySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\ChangeMoveDirectionSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\CollisionDetectionSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\Game\EnemyMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\GameEndSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\GameOverSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\PlayerItemSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\PlayerStateChangeSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\RandomEnemyMoveSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\ScoreSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\Game\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\SpawnItemSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\SpawnPingpongEnemySystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\SpawnRandomEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Game\SpawnSpiltSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitConfigSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\Init\InitGameSceneSystem.cs" />
@@ -334,7 +335,8 @@
     <Compile Include="Assets\Scripts\View\Effect\BulletView.cs" />
     <Compile Include="Assets\Scripts\View\Effect\CoinView.cs" />
     <Compile Include="Assets\Scripts\View\Effect\MissileView.cs" />
-    <Compile Include="Assets\Scripts\View\EnemyView.cs" />
+    <Compile Include="Assets\Scripts\View\Enemy\PingpongEnemyView.cs" />
+    <Compile Include="Assets\Scripts\View\Enemy\RandomEnemyView.cs" />
     <Compile Include="Assets\Scripts\View\ItemView.cs" />
     <Compile Include="Assets\Scripts\View\MapView.cs" />
     <Compile Include="Assets\Scripts\View\PlayerItem\MachineGunView.cs" />
@@ -394,6 +396,7 @@
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemySpawnCountComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemySpawnIntervalTimeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyStateComponent.cs" />
+    <Compile Include="Assets\Sources\Generated\Game\Components\GameEnemyTypeComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameDestroyedListenerComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressComponent.cs" />
     <Compile Include="Assets\Sources\Generated\Game\Components\GameGameProgressListenerComponent.cs" />

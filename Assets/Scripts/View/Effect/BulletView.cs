@@ -33,7 +33,7 @@ public class BulletView : BaseView
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyView view = collision.gameObject.GetComponent<BaseView>() as EnemyView;
+            BaseView view = collision.gameObject.GetComponent<BaseView>() ;
             if (view != null)
             {
                 view.gameEntity.ReplaceEnemyState(EnemyState.Die);
@@ -46,7 +46,7 @@ public class BulletView : BaseView
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyView view = collision.gameObject.GetComponent<BaseView>() as EnemyView;
+            BaseView view = collision.gameObject.GetComponent<BaseView>() ;
             if (view != null)
             {
                 view.gameEntity.ReplaceEnemyState(EnemyState.Die);

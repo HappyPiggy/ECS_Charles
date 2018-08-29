@@ -107,8 +107,9 @@ public class EntityFactoryService : IEntityFactoryService
     /// </summary>
     /// <param name="uid"></param>
     /// <param name="spawnPos"></param>
+    /// <param name="type">敌人类型</param>
     /// <returns></returns>
-    public GameEntity CreateEnemy(ulong uid, Vector2 spawnPos)
+    public GameEntity CreateEnemy(ulong uid, Vector2 spawnPos,EnemyType type)
     {
         CheckDuplicateEntity(uid);
         GameEntity gameEntity = context.CreateEntity();
@@ -117,6 +118,8 @@ public class EntityFactoryService : IEntityFactoryService
         gameEntity.AddUnitType(UnitType.Enemy);
         gameEntity.AddPosition(spawnPos);
         gameEntity.AddRotation(Quaternion.identity);
+
+        gameEntity.AddEnemyType(type);
         gameEntity.AddEnemyState(EnemyState.None);
         gameEntity.AddEnemyBehavior(EnemyBehavior.Normal);
 

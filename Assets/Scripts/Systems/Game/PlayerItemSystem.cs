@@ -16,7 +16,6 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
     private GameEntity heroEntity;
     private IGroup<GameEntity> itemGroup;
 
-    private Stack<ItemType> playerItemStack=new Stack<ItemType>();
 
 
     public PlayerItemSystem(Contexts contexts, Services services)

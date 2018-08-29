@@ -44,9 +44,8 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
             {
                 if (item.isEnable)
                 {
-                    item.ReplaceEnemyState(EnemyState.Die);
+                    item.ReplaceEnemyState(EnemyState.Die); //不能放在敌人自身view的dead回调中。因为dead回调后立马回收。其他系统将检测不到敌人的死亡状态。
                     item.ReplaceDead(true);
-                    item.isMover = false;
                 }
             }
             else if (item.hasItemInfo || item.hasItemType) //消除道具

@@ -20,6 +20,12 @@ public class UnitTypeComponent : IComponent
 }
 
 [Game]
+public class EnemyTypeComponent : IComponent
+{
+    public EnemyType value;
+}
+
+[Game]
 public class ItemTypeComponent : IComponent
 {
     public ItemType value;
