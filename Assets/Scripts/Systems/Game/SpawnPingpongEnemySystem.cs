@@ -15,8 +15,8 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
 
     private MapInfo mapInfo;
 
-    private int enemyCnt = 6;  //怪物的上下层数量
-    private float gap = 0.8f; //怪物间隔
+    private int enemyCnt = 2;  //怪物的上下层数量
+    private float gap = 1.5f; //怪物间隔
 
     private List<Vector2> posList = new List<Vector2>();
     private List<GameEntity> pingPongEnemyList = new List<GameEntity>();

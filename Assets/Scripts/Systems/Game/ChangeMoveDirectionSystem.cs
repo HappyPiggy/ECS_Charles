@@ -14,6 +14,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
 
     private ConfigService configService;
     private MapInfo mapInfo;
+    private int layerMask = 1;
 
 
     public ChangeMoveDirectionSystem(Contexts contexts,ConfigService configService) : base(contexts.input)
@@ -27,6 +28,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
     {
         controlPadInputEntity = context.controlPadInputEntity;
         heroGroup = contexts.game.GetGroup(GameMatcher.Hero);
+        layerMask = 1 << 8;
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
@@ -50,7 +52,7 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
             {
                 if (item.isHero)
                 {
-                    var newPos = CalcNewPos(item.position.value, dir);
+                    var newPos = CalcNewPos(item.position.value, dir,item.speed.value);
                     item.ReplaceRotation(rotation);
                     if(item.isMover)
                         item.ReplacePosition(newPos);
@@ -61,22 +63,33 @@ public class ChangeMoveDirectionSystem : ReactiveSystem<InputEntity>,IInitialize
 
 
     /// <summary>
-    /// 计算可以到达的位置
+    ///  计算可以到达的位置
     /// </summary>
     /// <param name="oldPos"></param>
     /// <param name="dir"></param>
+    /// <param name="speed"></param>
     /// <returns></returns>
-    private Vector2 CalcNewPos(Vector2 oldPos,Vector2 dir)
+    private Vector2 CalcNewPos(Vector2 oldPos,Vector2 dir,float speed)
     {
         if (mapInfo == null)
             mapInfo = configService.GetMapInfo();
 
-        var tmp = oldPos + dir/2 * Time.deltaTime;
+        Vector2 tmp = Vector2.zero;
+        if(ConstantUtils.isFreeMode)
+            tmp = oldPos + dir/2 * Time.deltaTime;
+        else
+            tmp= oldPos+dir* speed*Time.deltaTime;
+
         Vector2 pos = new Vector2(
             Mathf.Clamp(tmp.x, mapInfo.border.minX, mapInfo.border.maxX),
             Mathf.Clamp(tmp.y, mapInfo.border.minY, mapInfo.border.maxY)
             );
-        return pos;
+        bool hit =Physics2D.Linecast(oldPos,pos, layerMask);
+
+        if (hit)
+            return oldPos;
+        else
+            return pos;
     }
 
 

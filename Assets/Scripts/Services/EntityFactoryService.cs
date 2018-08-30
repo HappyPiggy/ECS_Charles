@@ -186,6 +186,7 @@ public class EntityFactoryService : IEntityFactoryService
 
         PlayerInfo playerInfo = configService.GetPlayerInfo();
         gameEntity.ReplacePlayerInfo(playerInfo);
+        gameEntity.ReplaceSpeed(playerInfo.playerConfig.moveSpeed);
         gameEntity.AddAsset("Player");
 
         context.ReplaceGlobalHero(gameEntity);

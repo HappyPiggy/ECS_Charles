@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IInputService  {
 
-	Vector2 MoveJoystick { get; }
+	Vector2 FreeMoveJoystick { get; }
+    Vector2 NormalMoveJoystick { get; }
 }

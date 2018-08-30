@@ -25,7 +25,11 @@ public class EmitInputSystem : IExecuteSystem,IInitializeSystem
 
     public void Execute()
     {
-        var movement = inputService.MoveJoystick;
+        Vector2 movement = Vector2.zero;
+        if (ConstantUtils.isFreeMode)
+            movement = inputService.FreeMoveJoystick;
+        else
+            movement = inputService.NormalMoveJoystick;
         //Debug.Log("movement" + movement);
         controlPadInputEntity.ReplaceMoveJoyStick(movement);
     }

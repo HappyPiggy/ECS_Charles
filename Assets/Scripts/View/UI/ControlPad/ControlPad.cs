@@ -22,6 +22,15 @@ public class ControlPad : AppModule, IPointerDownHandler, IDragHandler, IPointer
 
     }
 
+    public static Vector2 Direction
+    {
+        get
+        {
+            return direction;
+        }
+
+    }
+
     public static bool IsMove
     {
         get
@@ -39,7 +48,8 @@ public class ControlPad : AppModule, IPointerDownHandler, IDragHandler, IPointer
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        distance= Vector2.zero;
+        direction = Vector2.zero;
+        distance = Vector2.zero;
         isMove = false;
     }
     public void OnDrag(PointerEventData eventData)

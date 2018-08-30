@@ -292,6 +292,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GameSystemsController.cs" />
     <Compile Include="Assets\Scripts\MainEntry.cs" />
+    <Compile Include="Assets\Scripts\Misc\RotateSelf.cs" />
     <Compile Include="Assets\Scripts\Services\ConfigService.cs" />
     <Compile Include="Assets\Scripts\Services\EntityFactoryService.cs" />
     <Compile Include="Assets\Scripts\Services\Interface\IEntityFactoryService.cs" />

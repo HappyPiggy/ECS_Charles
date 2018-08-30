@@ -6,8 +6,8 @@ using UnityEngine;
 /// </summary>
 public class UnityInputService : IInputService {
 
-
-    public Vector2 MoveJoystick
+    //速度随手指移动速度变
+    public Vector2 FreeMoveJoystick
     {
         get
         {
@@ -15,4 +15,12 @@ public class UnityInputService : IInputService {
         }
     }
 
+    //速度恒定
+    public Vector2 NormalMoveJoystick
+    {
+        get
+        {
+            return ControlPad.Direction;
+        }
+    }
 }
