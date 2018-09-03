@@ -38,7 +38,7 @@ public class UnityViewService : IAssetListener, IViewService
         }
     }
 
-    public void OnAsset(GameEntity entity, string value)
+    public void OnAsset(GameEntity entity, object value)
     {
 
 
@@ -60,20 +60,32 @@ public class UnityViewService : IAssetListener, IViewService
             case UnitType.Enemy:
                 if (context.gameProgress.state == GameProgressState.InGame)
                 {
-                    index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
-                    entity.AddColorType(index);
-                    prefab = entity.enemyInfo.value.enemyList[index];
-                    obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
-
                     var enemyType = entity.enemyType.value;
                     //不同类型的敌人
                     switch (enemyType)
                     {
-                        case EnemyType.Random:
-                            view = obj.AddComponent<RandomEnemyView>();
+                        case EnemyType.NormalBehavior:
+                            index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
+                            entity.AddColorType(index);
+
+                            prefab = entity.enemyInfo.value.enemyList[index];
+                            obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
+                            view = obj.AddComponent<NormalEnemyView>();
                             break;
-                        case EnemyType.Pingpong:
+                        case EnemyType.PingpongBehavior:
+                            index = (int)entity.uID.value % (entity.enemyInfo.value.enemyList.Length);
+                            entity.AddColorType(index);
+
+                            prefab = entity.enemyInfo.value.enemyList[index];
+                            obj = PoolUtil.SpawnGameObject(prefab, entity.position.value, entity.rotation.value, viewObjectRoot);
                             view = obj.AddComponent<PingpongEnemyView>();
+                            break;
+                        case EnemyType.CustomizedBehavior:
+                            obj = (GameObject)value;
+                            index = int.Parse(obj.name)-1;
+                            entity.AddColorType(index);
+
+                            view = obj.AddComponent<CustomizedEnemyView>();
                             break;
                         default:
                             break;

@@ -50,22 +50,50 @@ public enum PlayerType
     Fly2,
 }
 
-public enum EnemyBehavior
-{
-    None,
-    Normal,
-    Flee,//反向速度
-}
+//public enum EnemyBehavior
+//{
+//    None,
+//    Normal,
+//    Flee,//反向速度
+//}
 
-public enum EnemyType
-{
-    Random, //随机位置 跟随player
-    Pingpong, //固定位置来回移动
-}
+
 
 public enum EnemyState
 {
     None,
     Move,
     Die,
+}
+
+public enum EnemyType
+{
+    NormalBehavior, //普通敌人
+    PingpongBehavior, //来回运动的敌人
+    AimBehavior,//瞄准主角的敌人
+    CustomizedBehavior,//预制体中自定义的 
+}
+
+public enum NormalBehavior
+{
+    None,
+    Chase,//追击player
+    Flee,//逃离player
+}
+
+public enum PingpongBehavior
+{
+    None,
+    Horizontal,//横向pingpong
+    Vertical,//纵向pingpong
+}
+
+
+
+
+//怪物具体的移动方式
+public  class EnemyBehavior
+{
+   public  NormalBehavior normalBehavior = NormalBehavior.None;
+   public  PingpongBehavior pingpongBehavior = PingpongBehavior.None;
 }

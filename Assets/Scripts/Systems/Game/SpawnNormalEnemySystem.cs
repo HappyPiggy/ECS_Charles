@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 怪物生成系统
 /// </summary>
-public class SpawnRandomEnemySystem : IExecuteSystem
+public class SpawnNormalEnemySystem : IExecuteSystem
 {
     private Contexts contexts;
     private Services services;
@@ -14,11 +14,12 @@ public class SpawnRandomEnemySystem : IExecuteSystem
     private ConfigService configService;
 
     private MapInfo mapInfo;
+    private EnemyBehavior enemyBehavior = new EnemyBehavior();
 
     private float timer =999;
 
 
-    public SpawnRandomEnemySystem(Contexts contexts, Services services)
+    public SpawnNormalEnemySystem(Contexts contexts, Services services)
     {
         this.contexts = contexts;
         this.services = services;
@@ -36,8 +37,8 @@ public class SpawnRandomEnemySystem : IExecuteSystem
             if (timer > contexts.game.enemySpawnIntervalTime.value)
             {
                 //todo 需要一个系统来管理每次生成怪物的数量和间隔时间
-                var count = MathUtils.RandomInt(2,8);
-                var time = MathUtils.RandomFloat(0.5f, 1.5f);
+                var count = MathUtils.RandomInt(1,5);
+                var time = MathUtils.RandomFloat(1f, 1.5f);
                 contexts.game.ReplaceEnemySpawnCount(count);
                 contexts.game.ReplaceEnemySpawnIntervalTime(time);
 
@@ -67,7 +68,8 @@ public class SpawnRandomEnemySystem : IExecuteSystem
                 pos = GetRandomPosition();
             } while (pos == contexts.game.globalHero.value.position.value);
 
-            entityFactoryService.CreateEnemy(UidUtils.Uid, pos,EnemyType.Random);
+            enemyBehavior.normalBehavior = NormalBehavior.Chase;
+            entityFactoryService.CreateEnemy(UidUtils.Uid, pos,EnemyType.NormalBehavior, enemyBehavior);
             count--;
         }
     }

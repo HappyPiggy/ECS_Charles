@@ -21,35 +21,37 @@ public static class GameComponentsLookup {
     public const int EnemySpawnIntervalTime = 10;
     public const int EnemyState = 11;
     public const int EnemyType = 12;
-    public const int GameDestroyedListener = 13;
-    public const int GameProgress = 14;
-    public const int GameProgressListener = 15;
-    public const int GameScore = 16;
-    public const int GameScoreListener = 17;
-    public const int GameViewListener = 18;
-    public const int GlobalHero = 19;
-    public const int GlobalHeroListener = 20;
-    public const int Hero = 21;
-    public const int Invincible = 22;
-    public const int ItemInfo = 23;
-    public const int ItemType = 24;
-    public const int MapInfo = 25;
-    public const int Mover = 26;
-    public const int OnTriggerEnter = 27;
-    public const int OnTriggerEnterListener = 28;
-    public const int OnTriggerExit = 29;
-    public const int OnTriggerExitListener = 30;
-    public const int PlayerInfo = 31;
-    public const int PlayerItemList = 32;
-    public const int Position = 33;
-    public const int Rotation = 34;
-    public const int Speed = 35;
-    public const int SpiltInfo = 36;
-    public const int UID = 37;
-    public const int UnitType = 38;
-    public const int View = 39;
+    public const int GameCoin = 13;
+    public const int GameCoinListener = 14;
+    public const int GameDestroyedListener = 15;
+    public const int GameProgress = 16;
+    public const int GameProgressListener = 17;
+    public const int GameScore = 18;
+    public const int GameScoreListener = 19;
+    public const int GameViewListener = 20;
+    public const int GlobalHero = 21;
+    public const int GlobalHeroListener = 22;
+    public const int Hero = 23;
+    public const int Invincible = 24;
+    public const int ItemInfo = 25;
+    public const int ItemType = 26;
+    public const int MapInfo = 27;
+    public const int Mover = 28;
+    public const int OnTriggerEnter = 29;
+    public const int OnTriggerEnterListener = 30;
+    public const int OnTriggerExit = 31;
+    public const int OnTriggerExitListener = 32;
+    public const int PlayerInfo = 33;
+    public const int PlayerItemList = 34;
+    public const int Position = 35;
+    public const int Rotation = 36;
+    public const int Speed = 37;
+    public const int SpiltInfo = 38;
+    public const int UID = 39;
+    public const int UnitType = 40;
+    public const int View = 41;
 
-    public const int TotalComponents = 40;
+    public const int TotalComponents = 42;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -65,6 +67,8 @@ public static class GameComponentsLookup {
         "EnemySpawnIntervalTime",
         "EnemyState",
         "EnemyType",
+        "GameCoin",
+        "GameCoinListener",
         "GameDestroyedListener",
         "GameProgress",
         "GameProgressListener",
@@ -108,6 +112,8 @@ public static class GameComponentsLookup {
         typeof(EnemySpawnIntervalTimeComponent),
         typeof(EnemyStateComponent),
         typeof(EnemyTypeComponent),
+        typeof(GameCoinComponent),
+        typeof(GameCoinListenerComponent),
         typeof(GameDestroyedListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),

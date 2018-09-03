@@ -13,7 +13,7 @@ public class ConstantUtils
 
     public static float EnemyDelayMoveTime = 1; //敌人延迟移动
     public static float itemSpawnTime = 1f; //道具生成时间间隔
-    public static int maxItemInGame = 0;//最多道具存在数
+    public static int maxItemInGame = 3;//最多道具存在数
     public static float itemDuration = 3;//道具效果持续时间
 
     public static float invincibleTime = 0.2f;//护盾破裂后无敌持续时间
@@ -26,7 +26,8 @@ public class ConstantUtils
     public static bool isDestroySpawnPingpong = false;//销毁pingpong敌人
 
 
-    public static bool isFreeMode = false;//摇杆是否为自由模式
+    public static bool isFreeMode = true;//摇杆是否为自由模式
+    public static bool isGM = false;//进入无敌gm模式
 
 
 }

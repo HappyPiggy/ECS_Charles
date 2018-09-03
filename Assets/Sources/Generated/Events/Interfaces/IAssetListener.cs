@@ -7,5 +7,5 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 public interface IAssetListener {
-    void OnAsset(GameEntity entity, string value);
+    void OnAsset(GameEntity entity, object value);
 }

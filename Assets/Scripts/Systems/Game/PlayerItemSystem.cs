@@ -15,7 +15,7 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
 
     private GameEntity heroEntity;
     private IGroup<GameEntity> itemGroup;
-
+    private EnemyBehavior enemyBehavior = new EnemyBehavior();
 
 
     public PlayerItemSystem(Contexts contexts, Services services)
@@ -59,7 +59,8 @@ public class PlayerItemSystem : IExecuteSystem, IInitializeSystem
                             break;
                         case ItemType.None: //清除道具效果
                             heroEntity.playerItemList.value.Remove(item.itemType.lastType);
-                            item.ReplaceEnemyBehavior(EnemyBehavior.Normal);
+                            enemyBehavior.normalBehavior = NormalBehavior.Chase;
+                            item.ReplaceEnemyBehavior(enemyBehavior);
                             item.isDestroyed = true;
                             break;
 

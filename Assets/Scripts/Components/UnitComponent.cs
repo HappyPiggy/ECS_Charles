@@ -76,7 +76,7 @@ public class MapInfoComponent : IComponent
 [Game]
 public class EnemyInfoComponent : IComponent
 {
-    public EnemyInfo value;
+    public NormalEnemyInfo value;
 }
 
 [Game]

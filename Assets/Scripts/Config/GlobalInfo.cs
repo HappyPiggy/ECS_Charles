@@ -6,10 +6,10 @@ public class GlobalInfo : ScriptableObject
 {
     public PlayerInfo playerInfo;
     public MapInfo mapInfo;
-    public EnemyInfo enemyInfo;
+    public NormalEnemyInfo normalEnemyInfo;
     public SpiltInfo spiltInfo;
-    public ItemInfo itemInfo;
-    public ItemInfo playerItemInfo;
+    public ItemInfo itemInfo; //道具信息
+    public ItemInfo playerItemInfo; //人物身上的道具
 }
 
 

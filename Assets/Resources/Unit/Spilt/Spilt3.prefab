@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4168527171912112}
   - component: {fileID: 212960394824425800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spilt3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

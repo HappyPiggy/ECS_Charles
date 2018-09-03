@@ -48,8 +48,6 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
                 if (enemy.enemyState.value == EnemyState.Move)
                 {
                     enemy.ReplaceEnemyState(EnemyState.Die);
-                    enemy.ReplaceDead(true);
-                    enemy.isMover = false;
                 }
                 CreateSpilt(enemy);
             }
@@ -65,7 +63,6 @@ public class SpawnSpiltSystem : ReactiveSystem<GameEntity>, IInitializeSystem
                 if (enemy.enemyState.value==EnemyState.Die)
                 {
                     enemy.ReplaceDead(true);
-                    enemy.isMover = false;
                     CreateSpilt(enemy);
                 }
             }

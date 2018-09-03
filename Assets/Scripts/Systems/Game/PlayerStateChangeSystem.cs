@@ -43,10 +43,11 @@ public class PlayerStateChangeSystem : IExecuteSystem
                 case ItemType.None:
                     heroEntity.isMover = true;
                     timer += Time.deltaTime;
-                    heroEntity.isInvincible = true;
-                     if(timer>=ConstantUtils.invincibleTime)
+                    if(timer>=ConstantUtils.invincibleTime)
                          heroEntity.isInvincible = false;
-                    break;
+                     if(ConstantUtils.isGM)
+                         heroEntity.isInvincible = true;
+                        break;
                 default:
                     Debug.Log("未知类型 :" + type);
                     break;

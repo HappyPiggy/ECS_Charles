@@ -6,9 +6,9 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
-/// 随机敌人view
+/// 普通敌人view
 /// </summary>
-public class RandomEnemyView : BaseView,IDeadListener
+public class NormalEnemyView : BaseView,IDeadListener
 {
     public void Start()
     { 

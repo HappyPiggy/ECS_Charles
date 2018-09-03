@@ -7,5 +7,5 @@ using UnityEngine;
 [Game,Event(false)]
 public class AssetComponent : IComponent
 {
-    public string value;
+    public object value;
 }

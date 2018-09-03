@@ -46,9 +46,9 @@ public class ConfigService
         return globalInfo.mapInfo;
     }
 
-    public EnemyInfo GetEnemyInfo()
+    public NormalEnemyInfo GetEnemyInfo()
     {
-        return globalInfo.enemyInfo;
+        return globalInfo.normalEnemyInfo;
     }
 
 

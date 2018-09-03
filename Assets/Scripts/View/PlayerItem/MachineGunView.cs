@@ -12,6 +12,7 @@ public class MachineGunView : BaseView
     private Transform viewObjectRoot;
 
     private float spawnInterval = 0.05f; //生成子弹间隔
+    private float hideTime = 0.3f; //道具消除播放动画时间
     private float timer = 999;
 
     private void Start()
@@ -20,7 +21,9 @@ public class MachineGunView : BaseView
         viewObjectRoot = GameObject.Find("Game").transform;
 
         DoScale();
-        Invoke("DelayDestroy", ConstantUtils.itemDuration+2);
+        Invoke("DelayDestroy", ConstantUtils.itemDuration);
+        Camera.main.transform.DOShakePosition(ConstantUtils.itemDuration+ hideTime, new Vector3(-0.1f, -0.1f, 0),10,90,false,false);
+
     }
     protected override void Update()
     {
@@ -44,7 +47,7 @@ public class MachineGunView : BaseView
 
     private void DelayDestroy()
     {
-        var hideTime = 0.8f;
+        
         transform.DOScale(Vector3.zero, hideTime).SetEase(Ease.InBounce);
         Invoke("DestroySelf", hideTime);
     }
@@ -67,7 +70,5 @@ public class MachineGunView : BaseView
             Destroy(go.GetComponent<BulletView>());
 
         go.AddComponent<BulletView>();
-
-
     }
 }

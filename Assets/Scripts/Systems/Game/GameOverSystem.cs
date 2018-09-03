@@ -40,7 +40,7 @@ public class GameOverSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         foreach (var item in enemyGroup.GetEntities())
         {
             //消除屏幕上的敌人
-            if (item.hasEnemyInfo)
+            if (item.hasEnemyType)
             {
                 if (item.isEnable)
                 {

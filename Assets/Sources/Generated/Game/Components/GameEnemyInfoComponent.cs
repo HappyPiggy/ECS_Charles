@@ -11,14 +11,14 @@ public partial class GameEntity {
     public EnemyInfoComponent enemyInfo { get { return (EnemyInfoComponent)GetComponent(GameComponentsLookup.EnemyInfo); } }
     public bool hasEnemyInfo { get { return HasComponent(GameComponentsLookup.EnemyInfo); } }
 
-    public void AddEnemyInfo(EnemyInfo newValue) {
+    public void AddEnemyInfo(NormalEnemyInfo newValue) {
         var index = GameComponentsLookup.EnemyInfo;
         var component = CreateComponent<EnemyInfoComponent>(index);
         component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceEnemyInfo(EnemyInfo newValue) {
+    public void ReplaceEnemyInfo(NormalEnemyInfo newValue) {
         var index = GameComponentsLookup.EnemyInfo;
         var component = CreateComponent<EnemyInfoComponent>(index);
         component.value = newValue;

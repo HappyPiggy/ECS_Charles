@@ -22,9 +22,11 @@ public class GameSystemsController : Feature
         Add(new EmitInputSystem(contexts, services.inputService));
 
         //in game
-      //  Add(new SpawnRandomEnemySystem(contexts, services));
-       // Add(new RandomEnemyMoveSystem(contexts, services));
-        Add(new SpawnPingpongEnemySystem(contexts, services));
+       // Add(new SpawnNormalEnemySystem(contexts, services));
+        //Add(new EnemyMoveSystem(contexts, services));
+      //  Add(new SpawnPingpongEnemySystem(contexts, services));
+
+        Add(new SpawnCustomizedEnemySystem(contexts, services));
         Add(new CollisionDetectionSystem(contexts, services.entityFactoryService));
         Add(new ChangeMoveDirectionSystem(contexts, services.configService));
         Add(new SpawnItemSystem(contexts, services));

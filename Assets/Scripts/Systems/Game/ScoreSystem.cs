@@ -20,6 +20,7 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     public void Initialize()
     {
+        contexts.game.SetGameCoin(0);
         contexts.game.SetGameScore(0);
         viewObjectRoot = GameObject.Find("Game").transform;
     }
@@ -43,8 +44,8 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
                 if (enemy.enemyState.value == EnemyState.Die)
                 {
                     //todo 敌人身上应该带分数属性  不同敌人 分数不同
-                    var newScore = contexts.game.gameScore.value + 1;
-                    contexts.game.ReplaceGameScore(newScore);
+                    var coin = contexts.game.gameCoin.value + 1;
+                    contexts.game.ReplaceGameCoin(coin);
 
                     //敌人死后金币特效
                     CreateIconEffect(enemy.position.value);
@@ -53,7 +54,7 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         }else if (contexts.game.gameProgress.state == GameProgressState.EndGame)
         {
             SavaScore();
-            Contexts.sharedInstance.game.ReplaceGameScore(0);
+            Contexts.sharedInstance.game.ReplaceGameCoin(0);
 
             // 弹出结算面板
             ModuleManager.Instance.Show(ModuleType.EndGamePad);
@@ -81,13 +82,14 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
     private void SavaScore()
     {
         GlobalArchival archival = ArchivalUtils.Load<GlobalArchival>();
-        var curScore = contexts.game.gameScore.value;
+
+        var curScore = PlayerPrefs.GetInt("curScore");
         var score = archival.maxScore < curScore ? curScore : archival.maxScore;
         archival.maxScore = score;
-        archival.coinNum += curScore;
-        ArchivalUtils.Save(archival);
 
-        PlayerPrefs.SetInt("curScore",curScore);
+        var curCoin = contexts.game.gameCoin.value;
+        archival.coinNum += curCoin;
+        ArchivalUtils.Save(archival);
     }
 
 

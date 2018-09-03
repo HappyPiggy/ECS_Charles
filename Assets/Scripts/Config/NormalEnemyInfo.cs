@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 [Serializable]
-public class EnemyInfo : BaseInfo
+public class NormalEnemyInfo : BaseInfo
 {
     public GameObject[] enemyList;
     public float speed;

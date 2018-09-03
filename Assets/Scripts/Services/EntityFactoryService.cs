@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entitas.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,29 @@ public class EntityFactoryService : IEntityFactoryService
         context = contexts.game;
         configService = config;
     }
+
+
+
+    public GameEntity CreateCustomizedEnemy(ulong uid, Vector2 spawnPos, EnemyType type ,GameObject go)
+    {
+        CheckDuplicateEntity(uid);
+        GameEntity gameEntity = context.CreateEntity();
+
+        gameEntity.AddUID(uid);
+        gameEntity.AddUnitType(UnitType.Enemy);
+        gameEntity.AddPosition(spawnPos);
+        gameEntity.AddRotation(Quaternion.identity);
+
+        gameEntity.AddEnemyType(type);
+        gameEntity.AddEnemyState(EnemyState.None);
+
+        gameEntity.isDestroyed = false;
+
+        gameEntity.AddAsset(go);
+
+        return gameEntity;
+    }
+
 
 
     /// <summary>
@@ -107,9 +131,11 @@ public class EntityFactoryService : IEntityFactoryService
     /// </summary>
     /// <param name="uid"></param>
     /// <param name="spawnPos"></param>
-    /// <param name="type">敌人类型</param>
+    /// <param name="type">敌人的种类</param>
+    /// <param name="behavior">对应敌人种类的行为</param>
+    /// <param name="speed"></param>
     /// <returns></returns>
-    public GameEntity CreateEnemy(ulong uid, Vector2 spawnPos,EnemyType type)
+    public GameEntity CreateEnemy(ulong uid, Vector2 spawnPos, EnemyType type, EnemyBehavior behavior,float speed=0 )
     {
         CheckDuplicateEntity(uid);
         GameEntity gameEntity = context.CreateEntity();
@@ -121,13 +147,18 @@ public class EntityFactoryService : IEntityFactoryService
 
         gameEntity.AddEnemyType(type);
         gameEntity.AddEnemyState(EnemyState.None);
-        gameEntity.AddEnemyBehavior(EnemyBehavior.Normal);
+        gameEntity.AddEnemyBehavior(behavior);
+
 
         gameEntity.isDestroyed = false;
 
-        EnemyInfo enemyInfo = configService.GetEnemyInfo();
+        NormalEnemyInfo enemyInfo = configService.GetEnemyInfo();
         gameEntity.AddEnemyInfo(enemyInfo);
-        gameEntity.AddSpeed(enemyInfo.speed);
+        //如果需要动态更改则动态改 否则读配置
+        if (speed != 0)
+            gameEntity.AddSpeed(speed);
+        else
+            gameEntity.AddSpeed(enemyInfo.speed);
 
         gameEntity.AddAsset("Enemy");
 

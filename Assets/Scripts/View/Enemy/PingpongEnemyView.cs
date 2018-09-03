@@ -20,12 +20,23 @@ public class PingpongEnemyView : BaseView,IDeadListener
         gameEntity.isEnable = true;
 
 
-      
-         path = new Vector3[] {
-            new Vector3(-gameEntity.position.value.x, gameEntity.position.value.y, 0)
-        };
+        if (gameEntity.enemyBehavior.value.pingpongBehavior==PingpongBehavior.Horizontal)
+        {
+            path = new Vector3[]
+            {
+                 new Vector3(-gameEntity.position.value.x, gameEntity.position.value.y, 0)
+            };
+        }
+        else if (gameEntity.enemyBehavior.value.pingpongBehavior == PingpongBehavior.Vertical)
+        {
+            path = new Vector3[]
+            {
+                 new Vector3(gameEntity.position.value.x, -gameEntity.position.value.y, 0)
+            };
+        }
 
-        transform.DOLocalPath(path, 2, PathType.Linear).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+            
+        transform.DOLocalPath(path, 1/gameEntity.speed.value, PathType.Linear).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
 
     protected override void Update()

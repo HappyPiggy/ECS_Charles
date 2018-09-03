@@ -9,23 +9,28 @@ using UnityEngine;
 public class SpawnPingpongEnemySystem : IExecuteSystem
 {
     private Contexts contexts;
-    private Services services;
     private EntityFactoryService entityFactoryService;
     private ConfigService configService;
+    private GameEntity heroEntity;
 
     private MapInfo mapInfo;
 
-    private int enemyCnt = 2;  //怪物的上下层数量
-    private float gap = 1.5f; //怪物间隔
+    private  int enemyCnt = 3;  //怪物的上下层数量
+    private readonly float yGap = 0.8f; //怪物y间隔
+    private readonly float xGap =0.8f; //怪物x间隔
+    private float speed = 0.3f; //怪物移动速度
+
+    private float timer = 0;
+    private float interval = 2;
 
     private List<Vector2> posList = new List<Vector2>();
     private List<GameEntity> pingPongEnemyList = new List<GameEntity>();
+    private EnemyBehavior enemyBehavior;
 
 
     public SpawnPingpongEnemySystem(Contexts contexts, Services services)
     {
         this.contexts = contexts;
-        this.services = services;
         this.entityFactoryService = services.entityFactoryService as EntityFactoryService;
         this.configService = services.configService;
     }
@@ -37,40 +42,74 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
     {
         if (contexts.game.gameProgress.state == GameProgressState.InGame)
         {
-            ReSpawnEnemy();
-
-            if (ConstantUtils.isStartSpawnPingpong)
-            {
-                ConstantUtils.isStartSpawnPingpong = false;
-                SpawnPingpongEnemy();
-            }
+            //ReSpawnEnemy();
 
             if (ConstantUtils.isDestroySpawnPingpong)
             {
                 ConstantUtils.isDestroySpawnPingpong = false;
                 DestroyPingpongEnemy();
             }
+
+
+            if (ConstantUtils.isStartSpawnPingpong)
+            {
+                ConstantUtils.isStartSpawnPingpong = false;
+                enemyCnt = MathUtils.RandomInt(1, 5);
+                SpawnHorizontalPingpongEnemy();
+                SpawnVerticalPingpongEnemy();
+            }
+
+ 
+            //timer += Time.deltaTime;
+            //if (timer>interval)
+            //{
+            //    ConstantUtils.isDestroySpawnPingpong = true;
+            //    ConstantUtils.isStartSpawnPingpong = true;
+            //    interval = MathUtils.RandomFloat(2, 5);
+            //    timer = 0;
+            //}
+
         }
         else if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
         {
+            timer = 0;
             CleanAllEnemy();
         }
 
     }
 
     /// <summary>
-    /// 生成敌人
+    /// 生成横向pingpong敌人
     /// </summary>
     /// <param name="count"></param>
-    private void SpawnPingpongEnemy()
+    private void SpawnHorizontalPingpongEnemy()
     {
-        var pos = GetStartPosition();
+        var pos = GetStartPosition(true);
         for (int i = 0; i < pos.Length; i++)
         {
-            var entity=entityFactoryService.CreateEnemy(UidUtils.Uid, pos[i], EnemyType.Pingpong);
+            enemyBehavior = new EnemyBehavior();
+            enemyBehavior.pingpongBehavior = PingpongBehavior.Horizontal;
+            var entity=entityFactoryService.CreateEnemy(UidUtils.Uid, pos[i], EnemyType.PingpongBehavior, enemyBehavior, speed);
             pingPongEnemyList.Add(entity);
         }
        
+    }
+
+    /// <summary>
+    /// 生成纵向pingpong敌人
+    /// </summary>
+    /// <param name="count"></param>
+    private void SpawnVerticalPingpongEnemy()
+    {
+        var pos = GetStartPosition(false);
+        for (int i = 0; i < pos.Length; i++)
+        {
+            enemyBehavior = new EnemyBehavior();
+            enemyBehavior.pingpongBehavior = PingpongBehavior.Vertical;
+            var entity = entityFactoryService.CreateEnemy(UidUtils.Uid, pos[i], EnemyType.PingpongBehavior, enemyBehavior,speed);
+            pingPongEnemyList.Add(entity);
+        }
+
     }
 
     /// <summary>
@@ -80,8 +119,8 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
     {
         for (int i = 0; i < pingPongEnemyList.Count; i++)
         {
-            pingPongEnemyList[i].ReplaceEnemyState(EnemyState.Die);
-            pingPongEnemyList[i].ReplaceDead(true);
+            if(pingPongEnemyList[i].hasEnemyInfo)
+                pingPongEnemyList[i].ReplaceEnemyState(EnemyState.Die);
         }
         CleanAllEnemy();
     }
@@ -90,18 +129,19 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
     /// <summary>
     /// 怪物死后立即生成
     /// </summary>
-    private void ReSpawnEnemy()
-    {
-        for (int i = 0; i < pingPongEnemyList.Count; i++)
-        {
-            if (!pingPongEnemyList[i].hasEnemyInfo)
-            {
-                var index = i % posList.Count;
-                pingPongEnemyList[i]= entityFactoryService.CreateEnemy(UidUtils.Uid, posList[index], EnemyType.Pingpong);
-            }
+    //private void ReSpawnEnemy()
+    //{
+    //    for (int i = 0; i < pingPongEnemyList.Count; i++)
+    //    {
+    //        if (!pingPongEnemyList[i].hasEnemyInfo)
+    //        {
+    //            var index = i % posList.Count;
+    //            posList[index] = new Vector2(-posList[index].x, posList[index].y);
+    //            pingPongEnemyList[i]= entityFactoryService.CreateEnemy(UidUtils.Uid, posList[index], EnemyType.PingpongBehavior);
+    //        }
                 
-        }
-    }
+    //    }
+    //}
 
     /// <summary>
     /// 清除pingpong敌人所有引用数据
@@ -110,7 +150,7 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
     {
         posList.Clear();
 
-        for (int i = 0; i < pingPongEnemyList.Count - 1; i++)
+        for (int i = 0; i < pingPongEnemyList.Count; i++)
         {
             pingPongEnemyList[i] = null;
         }
@@ -121,26 +161,50 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
     /// <summary>
     /// 获得初始位置
     /// </summary>
+    /// <param name="isHorizontal">是横向还是纵向</param>
     /// <returns></returns>
-    private Vector2[] GetStartPosition()
+    private Vector2[] GetStartPosition(bool isHorizontal)
     {
+        posList.Clear();
+        heroEntity = contexts.game.globalHero.value;
+
         if (mapInfo == null)
             mapInfo = configService.GetMapInfo();
 
-        posList.Clear();
 
-        float x = mapInfo.border.minX;
-        float y = (mapInfo.border.minY+mapInfo.border.maxY)/2;
-
-        posList.Add(new Vector3(x,y));
-
-        for (int i = 1; i <= enemyCnt; i++)
+        if (isHorizontal)
         {
-            var dis = i * gap;
-            Vector2 pos = new Vector2(x, y + dis);
-            posList.Add(pos);
-            pos = new Vector2(x, y - dis);
-            posList.Add(pos); 
+            float x = MathUtils.RandomInt(0, 2) == 1 ? mapInfo.border.maxX : mapInfo.border.minX;
+            float y = heroEntity.position.value.y;
+
+        //    posList.Add(new Vector3(x,y));
+            for (int i = 1; i <= enemyCnt; i++)
+            {
+                var dis = i * yGap;
+                x = -x;
+                Vector2 pos = new Vector2(x, y + dis);
+                posList.Add(pos);
+                pos = new Vector2(x, y - dis);
+                posList.Add(pos);
+            }
+
+        }
+        else
+        {
+            float x = heroEntity.position.value.x;
+            float y = MathUtils.RandomInt(0, 2) == 1 ? mapInfo.border.minY : mapInfo.border.maxY;
+
+          //  posList.Add(new Vector3(x, y));
+
+            for (int i = 1; i <= enemyCnt; i++)
+            {
+                var dis = i * xGap;
+                y = -y;
+                Vector2 pos = new Vector2(x+dis, y);
+                posList.Add(pos);
+                pos = new Vector2(x-dis,y);
+                posList.Add(pos);
+            }
         }
 
         return posList.ToArray();

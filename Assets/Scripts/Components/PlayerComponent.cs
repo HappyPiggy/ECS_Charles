@@ -74,8 +74,15 @@ public class InvincibleComponent : IComponent
 {
 }
 
-//游戏内分数
+//游戏内金币数
 [Game,Unique,Event(false)]
+public class GameCoinComponent : IComponent
+{
+    public int value;
+}
+
+//游戏时间(分数)
+[Game, Unique, Event(false)]
 public class GameScoreComponent : IComponent
 {
     public int value;
