@@ -14,6 +14,7 @@ public class MissileView:BaseView
         DoScale();
         //todo 将特效消失的时间配置成player的属性 可控
         Invoke("DelayDestroy",ConstantUtils.itemDuration-1);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

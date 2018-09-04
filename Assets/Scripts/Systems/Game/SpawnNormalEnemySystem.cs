@@ -5,6 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// 怪物生成系统
+/// 难度为easy时生成
 /// </summary>
 public class SpawnNormalEnemySystem : IExecuteSystem
 {
@@ -32,12 +33,12 @@ public class SpawnNormalEnemySystem : IExecuteSystem
 
     public void Execute()
     {
-        if (contexts.game.gameProgress.state == GameProgressState.InGame)
+        if (contexts.game.gameDifficulty.state >=GameDifficulty.Easy)
         {
             if (timer > contexts.game.enemySpawnIntervalTime.value)
             {
                 //todo 需要一个系统来管理每次生成怪物的数量和间隔时间
-                var count = MathUtils.RandomInt(1,5);
+                var count = MathUtils.RandomInt(2,6);
                 var time = MathUtils.RandomFloat(1f, 1.5f);
                 contexts.game.ReplaceEnemySpawnCount(count);
                 contexts.game.ReplaceEnemySpawnIntervalTime(time);
@@ -46,7 +47,9 @@ public class SpawnNormalEnemySystem : IExecuteSystem
                 timer = 0;
             }
             timer += Time.deltaTime;
-        }else if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
+        }
+
+        if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
         {
             timer = 999; //立即生成第一波怪
         }

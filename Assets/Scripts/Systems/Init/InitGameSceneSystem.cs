@@ -9,11 +9,15 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
 {
     private GameContext context;
     private EntityFactoryService entityFactoryService;
+    private UnityAudioService unityAudioService;
+    private ConfigService configService;
 
-    public InitGameSceneSystem(Contexts contexts, IEntityFactoryService entityFactoryService) : base(contexts.game)
+    public InitGameSceneSystem(Contexts contexts,Services services) : base(contexts.game)
     {
         this.context = contexts.game;
-        this.entityFactoryService = entityFactoryService as EntityFactoryService;
+        this.entityFactoryService = services.entityFactoryService as EntityFactoryService;
+        unityAudioService = services.audioService as UnityAudioService;
+        configService = services.configService;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -47,6 +51,11 @@ public class InitGameSceneSystem : ReactiveSystem<GameEntity>
         ModuleManager.Instance.Show(ModuleType.InGamePad);
 
         context.ReplaceGameProgress(GameProgressState.InGame);
+        context.ReplaceGameDifficulty(GameDifficulty.None);
+
+        //播放bgm
+        unityAudioService.PlayMusic(configService.GetAudio("bgm"));
+        
     }
 
 

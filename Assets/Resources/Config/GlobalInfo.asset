@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 195f0a8071f57914ea80468758d94068, type: 2}
   mapInfo: {fileID: 11400000, guid: 1b8bc87d7704459448a1e8672cee28aa, type: 2}
-  enemyInfo: {fileID: 11400000, guid: 103e227401f453543b298ca575d7d2fa, type: 2}
+  normalEnemyInfo: {fileID: 11400000, guid: 103e227401f453543b298ca575d7d2fa, type: 2}
   spiltInfo: {fileID: 11400000, guid: c7b03c2601ce317458ec033054b46b86, type: 2}
   itemInfo: {fileID: 11400000, guid: 37e713b44febbaa40b733aa95f453f06, type: 2}
   playerItemInfo: {fileID: 11400000, guid: c8d1410a35b443c4591efc6aabdd6cb5, type: 2}
+  audiosInfo: {fileID: 11400000, guid: 7b38bc84577a9ae4b8f4babfe70b4a04, type: 2}

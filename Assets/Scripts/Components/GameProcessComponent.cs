@@ -11,3 +11,10 @@ public class GameProgressComponent : IComponent
 }
 
 
+[Game, Unique, Event(false)]
+public class GameDifficultyComponent : IComponent
+{
+    public GameDifficulty state;
+}
+
+

@@ -9,11 +9,14 @@ using UnityEngine;
 public class GameEndSystem : ReactiveSystem<GameEntity>
 {
     private GameContext context;
-    private EntityFactoryService entityFactoryService;
+    private UnityAudioService audioService;
+    private ConfigService configService;
 
-    public GameEndSystem(Contexts contexts) : base(contexts.game)
+    public GameEndSystem(Contexts contexts,Services services) : base(contexts.game)
     {
         this.context = contexts.game;
+        this.audioService = services.audioService as UnityAudioService;
+        configService = services.configService;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -29,7 +32,9 @@ public class GameEndSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        // ModuleManager.Instance.Show(ModuleType.EndGamePad);
+        audioService.PlaySound(configService.GetAudio("beep_pop"));
+        //停止背景音乐
+        audioService.StopMusic();
 
     }
 

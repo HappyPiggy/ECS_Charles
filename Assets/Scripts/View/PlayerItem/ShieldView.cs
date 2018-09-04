@@ -15,6 +15,9 @@ public class ShieldView:BaseView//,IGameDestroyedListener
     {
        // gameEntity.AddGameDestroyedListener(this);
         DoScale();
+
+        var clip = Contexts.sharedInstance.meta.configService.instance.GetAudio("shield_state");
+        Contexts.sharedInstance.meta.unityAudioService.instance.PlaySound(clip);
     }
 
 

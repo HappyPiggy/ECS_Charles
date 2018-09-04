@@ -93,7 +93,7 @@ public class SpawnCustomizedEnemySystem : IExecuteSystem
     /// </summary>
     private void SpawnSpinEnemy()
     {
-        GameObject go=  LoadRes("spin");
+        GameObject go=  LoadRes("test");
         customizedParentList.Add(go);
 
         for (int i = 0; i < go.transform.childCount; i++)

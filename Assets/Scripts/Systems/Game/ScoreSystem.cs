@@ -11,11 +11,15 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
     private Contexts contexts;
 
     private Transform viewObjectRoot;
+    private UnityAudioService unityAudioService;
+    private ConfigService configService;
+    private AudioClip coinClip;
 
-
-    public ScoreSystem(Contexts contexts) : base(contexts.game)
+    public ScoreSystem(Contexts contexts,Services services) : base(contexts.game)
     {
         this.contexts = contexts;
+        unityAudioService = services.audioService as UnityAudioService;
+        configService = services.configService;
     }
 
     public void Initialize()
@@ -46,9 +50,14 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
                     //todo 敌人身上应该带分数属性  不同敌人 分数不同
                     var coin = contexts.game.gameCoin.value + 1;
                     contexts.game.ReplaceGameCoin(coin);
-
+                    
                     //敌人死后金币特效
                     CreateIconEffect(enemy.position.value);
+
+                    //金币音效
+                    if(coinClip==null)
+                        coinClip = configService.GetAudio("coin");
+                    unityAudioService.PlaySound(coinClip);
                 }
             }
         }else if (contexts.game.gameProgress.state == GameProgressState.EndGame)

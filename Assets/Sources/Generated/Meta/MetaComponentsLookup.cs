@@ -8,18 +8,24 @@
 //------------------------------------------------------------------------------
 public static class MetaComponentsLookup {
 
-    public const int EntityFactoryService = 0;
-    public const int InputService = 1;
+    public const int ConfigService = 0;
+    public const int EntityFactoryService = 1;
+    public const int InputService = 2;
+    public const int UnityAudioService = 3;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
+        "ConfigService",
         "EntityFactoryService",
-        "InputService"
+        "InputService",
+        "UnityAudioService"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ConfigServiceComponent),
         typeof(EntityFactoryServiceComponent),
-        typeof(InputServiceComponent)
+        typeof(InputServiceComponent),
+        typeof(UnityAudioServiceComponent)
     };
 }

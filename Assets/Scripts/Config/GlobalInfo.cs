@@ -10,6 +10,7 @@ public class GlobalInfo : ScriptableObject
     public SpiltInfo spiltInfo;
     public ItemInfo itemInfo; //道具信息
     public ItemInfo playerItemInfo; //人物身上的道具
+    public AudiosInfo audiosInfo;
 }
 
 

@@ -15,3 +15,16 @@ public class EntityFactoryServiceComponent : IComponent
 {
     public  IEntityFactoryService instance;
 }
+
+
+[Meta, Unique]
+public class UnityAudioServiceComponent : IComponent
+{
+    public UnityAudioService instance;
+}
+
+[Meta, Unique]
+public class ConfigServiceComponent : IComponent
+{
+    public ConfigService instance;
+}

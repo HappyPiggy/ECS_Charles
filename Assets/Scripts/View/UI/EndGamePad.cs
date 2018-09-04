@@ -28,6 +28,10 @@ public class EndGamePad:AppModule
 
     private void OnRestartBtnClick()
     {
+        //ui特效音
+        var clip = Contexts.sharedInstance.meta.configService.instance.GetAudio("pop1");
+        Contexts.sharedInstance.meta.unityAudioService.instance.PlaySound(clip);
+
         Contexts.sharedInstance.game.ReplaceGameProgress(GameProgressState.GameRestart);
     }
 

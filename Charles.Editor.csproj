@@ -353,6 +353,9 @@
     <Reference Include="Entitas.VisualDebugging.CodeGeneration.Plugins">
       <HintPath>Assets/Entitas/Editor/Plugins/Entitas/Entitas.VisualDebugging.CodeGeneration.Plugins.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/qianda/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -371,9 +374,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/qianda/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets/Plugins/Newtonsoft.Json.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Charles.csproj">
@@ -384,7 +384,7 @@
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\Editor\CreateAsset.cs" />
-    <Compile Include="Assets\Scripts\Utils\RecyclerKit\Editor\TrashManEditor.cs" />
+    <Compile Include="Assets\Scripts\Systems\Game\Utils\RecyclerKit\Editor\TrashManEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

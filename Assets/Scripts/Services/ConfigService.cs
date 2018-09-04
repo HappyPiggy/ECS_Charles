@@ -67,4 +67,15 @@ public class ConfigService
         return globalInfo.playerItemInfo;
     }
 
+    public AudioClip GetAudio(string name)
+    {
+        AudioClip clip = null;
+        for (int i = 0; i < globalInfo.audiosInfo.audioDic.Count; i++)
+        {
+            if (name == globalInfo.audiosInfo.audioDic[i].name)
+                return globalInfo.audiosInfo.audioDic[i];
+        }
+        return clip;
+    }
+
 }

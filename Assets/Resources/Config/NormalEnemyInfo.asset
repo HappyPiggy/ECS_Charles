@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7a2f0c4ef578b249aa30c1074990530, type: 3}
-  m_Name: EnemyInfo
+  m_Name: NormalEnemyInfo
   m_EditorClassIdentifier: 
   uid: 0
   resName: enemy

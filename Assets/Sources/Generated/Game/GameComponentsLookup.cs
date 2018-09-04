@@ -24,34 +24,36 @@ public static class GameComponentsLookup {
     public const int GameCoin = 13;
     public const int GameCoinListener = 14;
     public const int GameDestroyedListener = 15;
-    public const int GameProgress = 16;
-    public const int GameProgressListener = 17;
-    public const int GameScore = 18;
-    public const int GameScoreListener = 19;
-    public const int GameViewListener = 20;
-    public const int GlobalHero = 21;
-    public const int GlobalHeroListener = 22;
-    public const int Hero = 23;
-    public const int Invincible = 24;
-    public const int ItemInfo = 25;
-    public const int ItemType = 26;
-    public const int MapInfo = 27;
-    public const int Mover = 28;
-    public const int OnTriggerEnter = 29;
-    public const int OnTriggerEnterListener = 30;
-    public const int OnTriggerExit = 31;
-    public const int OnTriggerExitListener = 32;
-    public const int PlayerInfo = 33;
-    public const int PlayerItemList = 34;
-    public const int Position = 35;
-    public const int Rotation = 36;
-    public const int Speed = 37;
-    public const int SpiltInfo = 38;
-    public const int UID = 39;
-    public const int UnitType = 40;
-    public const int View = 41;
+    public const int GameDifficulty = 16;
+    public const int GameDifficultyListener = 17;
+    public const int GameProgress = 18;
+    public const int GameProgressListener = 19;
+    public const int GameScore = 20;
+    public const int GameScoreListener = 21;
+    public const int GameViewListener = 22;
+    public const int GlobalHero = 23;
+    public const int GlobalHeroListener = 24;
+    public const int Hero = 25;
+    public const int Invincible = 26;
+    public const int ItemInfo = 27;
+    public const int ItemType = 28;
+    public const int MapInfo = 29;
+    public const int Mover = 30;
+    public const int OnTriggerEnter = 31;
+    public const int OnTriggerEnterListener = 32;
+    public const int OnTriggerExit = 33;
+    public const int OnTriggerExitListener = 34;
+    public const int PlayerInfo = 35;
+    public const int PlayerItemList = 36;
+    public const int Position = 37;
+    public const int Rotation = 38;
+    public const int Speed = 39;
+    public const int SpiltInfo = 40;
+    public const int UID = 41;
+    public const int UnitType = 42;
+    public const int View = 43;
 
-    public const int TotalComponents = 42;
+    public const int TotalComponents = 44;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -70,6 +72,8 @@ public static class GameComponentsLookup {
         "GameCoin",
         "GameCoinListener",
         "GameDestroyedListener",
+        "GameDifficulty",
+        "GameDifficultyListener",
         "GameProgress",
         "GameProgressListener",
         "GameScore",
@@ -115,6 +119,8 @@ public static class GameComponentsLookup {
         typeof(GameCoinComponent),
         typeof(GameCoinListenerComponent),
         typeof(GameDestroyedListenerComponent),
+        typeof(GameDifficultyComponent),
+        typeof(GameDifficultyListenerComponent),
         typeof(GameProgressComponent),
         typeof(GameProgressListenerComponent),
         typeof(GameScoreComponent),

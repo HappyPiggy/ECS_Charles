@@ -5,6 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// pingpong类型怪物生成系统
+/// 难度为normal时生成
 /// </summary>
 public class SpawnPingpongEnemySystem : IExecuteSystem
 {
@@ -15,13 +16,13 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
 
     private MapInfo mapInfo;
 
-    private  int enemyCnt = 3;  //怪物的上下层数量
-    private readonly float yGap = 0.8f; //怪物y间隔
-    private readonly float xGap =0.8f; //怪物x间隔
-    private float speed = 0.3f; //怪物移动速度
+    private  int enemyCnt = -1;  //怪物的上下层数量
+    private readonly float yGap = 1f; //怪物y间隔
+    private readonly float xGap =1f; //怪物x间隔
+    private float speed = 0.2f; //怪物移动速度
 
     private float timer = 0;
-    private float interval = 2;
+    private float interval = 4;
 
     private List<Vector2> posList = new List<Vector2>();
     private List<GameEntity> pingPongEnemyList = new List<GameEntity>();
@@ -40,7 +41,7 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
 
     public void Execute()
     {
-        if (contexts.game.gameProgress.state == GameProgressState.InGame)
+        if (contexts.game.gameDifficulty.state >= GameDifficulty.Normal)
         {
             //ReSpawnEnemy();
 
@@ -54,25 +55,30 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
             if (ConstantUtils.isStartSpawnPingpong)
             {
                 ConstantUtils.isStartSpawnPingpong = false;
-                enemyCnt = MathUtils.RandomInt(1, 5);
+                enemyCnt = Mathf.Min(enemyCnt + 1, 5);
+                interval = Mathf.Min(interval+0.5f,8);
                 SpawnHorizontalPingpongEnemy();
                 SpawnVerticalPingpongEnemy();
             }
 
- 
-            //timer += Time.deltaTime;
-            //if (timer>interval)
-            //{
-            //    ConstantUtils.isDestroySpawnPingpong = true;
-            //    ConstantUtils.isStartSpawnPingpong = true;
-            //    interval = MathUtils.RandomFloat(2, 5);
-            //    timer = 0;
-            //}
+
+            timer += Time.deltaTime;
+            if (timer > interval)
+            {
+                ConstantUtils.isDestroySpawnPingpong = true;
+                ConstantUtils.isStartSpawnPingpong = true;
+                timer = 0;
+            }
+
 
         }
-        else if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
+
+
+        if (contexts.game.gameProgress.state == GameProgressState.GameRestart)
         {
             timer = 0;
+            enemyCnt = -1;
+            interval = 4;
             CleanAllEnemy();
         }
 
@@ -177,7 +183,7 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
             float x = MathUtils.RandomInt(0, 2) == 1 ? mapInfo.border.maxX : mapInfo.border.minX;
             float y = heroEntity.position.value.y;
 
-        //    posList.Add(new Vector3(x,y));
+            posList.Add(new Vector3(x,y));
             for (int i = 1; i <= enemyCnt; i++)
             {
                 var dis = i * yGap;
@@ -194,7 +200,7 @@ public class SpawnPingpongEnemySystem : IExecuteSystem
             float x = heroEntity.position.value.x;
             float y = MathUtils.RandomInt(0, 2) == 1 ? mapInfo.border.minY : mapInfo.border.maxY;
 
-          //  posList.Add(new Vector3(x, y));
+            posList.Add(new Vector3(x, y));
 
             for (int i = 1; i <= enemyCnt; i++)
             {

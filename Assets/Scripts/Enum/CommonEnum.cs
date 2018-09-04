@@ -20,6 +20,14 @@ public enum GameProgressState
     GameRestart,
 }
 
+public enum GameDifficulty
+{
+    None=0,
+    Easy=1,
+    Normal=2,
+    Difficult,
+}
+
 public enum UnitType
 {
     None=0,
